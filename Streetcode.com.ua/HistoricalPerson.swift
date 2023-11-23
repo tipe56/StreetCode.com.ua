@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HistoricalPerson {
+struct HistoricalPerson: Identifiable {
     let id: Int
     let title: String
     let aliasTitle: String?

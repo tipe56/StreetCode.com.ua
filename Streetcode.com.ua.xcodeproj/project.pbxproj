@@ -12,6 +12,7 @@
 		AD5EFA562B0F93EA0085AB01 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD5EFA552B0F93EA0085AB01 /* Preview Assets.xcassets */; };
 		AD5EFA5D2B0F94AD0085AB01 /* HistoricalPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA5C2B0F94AD0085AB01 /* HistoricalPerson.swift */; };
 		AD5EFA5F2B0F96A60085AB01 /* PersonGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA5E2B0F96A60085AB01 /* PersonGridView.swift */; };
+		AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,8 @@
 		AD5EFA552B0F93EA0085AB01 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AD5EFA5C2B0F94AD0085AB01 /* HistoricalPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalPerson.swift; sourceTree = "<group>"; };
 		AD5EFA5E2B0F96A60085AB01 /* PersonGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonGridView.swift; sourceTree = "<group>"; };
+		AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCellView.swift; sourceTree = "<group>"; };
+		AD5EFA632B0FA56E0085AB01 /* CloserText-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloserText-Medium.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +58,9 @@
 			children = (
 				AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */,
 				AD5EFA5E2B0F96A60085AB01 /* PersonGridView.swift */,
+				AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */,
 				AD5EFA5C2B0F94AD0085AB01 /* HistoricalPerson.swift */,
+				AD5EFA622B0FA5020085AB01 /* Fonts */,
 				AD5EFA522B0F93EA0085AB01 /* Assets.xcassets */,
 				AD5EFA542B0F93EA0085AB01 /* Preview Content */,
 			);
@@ -68,6 +73,14 @@
 				AD5EFA552B0F93EA0085AB01 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AD5EFA622B0FA5020085AB01 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				AD5EFA632B0FA56E0085AB01 /* CloserText-Medium.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD5EFA5D2B0F94AD0085AB01 /* HistoricalPerson.swift in Sources */,
+				AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */,
 				AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */,
 				AD5EFA5F2B0F96A60085AB01 /* PersonGridView.swift in Sources */,
 			);

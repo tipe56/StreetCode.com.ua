@@ -15,7 +15,13 @@ struct PersonGridView: View {
     ]
     
     var body: some View {
-        Text("")
+        ScrollView {
+            LazyVGrid(columns: columns) {
+                ForEach(MockData.Persons) { person in
+                    PersonCellView(person: person)
+                }
+            }
+        }
     }
 }
 
