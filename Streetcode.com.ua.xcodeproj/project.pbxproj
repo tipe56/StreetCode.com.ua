@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */; };
-		AD5EFA512B0F93E70085AB01 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA502B0F93E70085AB01 /* ContentView.swift */; };
 		AD5EFA532B0F93EA0085AB01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD5EFA522B0F93EA0085AB01 /* Assets.xcassets */; };
 		AD5EFA562B0F93EA0085AB01 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD5EFA552B0F93EA0085AB01 /* Preview Assets.xcassets */; };
+		AD5EFA5D2B0F94AD0085AB01 /* HistoricalPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA5C2B0F94AD0085AB01 /* HistoricalPerson.swift */; };
+		AD5EFA5F2B0F96A60085AB01 /* PersonGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA5E2B0F96A60085AB01 /* PersonGridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AD5EFA4B2B0F93E70085AB01 /* Streetcode.com.ua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streetcode.com.ua.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streetcode_com_uaApp.swift; sourceTree = "<group>"; };
-		AD5EFA502B0F93E70085AB01 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AD5EFA522B0F93EA0085AB01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD5EFA552B0F93EA0085AB01 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AD5EFA5C2B0F94AD0085AB01 /* HistoricalPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalPerson.swift; sourceTree = "<group>"; };
+		AD5EFA5E2B0F96A60085AB01 /* PersonGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonGridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +54,8 @@
 			isa = PBXGroup;
 			children = (
 				AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */,
-				AD5EFA502B0F93E70085AB01 /* ContentView.swift */,
+				AD5EFA5E2B0F96A60085AB01 /* PersonGridView.swift */,
+				AD5EFA5C2B0F94AD0085AB01 /* HistoricalPerson.swift */,
 				AD5EFA522B0F93EA0085AB01 /* Assets.xcassets */,
 				AD5EFA542B0F93EA0085AB01 /* Preview Content */,
 			);
@@ -137,8 +140,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD5EFA512B0F93E70085AB01 /* ContentView.swift in Sources */,
+				AD5EFA5D2B0F94AD0085AB01 /* HistoricalPerson.swift in Sources */,
 				AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */,
+				AD5EFA5F2B0F96A60085AB01 /* PersonGridView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
