@@ -19,7 +19,7 @@ struct HistoricalPerson: Identifiable {
 
 struct MockData {
     
-    static let sampleHistoricalPerson =  HistoricalPerson(id: 7,
+    static let sampleHistoricalPerson =  HistoricalPerson(id: 0007,
                                       title: "Юрій Дадак",
                                       aliasTitle: "Руф",
                                       activityTitle: "Поет, підприємець, військовий",

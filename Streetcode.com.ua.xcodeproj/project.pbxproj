@@ -13,6 +13,7 @@
 		AD5EFA5D2B0F94AD0085AB01 /* HistoricalPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA5C2B0F94AD0085AB01 /* HistoricalPerson.swift */; };
 		AD5EFA5F2B0F96A60085AB01 /* PersonGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA5E2B0F96A60085AB01 /* PersonGridView.swift */; };
 		AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */; };
+		AD5EFA652B0FD3BF0085AB01 /* PersonPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA642B0FD3BF0085AB01 /* PersonPreviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		AD5EFA5E2B0F96A60085AB01 /* PersonGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonGridView.swift; sourceTree = "<group>"; };
 		AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCellView.swift; sourceTree = "<group>"; };
 		AD5EFA632B0FA56E0085AB01 /* CloserText-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloserText-Medium.otf"; sourceTree = "<group>"; };
+		AD5EFA642B0FD3BF0085AB01 /* PersonPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPreviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */,
 				AD5EFA5E2B0F96A60085AB01 /* PersonGridView.swift */,
 				AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */,
+				AD5EFA642B0FD3BF0085AB01 /* PersonPreviewView.swift */,
 				AD5EFA5C2B0F94AD0085AB01 /* HistoricalPerson.swift */,
 				AD5EFA622B0FA5020085AB01 /* Fonts */,
 				AD5EFA522B0F93EA0085AB01 /* Assets.xcassets */,
@@ -155,6 +158,7 @@
 			files = (
 				AD5EFA5D2B0F94AD0085AB01 /* HistoricalPerson.swift in Sources */,
 				AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */,
+				AD5EFA652B0FD3BF0085AB01 /* PersonPreviewView.swift in Sources */,
 				AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */,
 				AD5EFA5F2B0F96A60085AB01 /* PersonGridView.swift in Sources */,
 			);

@@ -15,7 +15,7 @@ struct PersonCellView: View {
         VStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(Color(red: 250/255, green: 250/255, blue: 250/255))
+                    .fill(Color("PersonCellBackground"))
                     .aspectRatio(1, contentMode: .fit)
             }
             .overlay(alignment: .top) {
@@ -26,7 +26,7 @@ struct PersonCellView: View {
             }
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .shadow(
-                color: Color(red: 0, green: 0, blue: 0, opacity: 0.25),
+                color: Color("PersonCellShadow"),
                 radius: 4,
                 x: 0,
             y: 4)
