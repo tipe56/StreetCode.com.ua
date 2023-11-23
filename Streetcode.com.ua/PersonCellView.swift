@@ -29,16 +29,16 @@ struct PersonCellView: View {
                 color: Color("PersonCellShadow"),
                 radius: 4,
                 x: 0,
-            y: 4)
+                y: 4)
             
             VStack {
                 Text(person.title)
                     .font(.custom("CloserText-Medium.otf", size: 18))
-            
+                
                 if let aliasTitle = person.aliasTitle {
                     Text("\"\(aliasTitle)\"")
                         .font(.custom("CloserText-Medium.otf", size: 14))
-                        
+                    
                 }
                 
             }

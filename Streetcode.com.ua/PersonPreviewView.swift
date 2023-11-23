@@ -13,13 +13,14 @@ struct PersonPreviewView: View {
     let person: HistoricalPerson
     let buttonTitle: String = "Дізнатися більше"
     
+    @Binding var isShowingPreView: Bool
     
     
     // MARK: Body
     var body: some View {
         VStack {
             ScrollView {
-                PreviewHeader(id: person.id)
+                PreviewHeader(id: person.id, isShowingPreView: $isShowingPreView)
                 PreviewImage(image: person.imageBundle)
                 PersonTitlesView(person: person)
                 Text(person.description)
@@ -36,7 +37,7 @@ struct PersonPreviewView: View {
 // MARK: Preview
 struct PersonPreviewView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonPreviewView(person: MockData.sampleHistoricalPerson)
+        PersonPreviewView(person: MockData.sampleHistoricalPerson, isShowingPreView: .constant(false))
     }
 }
 
@@ -45,6 +46,7 @@ struct PersonPreviewView_Previews: PreviewProvider {
 
 struct PreviewHeader: View {
     var id: Int
+    @Binding var isShowingPreView: Bool
     
     var body: some View {
         HStack {
@@ -52,7 +54,7 @@ struct PreviewHeader: View {
             Spacer()
             
             Button {
-                // isShowingDetailView = false
+                isShowingPreView = false
             } label: {
                 Image(systemName: "xmark")
                     .foregroundColor(Color(.label))

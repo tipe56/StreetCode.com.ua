@@ -16,19 +16,22 @@ struct PersonGridView: View {
         GridItem(.flexible())
     ]
     
+    @StateObject var viewModel = PersonPreviewViewModel()
+    
     
  
 // MARK: Body
     var body: some View {
         VStack {
             Section {
-                GridView(columns: columns)
+                GridView(columns: columns, viewModel: viewModel)
             } header: {
                 GridHeader(gridTitle: pageTitle)
                     .padding(.bottom, 5)
             }
-        }.padding(.horizontal, 8)
-            .background {
+        }
+        .padding(.horizontal, 8)
+        .background {
                 BackgroundView()
             }
     }
@@ -40,8 +43,6 @@ struct PersonGridView_Previews: PreviewProvider {
         PersonGridView()
     }
 }
-
-
 
 
 // MARK: SubViews
@@ -77,13 +78,23 @@ struct BackgroundView: View {
 
 struct GridView: View {
     var columns: [GridItem]
-    
+    @StateObject var viewModel: PersonPreviewViewModel
+
+
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns) {
                 ForEach(MockData.Persons) { person in
                     PersonCellView(person: person)
+                        .onTapGesture {
+                            viewModel.selectedPerson = person
+                    }
                 }
+            }
+        }
+        .sheet(isPresented: $viewModel.isShowingPreviewView) {
+            if let selectedPerson = viewModel.selectedPerson {
+                PersonPreviewView(person: selectedPerson, isShowingPreView: $viewModel.isShowingPreviewView)
             }
         }
     }
