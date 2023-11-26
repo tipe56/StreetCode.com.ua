@@ -38,7 +38,7 @@ struct PersonGridView: View {
         HStack(alignment: .center) {
             Text(pageTitle)
                 .padding(.leading, 10)
-                .font(Font.closerTextMedium(size: 45))
+                .font(.closer(.medium, size: 45))
                 .foregroundColor(.gray)
             Spacer()
         }.frame(maxHeight: 30)
@@ -91,10 +91,6 @@ struct GridView: View {
     @StateObject var viewModel: PersonPreviewViewModel
     
     private let columns: [GridItem] = .init(repeating: GridItem(.flexible()), count: 2)
-//    [
-//        GridItem(.flexible()),
-//        GridItem(.flexible())
-//    ]
     
     var presentView: Binding<Bool> {
             .init {

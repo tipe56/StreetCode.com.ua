@@ -40,7 +40,6 @@ struct PersonPreviewView: View {
 struct PersonPreviewView_Previews: PreviewProvider {
     static var previews: some View {
         PersonPreviewView(person: MockData.sampleHistoricalPerson)
-//        , isShowingPreView: .constant(false))
     }
 }
 
@@ -90,12 +89,12 @@ struct PersonTitlesView: View {
         HStack {
             VStack(alignment: .leading, spacing: 10) {
                 Text(person.title)
-                    .font(.custom("CloserText-Medium.otf", size: 18))
+                    .font(.closer(.medium, size: 18))
                 
                 
                 if let aliasTitle = person.aliasTitle {
                     Text("\"\(aliasTitle)\"")
-                        .font(.custom("CloserText-Medium.otf", size: 16))
+                        .font(.closer(.medium, size: 16))
                 }
             }
             .foregroundColor(Color(.label))

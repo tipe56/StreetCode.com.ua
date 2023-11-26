@@ -33,12 +33,12 @@ struct PersonCellView: View {
             
             VStack {
                 Text(person.title)
-                    .font(.custom("CloserText-Medium.otf", size: 18))
+                    .font(.closer(.medium, size: 18))
+                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 
                 if let aliasTitle = person.aliasTitle {
                     Text("\"\(aliasTitle)\"")
-                        .font(.custom("CloserText-Medium.otf", size: 14))
-                    
+                        .font(.closer(.medium, size: 14))   
                 }
                 
             }

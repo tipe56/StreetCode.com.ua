@@ -9,7 +9,31 @@ import Foundation
 import SwiftUI
 
 extension Font {
-    static func closerTextMedium(size: CGFloat) -> Font {
-        .custom("CloserText-Medium.otf", size: size)
+    
+    enum CloserFont {
+        case medium
+        case bold
+        case semibold
+        case italic
+        case custom(String)
+        
+        var value: String {
+            switch self {
+            case .medium:
+                return "CloserText-Medium"
+            case .bold:
+                return "CloserText-Bold"
+            case .semibold:
+                return "CloserText-SemiBold"
+            case .italic:
+                return "CloserText-Italic"
+            case .custom(let name):
+                return name
+            }
+        }
     }
+    
+    static func closer(_ type: CloserFont, size: CGFloat) -> Font {
+            return .custom(type.value, size: size)
+        }
 }

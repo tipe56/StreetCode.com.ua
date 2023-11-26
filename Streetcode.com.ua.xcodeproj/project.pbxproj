@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD20684B2B14098100A98304 /* CloserText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD2068482B14098100A98304 /* CloserText-Bold.otf */; };
+		AD20684C2B14098100A98304 /* CloserText-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD2068492B14098100A98304 /* CloserText-Italic.otf */; };
+		AD20684D2B14098100A98304 /* CloserText-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD20684A2B14098100A98304 /* CloserText-Medium.otf */; };
+		AD2068502B140B5000A98304 /* CloserText-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD20684F2B140B5000A98304 /* CloserText-SemiBold.otf */; };
 		AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */; };
 		AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */; };
 		AD5EFA532B0F93EA0085AB01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD5EFA522B0F93EA0085AB01 /* Assets.xcassets */; };
@@ -19,6 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD2068482B14098100A98304 /* CloserText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloserText-Bold.otf"; sourceTree = "<group>"; };
+		AD2068492B14098100A98304 /* CloserText-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloserText-Italic.otf"; sourceTree = "<group>"; };
+		AD20684A2B14098100A98304 /* CloserText-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloserText-Medium.otf"; sourceTree = "<group>"; };
+		AD20684E2B1409CC00A98304 /* Streetcode-com-ua-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Streetcode-com-ua-Info.plist"; sourceTree = SOURCE_ROOT; };
+		AD20684F2B140B5000A98304 /* CloserText-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloserText-SemiBold.otf"; sourceTree = "<group>"; };
 		AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+Constants.swift"; sourceTree = "<group>"; };
 		AD5EFA4B2B0F93E70085AB01 /* Streetcode.com.ua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streetcode.com.ua.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streetcode_com_uaApp.swift; sourceTree = "<group>"; };
@@ -27,7 +36,6 @@
 		AD5EFA5C2B0F94AD0085AB01 /* HistoricalPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalPerson.swift; sourceTree = "<group>"; };
 		AD5EFA5E2B0F96A60085AB01 /* PersonGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonGridView.swift; sourceTree = "<group>"; };
 		AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCellView.swift; sourceTree = "<group>"; };
-		AD5EFA632B0FA56E0085AB01 /* CloserText-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloserText-Medium.otf"; sourceTree = "<group>"; };
 		AD5EFA642B0FD3BF0085AB01 /* PersonPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPreviewView.swift; sourceTree = "<group>"; };
 		AD5EFA662B0FF25B0085AB01 /* PersonPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPreviewViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +138,7 @@
 		AD5EFA4D2B0F93E70085AB01 /* Streetcode.com.ua */ = {
 			isa = PBXGroup;
 			children = (
+				AD20684E2B1409CC00A98304 /* Streetcode-com-ua-Info.plist */,
 				AD2DEE5D2B120EB70088634E /* Constans */,
 				AD2DEE5A2B1207E90088634E /* Main */,
 				AD2DEE572B1206CE0088634E /* Screens */,
@@ -151,7 +160,10 @@
 		AD5EFA622B0FA5020085AB01 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				AD5EFA632B0FA56E0085AB01 /* CloserText-Medium.otf */,
+				AD2068482B14098100A98304 /* CloserText-Bold.otf */,
+				AD20684F2B140B5000A98304 /* CloserText-SemiBold.otf */,
+				AD2068492B14098100A98304 /* CloserText-Italic.otf */,
+				AD20684A2B14098100A98304 /* CloserText-Medium.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -214,8 +226,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD20684C2B14098100A98304 /* CloserText-Italic.otf in Resources */,
 				AD5EFA562B0F93EA0085AB01 /* Preview Assets.xcassets in Resources */,
+				AD20684D2B14098100A98304 /* CloserText-Medium.otf in Resources */,
 				AD5EFA532B0F93EA0085AB01 /* Assets.xcassets in Resources */,
+				AD20684B2B14098100A98304 /* CloserText-Bold.otf in Resources */,
+				AD2068502B140B5000A98304 /* CloserText-SemiBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +380,7 @@
 				DEVELOPMENT_TEAM = 9G9R77J9L4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Streetcode-com-ua-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -393,6 +410,7 @@
 				DEVELOPMENT_TEAM = 9G9R77J9L4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Streetcode-com-ua-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
