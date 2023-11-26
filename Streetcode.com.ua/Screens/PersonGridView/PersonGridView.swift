@@ -11,12 +11,9 @@ struct PersonGridView: View {
 // MARK: Properties
     
     private let pageTitle: String = "Стріткоди"
-    private let columns: [GridItem] = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
     
     @StateObject var viewModel = PersonPreviewViewModel()
+    
     
     
  
@@ -24,9 +21,9 @@ struct PersonGridView: View {
     var body: some View {
         VStack {
             Section {
-                GridView(columns: columns, viewModel: viewModel)
+                GridView(viewModel: viewModel)
             } header: {
-                GridHeader(gridTitle: pageTitle)
+                gridHeader
                     .padding(.bottom, 5)
             }
         }
@@ -35,6 +32,19 @@ struct PersonGridView: View {
                 BackgroundView()
             }
     }
+    
+    //MARK: ViewBuilders
+    @ViewBuilder private var gridHeader: some View{
+        HStack(alignment: .center) {
+            Text(pageTitle)
+                .padding(.leading, 10)
+                .font(Font.closerTextMedium(size: 45))
+                .foregroundColor(.gray)
+            Spacer()
+        }.frame(maxHeight: 30)
+    }
+    
+    
 }
 
 // MARK: Previews
@@ -46,19 +56,19 @@ struct PersonGridView_Previews: PreviewProvider {
 
 
 // MARK: SubViews
-struct GridHeader: View {
-    var gridTitle: String
-    
-    var body: some View {
-        HStack(alignment: .center) {
-            Text(gridTitle)
-                .padding(.leading, 10)
-                .font(.custom("CloserText-Medium.otf", size: 45))
-                .foregroundColor(.gray)
-            Spacer()
-        }.frame(maxHeight: 30)
-    }
-}
+//struct GridHeader: View {
+//    let gridTitle: String
+//    
+//    var body: some View {
+//        HStack(alignment: .center) {
+//            Text(gridTitle)
+//                .padding(.leading, 10)
+//                .font(.custom("CloserText-Medium.otf", size: 45))
+//                .foregroundColor(.gray)
+//            Spacer()
+//        }.frame(maxHeight: 30)
+//    }
+//}
 
 struct BackgroundView: View {
     var body: some View {
@@ -77,9 +87,22 @@ struct BackgroundView: View {
 }
 
 struct GridView: View {
-    var columns: [GridItem]
+    
     @StateObject var viewModel: PersonPreviewViewModel
-
+    
+    private let columns: [GridItem] = .init(repeating: GridItem(.flexible()), count: 2)
+//    [
+//        GridItem(.flexible()),
+//        GridItem(.flexible())
+//    ]
+    
+    var presentView: Binding<Bool> {
+            .init {
+                viewModel.selectedPerson != nil
+            } set: { _ in
+                viewModel.selectedPerson = nil
+            }
+        }
 
     var body: some View {
         ScrollView {
@@ -92,10 +115,11 @@ struct GridView: View {
                 }
             }
         }
-        .sheet(isPresented: $viewModel.isShowingPreviewView) {
-            if let selectedPerson = viewModel.selectedPerson {
-                PersonPreviewView(person: selectedPerson, isShowingPreView: $viewModel.isShowingPreviewView)
-            }
+        .sheet(item: $viewModel.selectedPerson) { selectedPerson in
+//            if let selectedPerson = viewModel.selectedPerson {
+                PersonPreviewView(person: selectedPerson)
+                // TODO: remove parameters isShowing
+//            }
         }
     }
 }

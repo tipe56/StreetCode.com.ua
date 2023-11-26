@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */; };
 		AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */; };
 		AD5EFA532B0F93EA0085AB01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD5EFA522B0F93EA0085AB01 /* Assets.xcassets */; };
 		AD5EFA562B0F93EA0085AB01 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD5EFA552B0F93EA0085AB01 /* Preview Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+Constants.swift"; sourceTree = "<group>"; };
 		AD5EFA4B2B0F93E70085AB01 /* Streetcode.com.ua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streetcode.com.ua.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streetcode_com_uaApp.swift; sourceTree = "<group>"; };
 		AD5EFA522B0F93EA0085AB01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -41,6 +43,74 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD2DEE572B1206CE0088634E /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				AD2DEE582B1206DB0088634E /* PersonGridView */,
+				AD2DEE592B1206F50088634E /* PersonPreview */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		AD2DEE582B1206DB0088634E /* PersonGridView */ = {
+			isa = PBXGroup;
+			children = (
+				AD5EFA5E2B0F96A60085AB01 /* PersonGridView.swift */,
+				AD2DEE5C2B1208530088634E /* Subviews */,
+			);
+			path = PersonGridView;
+			sourceTree = "<group>";
+		};
+		AD2DEE592B1206F50088634E /* PersonPreview */ = {
+			isa = PBXGroup;
+			children = (
+				AD5EFA642B0FD3BF0085AB01 /* PersonPreviewView.swift */,
+				AD5EFA662B0FF25B0085AB01 /* PersonPreviewViewModel.swift */,
+			);
+			path = PersonPreview;
+			sourceTree = "<group>";
+		};
+		AD2DEE5A2B1207E90088634E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */,
+				AD5EFA522B0F93EA0085AB01 /* Assets.xcassets */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		AD2DEE5B2B1208160088634E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AD5EFA5C2B0F94AD0085AB01 /* HistoricalPerson.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AD2DEE5C2B1208530088634E /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		AD2DEE5D2B120EB70088634E /* Constans */ = {
+			isa = PBXGroup;
+			children = (
+				AD2DEE5E2B120ED30088634E /* Fonts */,
+				AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */,
+			);
+			path = Constans;
+			sourceTree = "<group>";
+		};
+		AD2DEE5E2B120ED30088634E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		AD5EFA422B0F93E70085AB01 = {
 			isa = PBXGroup;
 			children = (
@@ -60,14 +130,11 @@
 		AD5EFA4D2B0F93E70085AB01 /* Streetcode.com.ua */ = {
 			isa = PBXGroup;
 			children = (
-				AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */,
-				AD5EFA5E2B0F96A60085AB01 /* PersonGridView.swift */,
-				AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */,
-				AD5EFA642B0FD3BF0085AB01 /* PersonPreviewView.swift */,
-				AD5EFA662B0FF25B0085AB01 /* PersonPreviewViewModel.swift */,
-				AD5EFA5C2B0F94AD0085AB01 /* HistoricalPerson.swift */,
+				AD2DEE5D2B120EB70088634E /* Constans */,
+				AD2DEE5A2B1207E90088634E /* Main */,
+				AD2DEE572B1206CE0088634E /* Screens */,
+				AD2DEE5B2B1208160088634E /* Model */,
 				AD5EFA622B0FA5020085AB01 /* Fonts */,
-				AD5EFA522B0F93EA0085AB01 /* Assets.xcassets */,
 				AD5EFA542B0F93EA0085AB01 /* Preview Content */,
 			);
 			path = Streetcode.com.ua;
@@ -160,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD5EFA5D2B0F94AD0085AB01 /* HistoricalPerson.swift in Sources */,
+				AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */,
 				AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */,
 				AD5EFA652B0FD3BF0085AB01 /* PersonPreviewView.swift in Sources */,
 				AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */,
