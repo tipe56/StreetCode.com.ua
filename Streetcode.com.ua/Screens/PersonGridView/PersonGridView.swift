@@ -40,7 +40,7 @@ struct PersonGridView: View {
             Text(pageTitle)
                 .padding(.leading, 10)
                 .font(.closer(.medium, size: 45))
-                .foregroundColor(.gray)
+                .foregroundColor(.gray700)
             Spacer()
         }.frame(maxHeight: 30)
     }
