@@ -11,6 +11,7 @@
 		AD20684C2B14098100A98304 /* CloserText-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD2068492B14098100A98304 /* CloserText-Italic.otf */; };
 		AD20684D2B14098100A98304 /* CloserText-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD20684A2B14098100A98304 /* CloserText-Medium.otf */; };
 		AD2068502B140B5000A98304 /* CloserText-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD20684F2B140B5000A98304 /* CloserText-SemiBold.otf */; };
+		AD2068732B14DEAE00A98304 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068722B14DEAE00A98304 /* BackgroundView.swift */; };
 		AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */; };
 		AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */; };
 		AD5EFA532B0F93EA0085AB01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD5EFA522B0F93EA0085AB01 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		AD20684A2B14098100A98304 /* CloserText-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloserText-Medium.otf"; sourceTree = "<group>"; };
 		AD20684E2B1409CC00A98304 /* Streetcode-com-ua-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Streetcode-com-ua-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AD20684F2B140B5000A98304 /* CloserText-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloserText-SemiBold.otf"; sourceTree = "<group>"; };
+		AD2068722B14DEAE00A98304 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+Constants.swift"; sourceTree = "<group>"; };
 		AD5EFA4B2B0F93E70085AB01 /* Streetcode.com.ua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streetcode.com.ua.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streetcode_com_uaApp.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD2068712B14DE5B00A98304 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AD2068722B14DEAE00A98304 /* BackgroundView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		AD2DEE572B1206CE0088634E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				AD2DEE5E2B120ED30088634E /* Fonts */,
-				AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */,
 			);
 			path = Constans;
 			sourceTree = "<group>";
@@ -115,6 +124,7 @@
 		AD2DEE5E2B120ED30088634E /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -142,6 +152,7 @@
 				AD2DEE5D2B120EB70088634E /* Constans */,
 				AD2DEE5A2B1207E90088634E /* Main */,
 				AD2DEE572B1206CE0088634E /* Screens */,
+				AD2068712B14DE5B00A98304 /* Views */,
 				AD2DEE5B2B1208160088634E /* Model */,
 				AD5EFA622B0FA5020085AB01 /* Fonts */,
 				AD5EFA542B0F93EA0085AB01 /* Preview Content */,
@@ -244,6 +255,7 @@
 			files = (
 				AD5EFA5D2B0F94AD0085AB01 /* HistoricalPerson.swift in Sources */,
 				AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */,
+				AD2068732B14DEAE00A98304 /* BackgroundView.swift in Sources */,
 				AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */,
 				AD5EFA652B0FD3BF0085AB01 /* PersonPreviewView.swift in Sources */,
 				AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */,

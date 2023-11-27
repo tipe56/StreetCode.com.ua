@@ -48,7 +48,6 @@ struct PersonPreviewView_Previews: PreviewProvider {
 
 struct PreviewHeader: View {
     var id: Int
-//    @Binding var isShowingPreView: Bool
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -57,9 +56,7 @@ struct PreviewHeader: View {
             Spacer()
             
             Button {
-//                isShowingPreView = false
-                dismiss()
-                
+                dismiss()   
             } label: {
                 Image(systemName: "xmark")
                     .foregroundColor(Color(.label))
@@ -119,7 +116,7 @@ struct StreetcodeRedButton: View {
                 .font(.title2)
                 .fontWeight(.semibold)
                 .background(Color.red)
-            // Add red color from web
+            //TODO:  Add red color from web
                 .foregroundColor(.white)
                 .cornerRadius(10)
         }

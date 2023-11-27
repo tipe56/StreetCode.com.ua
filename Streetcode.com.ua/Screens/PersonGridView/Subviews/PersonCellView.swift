@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// TODO: Refactor whole this View
+
 struct PersonCellView: View {
     
     let person: HistoricalPerson
