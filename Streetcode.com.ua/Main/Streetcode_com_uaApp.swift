@@ -11,7 +11,7 @@ import SwiftUI
 struct Streetcode_com_uaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PersonGridView()
         }
     }
 }
