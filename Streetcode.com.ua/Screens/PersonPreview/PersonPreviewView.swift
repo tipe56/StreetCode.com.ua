@@ -11,7 +11,6 @@ struct PersonPreviewView: View {
     // MARK: Properties
     
     let person: HistoricalPerson
-    let buttonTitle: String = "Дізнатися більше"
         
     @Environment(\.dismiss) var dismiss
     
@@ -28,7 +27,12 @@ struct PersonPreviewView: View {
                     .padding(.bottom, 5)
             }
             
-            StreetcodeRedButton(title: buttonTitle)
+            Button {
+                //
+            } label: {
+                Text("Дізнатися більше")
+                    .radiusButtonStyle()
+            }
         }.padding(.horizontal,8)
     }
 }
@@ -102,25 +106,4 @@ struct PersonTitlesView: View {
     }
 }
 
-struct StreetcodeRedButton: View {
-    var title: String
-    
-    var body: some View {
-        Button {
-            //
-        } label: {
-            Text(title)
-                .frame(width: 280, height: 50)
-                .font(.title2)
-                .fontWeight(.semibold)
-                .background(.red)
 
-
-            
-            
-            //TODO:  Add red color from web
-                .foregroundColor(.white)
-                .cornerRadius(10)
-        }
-    }
-}

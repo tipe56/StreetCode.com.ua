@@ -15,23 +15,22 @@ struct PersonCellView: View {
     
     var body: some View {
         VStack {
-            ZStack {
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color("PersonCellBackground"))
-                    .aspectRatio(1, contentMode: .fit)
-            }
-            .overlay(alignment: .top) {
-                Image(person.imageBundle)
-                    .resizable()
-                    .scaledToFill()
-                    .offset(y: 5)
-            }
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-            .shadow(
-                color: Color("PersonCellShadow"),
-                radius: 4,
-                x: 0,
-                y: 4)
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color.gray100)
+                .aspectRatio(1, contentMode: .fit)
+                .overlay(alignment: .top) {
+                    Image(person.imageBundle)
+                        .resizable()
+                        .scaledToFill()
+                        .offset(y: 5)
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .padding(6)
+                .shadow(
+                    color: Color.gray600,
+                    radius: 4,
+                    x: 0,
+                    y: 4)
             
             VStack {
                 Text(person.title)
@@ -40,7 +39,7 @@ struct PersonCellView: View {
                 
                 if let aliasTitle = person.aliasTitle {
                     Text("\"\(aliasTitle)\"")
-                        .font(.closer(.medium, size: 14))   
+                        .font(.closer(.medium, size: 14))
                 }
                 
             }
