@@ -12,9 +12,7 @@
 		AD20684D2B14098100A98304 /* CloserText-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD20684A2B14098100A98304 /* CloserText-Medium.otf */; };
 		AD2068502B140B5000A98304 /* CloserText-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD20684F2B140B5000A98304 /* CloserText-SemiBold.otf */; };
 		AD2068732B14DEAE00A98304 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068722B14DEAE00A98304 /* BackgroundView.swift */; };
-		AD2068762B14F0DF00A98304 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068752B14F0DF00A98304 /* Color+Ext.swift */; };
 		AD2068782B15024500A98304 /* RadiusButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068772B15024500A98304 /* RadiusButtonStyle.swift */; };
-		AD20689F2B17DDDF00A98304 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD20689E2B17DDDF00A98304 /* View+Ext.swift */; };
 		AD2068A22B17E04900A98304 /* StreetcodeRedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068A12B17E04900A98304 /* StreetcodeRedButton.swift */; };
 		AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */; };
 		AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */; };
@@ -34,9 +32,7 @@
 		AD20684E2B1409CC00A98304 /* Streetcode-com-ua-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Streetcode-com-ua-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AD20684F2B140B5000A98304 /* CloserText-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloserText-SemiBold.otf"; sourceTree = "<group>"; };
 		AD2068722B14DEAE00A98304 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
-		AD2068752B14F0DF00A98304 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		AD2068772B15024500A98304 /* RadiusButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusButtonStyle.swift; sourceTree = "<group>"; };
-		AD20689E2B17DDDF00A98304 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		AD2068A12B17E04900A98304 /* StreetcodeRedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetcodeRedButton.swift; sourceTree = "<group>"; };
 		AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+Constants.swift"; sourceTree = "<group>"; };
 		AD5EFA4B2B0F93E70085AB01 /* Streetcode.com.ua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streetcode.com.ua.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,8 +78,6 @@
 		AD20689D2B17DD9E00A98304 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				AD2068752B14F0DF00A98304 /* Color+Ext.swift */,
-				AD20689E2B17DDDF00A98304 /* View+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -235,7 +229,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					AD5EFA4A2B0F93E70085AB01 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -284,12 +278,10 @@
 				AD5EFA5D2B0F94AD0085AB01 /* HistoricalPerson.swift in Sources */,
 				AD2068A22B17E04900A98304 /* StreetcodeRedButton.swift in Sources */,
 				AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */,
-				AD2068762B14F0DF00A98304 /* Color+Ext.swift in Sources */,
 				AD2068782B15024500A98304 /* RadiusButtonStyle.swift in Sources */,
 				AD2068732B14DEAE00A98304 /* BackgroundView.swift in Sources */,
 				AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */,
 				AD5EFA652B0FD3BF0085AB01 /* PersonPreviewView.swift in Sources */,
-				AD20689F2B17DDDF00A98304 /* View+Ext.swift in Sources */,
 				AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */,
 				AD5EFA5F2B0F96A60085AB01 /* PersonGridView.swift in Sources */,
 				AD5EFA672B0FF25B0085AB01 /* PersonPreviewViewModel.swift in Sources */,
@@ -303,6 +295,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -335,6 +328,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -363,6 +357,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -395,6 +390,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -420,7 +416,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Streetcode.com.ua/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = Streetcode.com.ua/Main/Assets.xcassets;
 				DEVELOPMENT_TEAM = 9G9R77J9L4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -450,7 +446,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Streetcode.com.ua/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = Streetcode.com.ua/Main/Assets.xcassets;
 				DEVELOPMENT_TEAM = 9G9R77J9L4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
