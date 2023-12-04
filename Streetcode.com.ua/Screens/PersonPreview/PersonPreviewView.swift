@@ -12,9 +12,7 @@ struct PersonPreviewView: View {
     
     let person: HistoricalPerson
     let buttonTitle: String = "Дізнатися більше"
-    
-//    @Binding var isShowingPreView: Bool
-    
+        
     @Environment(\.dismiss) var dismiss
     
     
@@ -115,7 +113,11 @@ struct StreetcodeRedButton: View {
                 .frame(width: 280, height: 50)
                 .font(.title2)
                 .fontWeight(.semibold)
-                .background(Color.red)
+                .background(.red)
+
+
+            
+            
             //TODO:  Add red color from web
                 .foregroundColor(.white)
                 .cornerRadius(10)
