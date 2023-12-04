@@ -20,3 +20,4 @@ extension Color {
     static let white100: Color = .init("white100")
     static let white700: Color = .init("white700")
 }
+

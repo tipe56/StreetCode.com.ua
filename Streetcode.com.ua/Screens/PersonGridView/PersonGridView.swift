@@ -26,7 +26,7 @@ struct PersonGridView: View {
                     .padding(.bottom, 5)
             }
         }
-        .padding(.horizontal, 8)
+        .padding(.horizontal, 4)
         .background {
             BackgroundView()
         }

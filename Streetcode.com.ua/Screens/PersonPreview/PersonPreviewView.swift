@@ -102,25 +102,4 @@ struct PersonTitlesView: View {
     }
 }
 
-struct StreetcodeRedButton: View {
-    var title: String
-    
-    var body: some View {
-        Button {
-            //
-        } label: {
-            Text(title)
-                .frame(width: 280, height: 50)
-                .font(.title2)
-                .fontWeight(.semibold)
-                .background(.red)
 
-
-            
-            
-            //TODO:  Add red color from web
-                .foregroundColor(.white)
-                .cornerRadius(10)
-        }
-    }
-}
