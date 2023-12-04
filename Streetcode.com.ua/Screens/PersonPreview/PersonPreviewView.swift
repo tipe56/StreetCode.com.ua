@@ -11,7 +11,6 @@ struct PersonPreviewView: View {
     // MARK: Properties
     
     let person: HistoricalPerson
-    let buttonTitle: String = "Дізнатися більше"
         
     @Environment(\.dismiss) var dismiss
     
@@ -28,7 +27,12 @@ struct PersonPreviewView: View {
                     .padding(.bottom, 5)
             }
             
-            StreetcodeRedButton(title: buttonTitle)
+            Button {
+                //
+            } label: {
+                Text("Дізнатися більше")
+                    .radiusButtonStyle()
+            }
         }.padding(.horizontal,8)
     }
 }
