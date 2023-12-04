@@ -17,7 +17,7 @@ struct RadiusButtonStyle: ViewModifier {
             .padding()
             .background {
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(isActive ? Color.black : Color.gray600.opacity(0.5))
+                    .fill(isActive ? Color.black : .gray600.opacity(0.5))
             }
     }
 }
@@ -27,18 +27,3 @@ extension View {
         self.modifier(RadiusButtonStyle(isActive: isActive))
     }
 }
-
-struct TestView: View {
-    var body: some View {
-        Text("test")
-            .radiusButtonStyle(isActive: true)
-    }
-}
-
-
-struct TestView_Previews: PreviewProvider {
-    static var previews: some View {
-        TestView()
-    }
-}
-
