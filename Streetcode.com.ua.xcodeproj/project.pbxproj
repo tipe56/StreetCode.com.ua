@@ -87,9 +87,17 @@
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
+		AD2068AA2B1F240B00A98304 /* TabBarView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TabBarView;
+			sourceTree = "<group>";
+		};
 		AD2DEE572B1206CE0088634E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				AD2068AA2B1F240B00A98304 /* TabBarView */,
 				AD2DEE582B1206DB0088634E /* PersonGridView */,
 				AD2DEE592B1206F50088634E /* PersonPreview */,
 			);
