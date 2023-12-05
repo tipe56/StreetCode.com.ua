@@ -9,11 +9,8 @@ import SwiftUI
 
 struct PersonPreviewView: View {
     // MARK: Properties
-    
     let person: HistoricalPerson
-        
     @Environment(\.dismiss) var dismiss
-    
     
     // MARK: Body
     var body: some View {
@@ -33,7 +30,7 @@ struct PersonPreviewView: View {
                 Text("Дізнатися більше")
                     .radiusButtonStyle()
             }
-        }.padding(.horizontal,8)
+        }.padding(.horizontal, 8)
     }
 }
 

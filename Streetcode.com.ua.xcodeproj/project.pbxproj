@@ -212,8 +212,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				AD2068B12B1F26EE00A98304 /* PBXTargetDependency */,
 			);
 			name = Streetcode.com.ua;
+			packageProductDependencies = (
+			);
 			productName = Streetcode.com.ua;
 			productReference = AD5EFA4B2B0F93E70085AB01 /* Streetcode.com.ua.app */;
 			productType = "com.apple.product-type.application";
@@ -242,6 +245,9 @@
 				Base,
 			);
 			mainGroup = AD5EFA422B0F93E70085AB01;
+			packageReferences = (
+				AD2068AB2B1F26CD00A98304 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			productRefGroup = AD5EFA4C2B0F93E70085AB01 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -285,6 +291,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AD2068B12B1F26EE00A98304 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = AD2068B02B1F26EE00A98304 /* SwiftLintPlugin */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		AD5EFA572B0F93EA0085AB01 /* Debug */ = {
@@ -487,6 +500,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AD2068AB2B1F26CD00A98304 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.54.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD2068B02B1F26EE00A98304 /* SwiftLintPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD2068AB2B1F26CD00A98304 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AD5EFA432B0F93E70085AB01 /* Project object */;
 }

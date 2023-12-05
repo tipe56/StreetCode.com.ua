@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Streetcode_com_uaApp: App {
+struct StreetcodeComUaApp: App {
     var body: some Scene {
         WindowGroup {
             PersonGridView()
