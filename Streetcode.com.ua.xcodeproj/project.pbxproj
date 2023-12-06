@@ -13,6 +13,9 @@
 		AD2068502B140B5000A98304 /* CloserText-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD20684F2B140B5000A98304 /* CloserText-SemiBold.otf */; };
 		AD2068732B14DEAE00A98304 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068722B14DEAE00A98304 /* BackgroundView.swift */; };
 		AD2068782B15024500A98304 /* RadiusButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068772B15024500A98304 /* RadiusButtonStyle.swift */; };
+		AD2068C32B20ABD700A98304 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068C22B20ABD700A98304 /* ScannerView.swift */; };
+		AD2068C52B20BC4800A98304 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068C42B20BC4800A98304 /* CameraView.swift */; };
+		AD2068C72B20C72600A98304 /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068C62B20C72600A98304 /* Permission.swift */; };
 		AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */; };
 		AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */; };
 		AD5EFA532B0F93EA0085AB01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD5EFA522B0F93EA0085AB01 /* Assets.xcassets */; };
@@ -32,6 +35,9 @@
 		AD20684F2B140B5000A98304 /* CloserText-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloserText-SemiBold.otf"; sourceTree = "<group>"; };
 		AD2068722B14DEAE00A98304 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		AD2068772B15024500A98304 /* RadiusButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusButtonStyle.swift; sourceTree = "<group>"; };
+		AD2068C22B20ABD700A98304 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		AD2068C42B20BC4800A98304 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		AD2068C62B20C72600A98304 /* Permission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permission.swift; sourceTree = "<group>"; };
 		AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+Constants.swift"; sourceTree = "<group>"; };
 		AD5EFA4B2B0F93E70085AB01 /* Streetcode.com.ua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streetcode.com.ua.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streetcode_com_uaApp.swift; sourceTree = "<group>"; };
@@ -87,9 +93,20 @@
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
+		AD2068C12B20ABBC00A98304 /* ScannerView */ = {
+			isa = PBXGroup;
+			children = (
+				AD2068C22B20ABD700A98304 /* ScannerView.swift */,
+				AD2068C42B20BC4800A98304 /* CameraView.swift */,
+				AD2068C62B20C72600A98304 /* Permission.swift */,
+			);
+			path = ScannerView;
+			sourceTree = "<group>";
+		};
 		AD2DEE572B1206CE0088634E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				AD2068C12B20ABBC00A98304 /* ScannerView */,
 				AD2DEE582B1206DB0088634E /* PersonGridView */,
 				AD2DEE592B1206F50088634E /* PersonPreview */,
 			);
@@ -285,8 +302,11 @@
 				AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */,
 				AD5EFA652B0FD3BF0085AB01 /* PersonPreviewView.swift in Sources */,
 				AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */,
+				AD2068C52B20BC4800A98304 /* CameraView.swift in Sources */,
+				AD2068C72B20C72600A98304 /* Permission.swift in Sources */,
 				AD5EFA5F2B0F96A60085AB01 /* PersonGridView.swift in Sources */,
 				AD5EFA672B0FF25B0085AB01 /* PersonPreviewViewModel.swift in Sources */,
+				AD2068C32B20ABD700A98304 /* ScannerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +450,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Streetcode-com-ua-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Give access to the App to use a camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -460,6 +481,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Streetcode-com-ua-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Give access to the App to use a camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
