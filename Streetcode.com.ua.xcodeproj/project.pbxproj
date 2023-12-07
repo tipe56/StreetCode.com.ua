@@ -16,6 +16,7 @@
 		AD2068C32B20ABD700A98304 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068C22B20ABD700A98304 /* ScannerView.swift */; };
 		AD2068C52B20BC4800A98304 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068C42B20BC4800A98304 /* CameraView.swift */; };
 		AD2068C72B20C72600A98304 /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068C62B20C72600A98304 /* Permission.swift */; };
+		AD2068CA2B20D8BA00A98304 /* QRScannerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068C92B20D8BA00A98304 /* QRScannerDelegate.swift */; };
 		AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */; };
 		AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */; };
 		AD5EFA532B0F93EA0085AB01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD5EFA522B0F93EA0085AB01 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		AD2068C22B20ABD700A98304 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		AD2068C42B20BC4800A98304 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		AD2068C62B20C72600A98304 /* Permission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permission.swift; sourceTree = "<group>"; };
+		AD2068C92B20D8BA00A98304 /* QRScannerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerDelegate.swift; sourceTree = "<group>"; };
 		AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+Constants.swift"; sourceTree = "<group>"; };
 		AD5EFA4B2B0F93E70085AB01 /* Streetcode.com.ua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streetcode.com.ua.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streetcode_com_uaApp.swift; sourceTree = "<group>"; };
@@ -98,9 +100,18 @@
 			children = (
 				AD2068C22B20ABD700A98304 /* ScannerView.swift */,
 				AD2068C42B20BC4800A98304 /* CameraView.swift */,
-				AD2068C62B20C72600A98304 /* Permission.swift */,
+				AD2068C82B20D88B00A98304 /* Model */,
 			);
 			path = ScannerView;
+			sourceTree = "<group>";
+		};
+		AD2068C82B20D88B00A98304 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AD2068C62B20C72600A98304 /* Permission.swift */,
+				AD2068C92B20D8BA00A98304 /* QRScannerDelegate.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		AD2DEE572B1206CE0088634E /* Screens */ = {
@@ -296,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD5EFA5D2B0F94AD0085AB01 /* HistoricalPerson.swift in Sources */,
+				AD2068CA2B20D8BA00A98304 /* QRScannerDelegate.swift in Sources */,
 				AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */,
 				AD2068782B15024500A98304 /* RadiusButtonStyle.swift in Sources */,
 				AD2068732B14DEAE00A98304 /* BackgroundView.swift in Sources */,

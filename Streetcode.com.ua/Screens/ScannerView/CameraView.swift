@@ -5,6 +5,8 @@
 //  Created by Siarhei Ramaniuk on 6.12.23.
 //
 
+// swiftlint:disable trailing_whitespace
+
 import SwiftUI
 import AVKit
 
@@ -34,3 +36,5 @@ struct CameraView: UIViewRepresentable {
     func updateUIView(_ uiView: UIView, context: Context) { }
 }
 
+
+// swiftlint:enable trailing_whitespace
