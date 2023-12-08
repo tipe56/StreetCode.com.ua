@@ -12,4 +12,3 @@ enum Permission: String {
     case approved = "Access Granted"
     case denied = "Access Denied"
 }
-
