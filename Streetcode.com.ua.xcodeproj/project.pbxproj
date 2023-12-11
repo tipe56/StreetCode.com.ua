@@ -16,10 +16,8 @@
 		AD2068C72B20C72600A98304 /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068C62B20C72600A98304 /* Permission.swift */; };
 		AD2068CC2B21EE2A00A98304 /* ScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068CB2B21EE2900A98304 /* ScannerViewModel.swift */; };
 		AD2068DD2B231BA500A98304 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068DC2B231BA500A98304 /* ScannerView.swift */; };
-		AD2068DF2B23229100A98304 /* ScannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068DE2B23229100A98304 /* ScannerVC.swift */; };
 		AD2068E52B2335C800A98304 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068E42B2335C800A98304 /* Alerts.swift */; };
 		AD2068E72B233ABA00A98304 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068E62B233ABA00A98304 /* Errors.swift */; };
-		AD2069092B23615500A98304 /* ScanCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2069082B23615500A98304 /* ScanCameraView.swift */; };
 		AD20690B2B2378E600A98304 /* AVCaptureVideoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD20690A2B2378E600A98304 /* AVCaptureVideoPreviewView.swift */; };
 		AD20690D2B2379EC00A98304 /* CaptureVideoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD20690C2B2379EC00A98304 /* CaptureVideoPreviewView.swift */; };
 		AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */; };
@@ -44,10 +42,8 @@
 		AD2068C62B20C72600A98304 /* Permission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permission.swift; sourceTree = "<group>"; };
 		AD2068CB2B21EE2900A98304 /* ScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewModel.swift; sourceTree = "<group>"; };
 		AD2068DC2B231BA500A98304 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
-		AD2068DE2B23229100A98304 /* ScannerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerVC.swift; sourceTree = "<group>"; };
 		AD2068E42B2335C800A98304 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		AD2068E62B233ABA00A98304 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
-		AD2069082B23615500A98304 /* ScanCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCameraView.swift; sourceTree = "<group>"; };
 		AD20690A2B2378E600A98304 /* AVCaptureVideoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCaptureVideoPreviewView.swift; sourceTree = "<group>"; };
 		AD20690C2B2379EC00A98304 /* CaptureVideoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureVideoPreviewView.swift; sourceTree = "<group>"; };
 		AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+Constants.swift"; sourceTree = "<group>"; };
@@ -121,8 +117,6 @@
 				AD2068DC2B231BA500A98304 /* ScannerView.swift */,
 				AD20690C2B2379EC00A98304 /* CaptureVideoPreviewView.swift */,
 				AD20690A2B2378E600A98304 /* AVCaptureVideoPreviewView.swift */,
-				AD2068DE2B23229100A98304 /* ScannerVC.swift */,
-				AD2069082B23615500A98304 /* ScanCameraView.swift */,
 				AD2068C82B20D88B00A98304 /* Model */,
 			);
 			path = Scanner;
@@ -332,11 +326,9 @@
 				AD5EFA5D2B0F94AD0085AB01 /* HistoricalPerson.swift in Sources */,
 				AD20690B2B2378E600A98304 /* AVCaptureVideoPreviewView.swift in Sources */,
 				AD20690D2B2379EC00A98304 /* CaptureVideoPreviewView.swift in Sources */,
-				AD2068DF2B23229100A98304 /* ScannerVC.swift in Sources */,
 				AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */,
 				AD2068782B15024500A98304 /* RadiusButtonStyle.swift in Sources */,
 				AD2068732B14DEAE00A98304 /* BackgroundView.swift in Sources */,
-				AD2069092B23615500A98304 /* ScanCameraView.swift in Sources */,
 				AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */,
 				AD5EFA652B0FD3BF0085AB01 /* PersonPreviewView.swift in Sources */,
 				AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */,

@@ -38,7 +38,9 @@ struct ScannerView: View {
             Spacer(minLength: 15)
             
             Button {
-                //
+                viewModel.reActivateCamera()
+                viewModel.qrStringItem = ""
+                viewModel.isScanning = true
             } label: {
                 Image(systemName: "qrcode.viewfinder")
                     .font(.largeTitle)
@@ -50,6 +52,9 @@ struct ScannerView: View {
         .padding(15)
         .onAppear {
             viewModel.setupCaptureSession()
+        }
+        .onDisappear {
+            viewModel.captureSession.stopRunning()
         }
     }
     
@@ -67,7 +72,7 @@ struct ScannerView: View {
                                             frameSize: CGSize(width: size.width, height: size.width))
                         .scaleEffect(0.97)
                     
-                    // camera Corners
+                    // Сamera Corners
                     ForEach(0..<4, id: \.self) { index in
                         let rotation: Double = Double(index) * 90
                         RoundedRectangle(cornerRadius: 2, style: .circular)
@@ -81,7 +86,7 @@ struct ScannerView: View {
                 }
                 .frame(width: size.width, height: size.width)
                 
-                // camera Strip
+                // camera Strip Animation
                 .overlay(alignment: .top) {
                     Rectangle()
                         .fill(Color.red500)
@@ -93,6 +98,7 @@ struct ScannerView: View {
                         .offset(y: viewModel.isScanning ? size.width : 0)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .animation(viewModel.animation, value: viewModel.isScanning)
             }
         }
     }
