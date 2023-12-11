@@ -10,21 +10,14 @@ import SwiftUI
 
 struct ScannerView: View {
     
+    // MARK: Properties
     @StateObject private var viewModel = ScannerViewModel()
     
+    // MARK: Body
     var body: some View {
         VStack(spacing: 8) {
-            Button {
-                //
-            } label: {
-                Image(systemName: "xmark")
-                    .font(.title3)
-                    .foregroundStyle(Color.red500)
-            }
-            .frame(maxWidth: .infinity,
-                   alignment: .leading)
             
-            // Temporary
+            // Temporary output
             Text(viewModel.qrStringItem)
                 .multilineTextAlignment(.center)
             
@@ -37,21 +30,44 @@ struct ScannerView: View {
                 .font(.callout)
                 .foregroundStyle(.gray)
             
-            Spacer(minLength: 0)
+            Spacer()
             
-            // Scanner
+            Scanner(viewModel: viewModel)
+                .padding(.horizontal, 45)
+            
+            Spacer(minLength: 15)
+            
+            Button {
+                //
+            } label: {
+                Image(systemName: "qrcode.viewfinder")
+                    .font(.largeTitle)
+                    .foregroundStyle(.gray)
+            }
+            Spacer(minLength: 45)
+            
+        }
+        .padding(15)
+        .onAppear {
+            viewModel.setupCaptureSession()
+        }
+    }
+    
+    // MARK: ViewBuilders & SubViews
+    
+    struct Scanner: View {
+        
+        @ObservedObject var viewModel: ScannerViewModel
+        
+        var body: some View {
             GeometryReader {
                 let size = $0.size
-                
                 ZStack {
-                    ScanCameraView(frameSize: 
-                                    CGSize(width: size.width, height: size.width),
-                                  scannerDelegate: viewModel,
-                                  captureSession: $viewModel.captureSession)
-
+                    CaptureVideoPreviewView(session: viewModel.captureSession,
+                                            frameSize: CGSize(width: size.width, height: size.width))
                         .scaleEffect(0.97)
                     
-                    // Trimming to get scanner like edges
+                    // camera Corners
                     ForEach(0..<4, id: \.self) { index in
                         let rotation: Double = Double(index) * 90
                         RoundedRectangle(cornerRadius: 2, style: .circular)
@@ -63,9 +79,10 @@ struct ScannerView: View {
                             .rotationEffect(Angle(degrees: rotation))
                     }
                 }
-                // Square shape
                 .frame(width: size.width, height: size.width)
-                .overlay(alignment: .top, content: {
+                
+                // camera Strip
+                .overlay(alignment: .top) {
                     Rectangle()
                         .fill(Color.red500)
                         .frame(height: 2.5)
@@ -74,31 +91,15 @@ struct ScannerView: View {
                                 x: 0,
                                 y: viewModel.isScanning ? 15 : -15)
                         .offset(y: viewModel.isScanning ? size.width : 0)
-                })
-                // To make it center
+                }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .padding(.horizontal, 45)
-            
-            Spacer(minLength: 15)
-            
-            Button {
-
-            } label: {
-                Image(systemName: "qrcode.viewfinder")
-                    .font(.largeTitle)
-                    .foregroundStyle(.gray)
-            }
-            Spacer(minLength: 45)
-            
         }
-        .padding(15)
     }
 }
 
 #Preview {
     ScannerView()
 }
-
 
 // swiftlint:enable trailing_whitespace

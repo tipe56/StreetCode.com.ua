@@ -20,6 +20,8 @@
 		AD2068E52B2335C800A98304 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068E42B2335C800A98304 /* Alerts.swift */; };
 		AD2068E72B233ABA00A98304 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068E62B233ABA00A98304 /* Errors.swift */; };
 		AD2069092B23615500A98304 /* ScanCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2069082B23615500A98304 /* ScanCameraView.swift */; };
+		AD20690B2B2378E600A98304 /* AVCaptureVideoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD20690A2B2378E600A98304 /* AVCaptureVideoPreviewView.swift */; };
+		AD20690D2B2379EC00A98304 /* CaptureVideoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD20690C2B2379EC00A98304 /* CaptureVideoPreviewView.swift */; };
 		AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */; };
 		AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */; };
 		AD5EFA532B0F93EA0085AB01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD5EFA522B0F93EA0085AB01 /* Assets.xcassets */; };
@@ -46,6 +48,8 @@
 		AD2068E42B2335C800A98304 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		AD2068E62B233ABA00A98304 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		AD2069082B23615500A98304 /* ScanCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCameraView.swift; sourceTree = "<group>"; };
+		AD20690A2B2378E600A98304 /* AVCaptureVideoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCaptureVideoPreviewView.swift; sourceTree = "<group>"; };
+		AD20690C2B2379EC00A98304 /* CaptureVideoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureVideoPreviewView.swift; sourceTree = "<group>"; };
 		AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+Constants.swift"; sourceTree = "<group>"; };
 		AD5EFA4B2B0F93E70085AB01 /* Streetcode.com.ua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streetcode.com.ua.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streetcode_com_uaApp.swift; sourceTree = "<group>"; };
@@ -115,8 +119,10 @@
 			children = (
 				AD2068CB2B21EE2900A98304 /* ScannerViewModel.swift */,
 				AD2068DC2B231BA500A98304 /* ScannerView.swift */,
-				AD2069082B23615500A98304 /* ScanCameraView.swift */,
+				AD20690C2B2379EC00A98304 /* CaptureVideoPreviewView.swift */,
+				AD20690A2B2378E600A98304 /* AVCaptureVideoPreviewView.swift */,
 				AD2068DE2B23229100A98304 /* ScannerVC.swift */,
+				AD2069082B23615500A98304 /* ScanCameraView.swift */,
 				AD2068C82B20D88B00A98304 /* Model */,
 			);
 			path = Scanner;
@@ -324,6 +330,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD5EFA5D2B0F94AD0085AB01 /* HistoricalPerson.swift in Sources */,
+				AD20690B2B2378E600A98304 /* AVCaptureVideoPreviewView.swift in Sources */,
+				AD20690D2B2379EC00A98304 /* CaptureVideoPreviewView.swift in Sources */,
 				AD2068DF2B23229100A98304 /* ScannerVC.swift in Sources */,
 				AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */,
 				AD2068782B15024500A98304 /* RadiusButtonStyle.swift in Sources */,
