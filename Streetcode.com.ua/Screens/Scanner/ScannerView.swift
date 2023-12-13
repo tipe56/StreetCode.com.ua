@@ -15,47 +15,64 @@ struct ScannerView: View {
     
     // MARK: Body
     var body: some View {
-        VStack(spacing: 8) {
-            
-            // Temporary output
-            Text(viewModel.qrStringItem)
-                .multilineTextAlignment(.center)
-            
-            Text("Place the QR code inside the area")
-                .font(.title3)
-                .foregroundStyle(.black.opacity(0.8))
-                .padding(.top, 20)
-            
-            Text("Scaning will start automatically")
-                .font(.callout)
-                .foregroundStyle(.gray)
-            
-            Spacer()
-            
-            Scanner(viewModel: viewModel)
-                .padding(.horizontal, 45)
-            
-            Spacer(minLength: 15)
-            
-            Button {
-                viewModel.reActivateCamera()
-                viewModel.qrStringItem = ""
-                viewModel.isScanning = true
-            } label: {
-                Image(systemName: "qrcode.viewfinder")
-                    .font(.largeTitle)
+        ZStack {
+            BackgroundView()
+            VStack(spacing: 8) {
+                
+                // Temporary output
+                Text(viewModel.qrStringItem)
+                    .multilineTextAlignment(.center)
+                
+                Text("Place the QR code inside the area")
+                    .font(.closer(.medium, size: 22))
+                    .foregroundStyle(.black.opacity(0.8))
+                    .padding(.top, 20)
+                
+                Text("Scaning will start automatically")
+                    .font(.callout)
                     .foregroundStyle(.gray)
+                
+                Spacer()
+                
+                Scanner(viewModel: viewModel)
+                    .padding(.horizontal, 45)
+                
+                Spacer(minLength: 15)
+                
+                Button {
+                    viewModel.checkCameraPermission()
+                    // Temporary output
+                    viewModel.qrStringItem = ""
+                } label: {
+                    Image(systemName: "qrcode.viewfinder")
+                        .font(.largeTitle)
+                        .foregroundStyle(.red500)
+                }
+                Spacer(minLength: 45)
             }
-            Spacer(minLength: 45)
-            
+            .padding(15)
         }
-        .padding(15)
         .onAppear {
-            viewModel.setupCaptureSession()
+            viewModel.checkCameraPermission()
         }
+        .onChange(of: viewModel.cameraAccessApproved, perform: { access in
+            if access {
+                viewModel.activateScannerAnimation()
+            }
+        })
         .onDisappear {
             viewModel.captureSession.stopRunning()
         }
+        .alert("Please provide the camera access to scan the QR", isPresented: $viewModel.showPermissionAlert) {
+            Button("Cancel", role: .cancel) {}
+            Button("Settings", role: .none) { viewModel.provideCameraAccess() }
+        }
+        .alert(viewModel.alertItem?.title ?? "", isPresented: $viewModel.isShowingAlert) {
+            Button("OK", role: .cancel) { viewModel.activateScannerAnimation() }
+        } message: {
+            viewModel.alertItem?.message
+        }
+        
     }
     
     // MARK: ViewBuilders & SubViews
@@ -70,7 +87,7 @@ struct ScannerView: View {
                 ZStack {
                     CaptureVideoPreviewView(session: viewModel.captureSession,
                                             frameSize: CGSize(width: size.width, height: size.width))
-                        .scaleEffect(0.97)
+                    .scaleEffect(0.97)
                     
                     // Сamera Corners
                     ForEach(0..<4, id: \.self) { index in
@@ -97,8 +114,9 @@ struct ScannerView: View {
                                 y: viewModel.isScanning ? 15 : -15)
                         .offset(y: viewModel.isScanning ? size.width : 0)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .animation(viewModel.animation, value: viewModel.isScanning)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
             }
         }
     }

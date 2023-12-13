@@ -7,8 +7,9 @@
 
 import Foundation
 
-// Add full list of camera errors
 enum CameraError: Error {
     case invalidDeviceInput
+    case invalidDeviceOutput
     case invalidScannedValue
+    case invalidQR
 }

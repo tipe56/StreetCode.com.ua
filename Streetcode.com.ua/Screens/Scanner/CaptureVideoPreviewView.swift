@@ -17,6 +17,7 @@ struct CaptureVideoPreviewView: UIViewRepresentable {
         if let layer = view.layer as? AVCaptureVideoPreviewLayer {
             layer.session = session
             layer.frame = CGRect(origin: .zero, size: frameSize)
+            layer.backgroundColor = CGColor.init(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             layer.videoGravity = .resizeAspectFill
         }
         return view
@@ -24,8 +25,7 @@ struct CaptureVideoPreviewView: UIViewRepresentable {
     
     func updateUIView(_ uiView: AVCaptureVideoPreviewView, context: Context) {
         //
-    }
-   
+    }  
 }
 
 
