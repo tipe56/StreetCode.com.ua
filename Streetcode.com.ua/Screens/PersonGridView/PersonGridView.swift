@@ -5,6 +5,8 @@
 //  Created by Siarhei Ramaniuk on 23.11.23.
 //
 
+// swiftlint:disable all
+
 import SwiftUI
 
 struct PersonGridView: View {

@@ -1,20 +1,29 @@
 //
-//  SwiftUIView.swift
+//  CatalogView.swift
 //  Streetcode.com.ua
 //
 //  Created by Siarhei Ramaniuk on 13.12.23.
 //
 
+// swiftlint:disable all
+
 import SwiftUI
 
-struct SwiftUIView: View {
+struct CatalogView<VM>: View where VM: CatalogViewModeble {
     
-    @StateObject var vm = CatalogVM()
+    @ObservedObject var vm: VM
+    
+    init(viewModel: VM) {
+        vm = viewModel
+    }
     
     var body: some View {
         VStack {
             Button(action: {
-                vm.genericGet()
+                Task {
+                    await vm.getCatalogVM()
+                }
+                
                 print(vm.catalog.count)
             }, label: {
                 Text("Button")
@@ -29,5 +38,5 @@ struct SwiftUIView: View {
 }
 
 #Preview {
-    SwiftUIView()
+    CatalogView<CatalogVM>(viewModel: CatalogVM(networkManager: WebAPIManager()))
 }

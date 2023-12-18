@@ -5,11 +5,36 @@
 //  Created by Siarhei Ramaniuk on 13.12.23.
 //
 
+// swiftlint:disable all
+
 import SwiftUI
 
-final class CatalogVM: ObservableObject {
+protocol CatalogViewModeble: ObservableObject {
+    var catalog: [CatalogPersonModel] { get }
     
-    @Published var catalog = [CatalogPreviewModel]()
+    func getCatalogVM() async
+}
+
+@MainActor
+final class CatalogVM: CatalogViewModeble {
+    
+    @Published var catalog = [CatalogPersonModel]()
+    private let networkManager: WebAPIManagerProtocol
+    
+    init(networkManager: WebAPIManagerProtocol) {
+        self.networkManager = networkManager
+    }
+    
+    func getCatalogVM() async {
+        let result = await networkManager.getCatalog()
+        
+        switch result {
+        case .success(let success):
+            self.catalog = success
+        case .failure(let failure):
+            print("")
+        }
+    }
     
     
 //    func getCatalog() {
@@ -42,23 +67,53 @@ final class CatalogVM: ObservableObject {
 //        }
 //    }
     
-    func genericGet() {
-        NetworkManager.shared.get(additionTobaseURL: "/streetcode/getCount", decodeType: Int.self) { result in
-            switch result {
-            case .success(let success):
-                NetworkManager.shared.get(additionTobaseURL: "/streetcode/getAllCatalog?page=1&count=\(success)", decodeType: [CatalogPreviewModel].self) { result in
-                    switch result {
-                    case .success(let success):
-                        // Create an instance of the array from the decoded type
-                        self.catalog = success
-                    case .failure(let failure):
-                        print("Catalog failure: \(failure)")
-                    }
-                }
-            case .failure(let failure):
-                print("Count failure: \(failure)")
-            }
-        }
+//    func getCatalog() {
+//        NetworkManager.shared.get(endPoint: "/streetcode/getCount", decodeType: Int.self) { result in
+//            switch result {
+//            case .success(let success):
+//                NetworkManager.shared.get(endPoint: "/streetcode/getAllCatalog?page=1&count=", query: String(success), decodeType: [CatalogPreviewModel].self) { result in
+//                    switch result {
+//                    case .success(let success):
+//                        self.catalog = success
+//                    case .failure(let failure):
+//                        print("Catalog failure: \(failure)")
+//                    }
+//                }
+//            case .failure(let failure):
+//                print("Count failure: \(failure)")
+//            }
+//        }
+//    }
+    
+    func getAny(request: CatalogRequest){
+//        NetworkManager.shared.getAny(.getCount) { result in
+//            switch result {
+//            case .success(let success):
+//                NetworkManager.shared.getAny(.getCatalog)
+//            case .failure(let failure):
+//                <#code#>
+//            }
+//        }
     }
 }
 
+#if DEBUG
+
+final class CatalogTestVM: CatalogViewModeble {
+    @Published var catalog = [CatalogPersonModel]()
+    
+    func getCatalogVM() {
+        catalog = [CatalogPersonModel(id: 12,
+                                       title: "Test Title",
+                                       url: "",
+                                       alias: "Test Alias",
+                                       imageID: 12),
+                   CatalogPersonModel(id: 123,
+                                       title: "Test Title 2",
+                                       url: "",
+                                       alias: "Test Alias 2",
+                                       imageID: 123)]
+    }
+}
+
+#endif

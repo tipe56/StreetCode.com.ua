@@ -16,7 +16,7 @@ import Foundation
 
 
 
-struct CatalogPreviewModel: Codable, Identifiable {
+struct CatalogPersonModel: Codable, Identifiable {
     let id: Int
     let title, url, alias: String
     let imageID: Int

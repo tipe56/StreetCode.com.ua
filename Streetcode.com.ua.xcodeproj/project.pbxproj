@@ -14,9 +14,9 @@
 		AD2068732B14DEAE00A98304 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068722B14DEAE00A98304 /* BackgroundView.swift */; };
 		AD2068782B15024500A98304 /* RadiusButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068772B15024500A98304 /* RadiusButtonStyle.swift */; };
 		AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */; };
-		AD5EC5EA2B2A141E0012A7CD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EC5E92B2A141E0012A7CD /* NetworkManager.swift */; };
-		AD5EC5EC2B2A18930012A7CD /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EC5EB2B2A18930012A7CD /* SwiftUIView.swift */; };
-		AD5EC5EE2B2A1BE30012A7CD /* CatalogPreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EC5ED2B2A1BE30012A7CD /* CatalogPreviewModel.swift */; };
+		AD5EC5EA2B2A141E0012A7CD /* WebAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EC5E92B2A141E0012A7CD /* WebAPIManager.swift */; };
+		AD5EC5EC2B2A18930012A7CD /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EC5EB2B2A18930012A7CD /* CatalogView.swift */; };
+		AD5EC5EE2B2A1BE30012A7CD /* CatalogPersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EC5ED2B2A1BE30012A7CD /* CatalogPersonModel.swift */; };
 		AD5EC5F02B2A2FB30012A7CD /* CatalogVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EC5EF2B2A2FB30012A7CD /* CatalogVM.swift */; };
 		AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */; };
 		AD5EFA532B0F93EA0085AB01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD5EFA522B0F93EA0085AB01 /* Assets.xcassets */; };
@@ -26,6 +26,10 @@
 		AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */; };
 		AD5EFA652B0FD3BF0085AB01 /* PersonPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA642B0FD3BF0085AB01 /* PersonPreviewView.swift */; };
 		AD5EFA672B0FF25B0085AB01 /* PersonPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA662B0FF25B0085AB01 /* PersonPreviewViewModel.swift */; };
+		ADAFF91C2B2CA6DE0060C32E /* CatalogViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAFF91B2B2CA6DE0060C32E /* CatalogViewViewModel.swift */; };
+		ADAFF91E2B2CA9690060C32E /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAFF91D2B2CA9690060C32E /* RequestProtocol.swift */; };
+		ADAFF9202B2DDFEE0060C32E /* CatalogRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAFF91F2B2DDFEE0060C32E /* CatalogRequest.swift */; };
+		ADAFF9222B2DE0D10060C32E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAFF9212B2DE0D10060C32E /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,9 +41,9 @@
 		AD2068722B14DEAE00A98304 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		AD2068772B15024500A98304 /* RadiusButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusButtonStyle.swift; sourceTree = "<group>"; };
 		AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+Constants.swift"; sourceTree = "<group>"; };
-		AD5EC5E92B2A141E0012A7CD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		AD5EC5EB2B2A18930012A7CD /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
-		AD5EC5ED2B2A1BE30012A7CD /* CatalogPreviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPreviewModel.swift; sourceTree = "<group>"; };
+		AD5EC5E92B2A141E0012A7CD /* WebAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIManager.swift; sourceTree = "<group>"; };
+		AD5EC5EB2B2A18930012A7CD /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
+		AD5EC5ED2B2A1BE30012A7CD /* CatalogPersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPersonModel.swift; sourceTree = "<group>"; };
 		AD5EC5EF2B2A2FB30012A7CD /* CatalogVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogVM.swift; sourceTree = "<group>"; };
 		AD5EFA4B2B0F93E70085AB01 /* Streetcode.com.ua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streetcode.com.ua.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streetcode_com_uaApp.swift; sourceTree = "<group>"; };
@@ -50,6 +54,10 @@
 		AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCellView.swift; sourceTree = "<group>"; };
 		AD5EFA642B0FD3BF0085AB01 /* PersonPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPreviewView.swift; sourceTree = "<group>"; };
 		AD5EFA662B0FF25B0085AB01 /* PersonPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPreviewViewModel.swift; sourceTree = "<group>"; };
+		ADAFF91B2B2CA6DE0060C32E /* CatalogViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewViewModel.swift; sourceTree = "<group>"; };
+		ADAFF91D2B2CA9690060C32E /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
+		ADAFF91F2B2DDFEE0060C32E /* CatalogRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogRequest.swift; sourceTree = "<group>"; };
+		ADAFF9212B2DE0D10060C32E /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +115,7 @@
 		AD2DEE582B1206DB0088634E /* PersonGridView */ = {
 			isa = PBXGroup;
 			children = (
+				ADAFF91B2B2CA6DE0060C32E /* CatalogViewViewModel.swift */,
 				AD5EFA5E2B0F96A60085AB01 /* PersonGridView.swift */,
 				AD2DEE5C2B1208530088634E /* Subviews */,
 			);
@@ -135,7 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				AD5EFA5C2B0F94AD0085AB01 /* HistoricalPerson.swift */,
-				AD5EC5ED2B2A1BE30012A7CD /* CatalogPreviewModel.swift */,
+				AD5EC5ED2B2A1BE30012A7CD /* CatalogPersonModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -159,9 +168,12 @@
 		AD5EC5E82B2A13F80012A7CD /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				AD5EC5E92B2A141E0012A7CD /* NetworkManager.swift */,
-				AD5EC5EB2B2A18930012A7CD /* SwiftUIView.swift */,
+				AD5EC5E92B2A141E0012A7CD /* WebAPIManager.swift */,
+				ADAFF91F2B2DDFEE0060C32E /* CatalogRequest.swift */,
+				ADAFF91D2B2CA9690060C32E /* RequestProtocol.swift */,
+				AD5EC5EB2B2A18930012A7CD /* CatalogView.swift */,
 				AD5EC5EF2B2A2FB30012A7CD /* CatalogVM.swift */,
+				ADAFF9212B2DE0D10060C32E /* NetworkError.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -298,14 +310,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADAFF9222B2DE0D10060C32E /* NetworkError.swift in Sources */,
 				AD5EFA5D2B0F94AD0085AB01 /* HistoricalPerson.swift in Sources */,
 				AD5EC5F02B2A2FB30012A7CD /* CatalogVM.swift in Sources */,
 				AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */,
-				AD5EC5EC2B2A18930012A7CD /* SwiftUIView.swift in Sources */,
-				AD5EC5EA2B2A141E0012A7CD /* NetworkManager.swift in Sources */,
+				ADAFF9202B2DDFEE0060C32E /* CatalogRequest.swift in Sources */,
+				AD5EC5EC2B2A18930012A7CD /* CatalogView.swift in Sources */,
+				AD5EC5EA2B2A141E0012A7CD /* WebAPIManager.swift in Sources */,
+				ADAFF91C2B2CA6DE0060C32E /* CatalogViewViewModel.swift in Sources */,
 				AD2068782B15024500A98304 /* RadiusButtonStyle.swift in Sources */,
 				AD2068732B14DEAE00A98304 /* BackgroundView.swift in Sources */,
-				AD5EC5EE2B2A1BE30012A7CD /* CatalogPreviewModel.swift in Sources */,
+				AD5EC5EE2B2A1BE30012A7CD /* CatalogPersonModel.swift in Sources */,
+				ADAFF91E2B2CA9690060C32E /* RequestProtocol.swift in Sources */,
 				AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */,
 				AD5EFA652B0FD3BF0085AB01 /* PersonPreviewView.swift in Sources */,
 				AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */,
