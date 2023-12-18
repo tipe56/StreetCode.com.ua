@@ -20,6 +20,7 @@
 		AD2068E72B233ABA00A98304 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068E62B233ABA00A98304 /* Errors.swift */; };
 		AD20690B2B2378E600A98304 /* AVCaptureVideoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD20690A2B2378E600A98304 /* AVCaptureVideoPreviewView.swift */; };
 		AD20690D2B2379EC00A98304 /* CaptureVideoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD20690C2B2379EC00A98304 /* CaptureVideoPreviewView.swift */; };
+		AD2068C02B2094A300A98304 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068BF2B2094A300A98304 /* TabBarView.swift */; };
 		AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */; };
 		AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */; };
 		AD5EFA532B0F93EA0085AB01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD5EFA522B0F93EA0085AB01 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		AD2068E62B233ABA00A98304 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		AD20690A2B2378E600A98304 /* AVCaptureVideoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCaptureVideoPreviewView.swift; sourceTree = "<group>"; };
 		AD20690C2B2379EC00A98304 /* CaptureVideoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureVideoPreviewView.swift; sourceTree = "<group>"; };
+		AD2068BF2B2094A300A98304 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+Constants.swift"; sourceTree = "<group>"; };
 		AD5EFA4B2B0F93E70085AB01 /* Streetcode.com.ua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streetcode.com.ua.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streetcode_com_uaApp.swift; sourceTree = "<group>"; };
@@ -129,12 +131,21 @@
 				AD2068E62B233ABA00A98304 /* Errors.swift */,
 			);
 			path = "Alerts & Errors";
+            sourceTree = "<group>";
+        };
+		AD2068AA2B1F240B00A98304 /* TabBarView */ = {
+			isa = PBXGroup;
+			children = (
+				AD2068BF2B2094A300A98304 /* TabBarView.swift */,
+			);
+			path = TabBarView;
 			sourceTree = "<group>";
 		};
 		AD2DEE572B1206CE0088634E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				AD2068E02B23298200A98304 /* Scanner */,
+				AD2068AA2B1F240B00A98304 /* TabBarView */,
 				AD2DEE582B1206DB0088634E /* PersonGridView */,
 				AD2DEE592B1206F50088634E /* PersonPreview */,
 			);
@@ -336,6 +347,7 @@
 				AD2068C72B20C72600A98304 /* Permission.swift in Sources */,
 				AD2068DD2B231BA500A98304 /* ScannerView.swift in Sources */,
 				AD5EFA5F2B0F96A60085AB01 /* PersonGridView.swift in Sources */,
+				AD2068C02B2094A300A98304 /* TabBarView.swift in Sources */,
 				AD5EFA672B0FF25B0085AB01 /* PersonPreviewViewModel.swift in Sources */,
 				AD2068E52B2335C800A98304 /* Alerts.swift in Sources */,
 				AD2068E72B233ABA00A98304 /* Errors.swift in Sources */,
