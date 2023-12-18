@@ -13,6 +13,13 @@
 		AD2068502B140B5000A98304 /* CloserText-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD20684F2B140B5000A98304 /* CloserText-SemiBold.otf */; };
 		AD2068732B14DEAE00A98304 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068722B14DEAE00A98304 /* BackgroundView.swift */; };
 		AD2068782B15024500A98304 /* RadiusButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068772B15024500A98304 /* RadiusButtonStyle.swift */; };
+		AD2068C72B20C72600A98304 /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068C62B20C72600A98304 /* Permission.swift */; };
+		AD2068CC2B21EE2A00A98304 /* ScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068CB2B21EE2900A98304 /* ScannerViewModel.swift */; };
+		AD2068DD2B231BA500A98304 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068DC2B231BA500A98304 /* ScannerView.swift */; };
+		AD2068E52B2335C800A98304 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068E42B2335C800A98304 /* Alerts.swift */; };
+		AD2068E72B233ABA00A98304 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068E62B233ABA00A98304 /* Errors.swift */; };
+		AD20690B2B2378E600A98304 /* AVCaptureVideoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD20690A2B2378E600A98304 /* AVCaptureVideoPreviewView.swift */; };
+		AD20690D2B2379EC00A98304 /* CaptureVideoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD20690C2B2379EC00A98304 /* CaptureVideoPreviewView.swift */; };
 		AD2068C02B2094A300A98304 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2068BF2B2094A300A98304 /* TabBarView.swift */; };
 		AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */; };
 		AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */; };
@@ -29,10 +36,17 @@
 		AD2068482B14098100A98304 /* CloserText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloserText-Bold.otf"; sourceTree = "<group>"; };
 		AD2068492B14098100A98304 /* CloserText-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloserText-Italic.otf"; sourceTree = "<group>"; };
 		AD20684A2B14098100A98304 /* CloserText-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloserText-Medium.otf"; sourceTree = "<group>"; };
-		AD20684E2B1409CC00A98304 /* Streetcode-com-ua-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Streetcode-com-ua-Info.plist"; sourceTree = SOURCE_ROOT; };
+		AD20684E2B1409CC00A98304 /* Streetcode-com-ua-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Streetcode-com-ua-Info.plist"; path = "Streetcode.com.ua/Main/Streetcode-com-ua-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AD20684F2B140B5000A98304 /* CloserText-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloserText-SemiBold.otf"; sourceTree = "<group>"; };
 		AD2068722B14DEAE00A98304 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		AD2068772B15024500A98304 /* RadiusButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusButtonStyle.swift; sourceTree = "<group>"; };
+		AD2068C62B20C72600A98304 /* Permission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permission.swift; sourceTree = "<group>"; };
+		AD2068CB2B21EE2900A98304 /* ScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewModel.swift; sourceTree = "<group>"; };
+		AD2068DC2B231BA500A98304 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		AD2068E42B2335C800A98304 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		AD2068E62B233ABA00A98304 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		AD20690A2B2378E600A98304 /* AVCaptureVideoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCaptureVideoPreviewView.swift; sourceTree = "<group>"; };
+		AD20690C2B2379EC00A98304 /* CaptureVideoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureVideoPreviewView.swift; sourceTree = "<group>"; };
 		AD2068BF2B2094A300A98304 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		AD2DEE5F2B120EF70088634E /* Fonts+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+Constants.swift"; sourceTree = "<group>"; };
 		AD5EFA4B2B0F93E70085AB01 /* Streetcode.com.ua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streetcode.com.ua.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +82,7 @@
 		AD20689C2B17DD9400A98304 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AD2068E12B232A9500A98304 /* Alerts & Errors */,
 				AD2068A02B17DE4D00A98304 /* Modifiers */,
 				AD20689D2B17DD9E00A98304 /* Extensions */,
 			);
@@ -89,6 +104,35 @@
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
+		AD2068C82B20D88B00A98304 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AD2068C62B20C72600A98304 /* Permission.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AD2068E02B23298200A98304 /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				AD2068CB2B21EE2900A98304 /* ScannerViewModel.swift */,
+				AD2068DC2B231BA500A98304 /* ScannerView.swift */,
+				AD20690C2B2379EC00A98304 /* CaptureVideoPreviewView.swift */,
+				AD20690A2B2378E600A98304 /* AVCaptureVideoPreviewView.swift */,
+				AD2068C82B20D88B00A98304 /* Model */,
+			);
+			path = Scanner;
+			sourceTree = "<group>";
+		};
+		AD2068E12B232A9500A98304 /* Alerts & Errors */ = {
+			isa = PBXGroup;
+			children = (
+				AD2068E42B2335C800A98304 /* Alerts.swift */,
+				AD2068E62B233ABA00A98304 /* Errors.swift */,
+			);
+			path = "Alerts & Errors";
+            sourceTree = "<group>";
+        };
 		AD2068AA2B1F240B00A98304 /* TabBarView */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +144,7 @@
 		AD2DEE572B1206CE0088634E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				AD2068E02B23298200A98304 /* Scanner */,
 				AD2068AA2B1F240B00A98304 /* TabBarView */,
 				AD2DEE582B1206DB0088634E /* PersonGridView */,
 				AD2DEE592B1206F50088634E /* PersonPreview */,
@@ -128,6 +173,7 @@
 		AD2DEE5A2B1207E90088634E /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				AD20684E2B1409CC00A98304 /* Streetcode-com-ua-Info.plist */,
 				AD5EFA4E2B0F93E70085AB01 /* Streetcode_com_uaApp.swift */,
 				AD5EFA522B0F93EA0085AB01 /* Assets.xcassets */,
 			);
@@ -161,7 +207,6 @@
 		AD5EFA422B0F93E70085AB01 = {
 			isa = PBXGroup;
 			children = (
-				AD20684E2B1409CC00A98304 /* Streetcode-com-ua-Info.plist */,
 				AD5EFA4D2B0F93E70085AB01 /* Streetcode.com.ua */,
 				AD5EFA4C2B0F93E70085AB01 /* Products */,
 			);
@@ -290,15 +335,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD5EFA5D2B0F94AD0085AB01 /* HistoricalPerson.swift in Sources */,
+				AD20690B2B2378E600A98304 /* AVCaptureVideoPreviewView.swift in Sources */,
+				AD20690D2B2379EC00A98304 /* CaptureVideoPreviewView.swift in Sources */,
 				AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */,
 				AD2068782B15024500A98304 /* RadiusButtonStyle.swift in Sources */,
 				AD2068732B14DEAE00A98304 /* BackgroundView.swift in Sources */,
 				AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */,
 				AD5EFA652B0FD3BF0085AB01 /* PersonPreviewView.swift in Sources */,
 				AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */,
+				AD2068CC2B21EE2A00A98304 /* ScannerViewModel.swift in Sources */,
+				AD2068C72B20C72600A98304 /* Permission.swift in Sources */,
+				AD2068DD2B231BA500A98304 /* ScannerView.swift in Sources */,
 				AD5EFA5F2B0F96A60085AB01 /* PersonGridView.swift in Sources */,
 				AD2068C02B2094A300A98304 /* TabBarView.swift in Sources */,
 				AD5EFA672B0FF25B0085AB01 /* PersonPreviewViewModel.swift in Sources */,
+				AD2068E52B2335C800A98304 /* Alerts.swift in Sources */,
+				AD2068E72B233ABA00A98304 /* Errors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,7 +493,8 @@
 				DEVELOPMENT_TEAM = 9G9R77J9L4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Streetcode-com-ua-Info.plist";
+				INFOPLIST_FILE = "Streetcode.com.ua/Main/Streetcode-com-ua-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Give access to the App to use a camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -471,7 +524,8 @@
 				DEVELOPMENT_TEAM = 9G9R77J9L4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Streetcode-com-ua-Info.plist";
+				INFOPLIST_FILE = "Streetcode.com.ua/Main/Streetcode-com-ua-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Give access to the App to use a camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
