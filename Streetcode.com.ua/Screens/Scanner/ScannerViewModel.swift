@@ -130,98 +130,41 @@ final class ScannerViewModel: NSObject, ObservableObject, ScannerVCDelegate  {
     }
     
     func checkCameraPermission() {
-        // using Task - works defenetly better in performance
+        
         Task {
-            switch await AVCaptureDevice.requestAccess(for: .video) {
-                
-            case true:
-                if captureSession.inputs.isEmpty {
-                    // New setup
-                    setupCaptureSession()
+            let accessGranted = await AVCaptureDevice.requestAccess(for: .video)
+            
+            DispatchQueue.main.async {
+                if accessGranted {
+                    if self.captureSession.inputs.isEmpty {
+                        print("new setup")
+                        // New setup
+                        self.setupCaptureSession()
+                    } else {
+                        // Use existing
+                        print("Use existing setup")
+                        self.reActivateCamera()
+                    }
                 } else {
-                    // Use existing
-                    reActivateCamera()
+                    print("No access camera")
+                    self.cameraAccessApproved = false
+                    self.showPermissionAlert.toggle()
                 }
-            case false:
-                cameraAccessApproved = false
-                showPermissionAlert.toggle()
             }
         }
-// Using handler. Not sure about retain cycle
-//        AVCaptureDevice.requestAccess(for: .video) { [weak self] access in
-//            guard let self else {
-//                return
-//            }
-//            
-//            switch access {
-//                
-//            case true:
-//                cameraAccessApproved = true
-//                
-//                if captureSession.inputs.isEmpty {
-//                    // New setup
-//                    setupCaptureSession()
-//                } else {
-//                    // Use existing
-//                    reActivateCamera()
-//                }
-//            case false:
-//                cameraAccessApproved = false
-//                showPermissionAlert.toggle()
-//            }
-//        }
-            
-// OLD implementation,
-        //        Task {
-        //            switch AVCaptureDevice.authorizationStatus(for: .video) {
-        //
-        //            case .notDetermined:
-        //                // requesting camera access
-        //
-        //                if await AVCaptureDevice.requestAccess(for: .video) {
-        //                    /// Permission Granded
-        ////                    cameraPermission = .approved
-        //                    setupCaptureSession()
-        //                } else {
-        //                    /// Permission Denied
-        ////                    cameraPermission = .denied
-        ////                    presentError("Please provide access to camera for scanning codes")
-        //                    print("Please provide access to camera for scanning codes")
-        //                }
-        //            case .denied, .restricted:
-        ////                cameraPermission = .denied
-        //                self.showPermissionAlert.toggle()
-        //
-        //                if await AVCaptureDevice.requestAccess(for: .video) {
-        //                    /// Permission Granded
-        ////                    cameraPermission = .approved
-        //
-        //                    setupCaptureSession()
-        //
-        //
-        //                } else {
-        //                    /// Permission Denied
-        ////                    cameraPermission = .denied
-        ////                    presentError("Please provide access to camera for scanning codes")
-        //                    print("denied")
-        //                }
-        //            case .authorized:
-        //                print("autorized")
-        ////                cameraPermission = .approved
-        //                if captureSession.inputs.isEmpty {
-        //                    /// New setup
-        //                    print("empty input")
-        //                    setupCaptureSession()
-        //                } else {
-        //                    /// Use existing
-        //                    print("NOT empty input")
-        //                    reActivateCamera()
-        //                }
-        //
-        //            default:
-        //                break
-        //            }
-        //        }
+    }
+    
+    static func checkCameraAccess(completion: @escaping (Bool) -> Void) {
+        Task {
+            let isAccessGranted = await AVCaptureDevice.requestAccess(for: .video)
+            completion(isAccessGranted)
+        }
+    }
+    
+    static func saveLastPermissionState() {
+        ScannerViewModel.checkCameraAccess { isAccessGranted in
+            UserDefaults.standard.set(isAccessGranted, forKey: "isAccessGranted")
+        }
     }
 }
 

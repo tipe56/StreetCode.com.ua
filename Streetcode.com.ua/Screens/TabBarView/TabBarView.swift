@@ -7,16 +7,50 @@
 
 import SwiftUI
 
+enum Tab: String, CaseIterable, Identifiable, Hashable {
+    case personGridView
+    case scannerView
+    case mapView
+    
+    var id: Self { self }
+}
+
 struct TabBarView: View {
+    
+    @State var selectedTab: Tab = .personGridView
+    
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             PersonGridView()
                 .tabItem { Label("Catalog", systemImage: "list.bullet") }
-            PersonGridView()
+                .tag(Tab.personGridView)
+                .id("Tab.personGridView")
+            
+            ScannerView()
                 .tabItem { Label("Scanner", systemImage: "qrcode.viewfinder") }
+                .tag(Tab.scannerView)
+                .id("Tab.scannerView")
+            
             PersonGridView()
                 .tabItem { Label("Map", systemImage: "map") }
+                .tag(Tab.mapView)
+                .id("Tab.mapView")
+            
         }.tint(Color.red500)
+            .onAppear {
+                setupStartTab()
+            }
+    }
+    
+    func setupStartTab() {
+        let savedCameraAccessStatus = UserDefaults.standard.bool(forKey: "isAccessGranted")
+        ScannerViewModel.checkCameraAccess { currentCameraAccessStatus in
+            if savedCameraAccessStatus != currentCameraAccessStatus {
+                selectedTab = .scannerView
+            } else {
+                selectedTab = .personGridView
+            }
+        }
     }
 }
 

@@ -65,7 +65,11 @@ struct ScannerView: View {
         }
         .alert("Please provide the camera access to scan the QR", isPresented: $viewModel.showPermissionAlert) {
             Button("Cancel", role: .cancel) {}
-            Button("Settings", role: .none) { viewModel.provideCameraAccess() }
+            Button("Settings", role: .none) {
+                DispatchQueue.main.async {
+                    viewModel.provideCameraAccess()
+                }
+            }
         }
         .alert(viewModel.alertItem?.title ?? "", isPresented: $viewModel.isShowingAlert) {
             Button("OK", role: .cancel) { viewModel.activateScannerAnimation() }
