@@ -44,6 +44,13 @@ final class ScannerViewModel: NSObject, ObservableObject, ScannerVCDelegate  {
         }
     }
     
+    private let cameraAccessService: CameraAccessServicable
+
+    init(cameraAccessService: CameraAccessServicable) {
+      self.cameraAccessService = cameraAccessService
+    }
+
+
     // MARK: Functions
     func didFind(qrStringValue: String) {
         qrStringItem = qrStringValue
@@ -131,8 +138,7 @@ final class ScannerViewModel: NSObject, ObservableObject, ScannerVCDelegate  {
     }
     
     func checkCameraPermission() async {
-   
-        let accessGranted = await CameraAccessService().checkCameraAccess()
+        let accessGranted = await cameraAccessService.checkAccess(for: .video)
         await MainActor.run {
             if accessGranted {
                 if self.captureSession.inputs.isEmpty {

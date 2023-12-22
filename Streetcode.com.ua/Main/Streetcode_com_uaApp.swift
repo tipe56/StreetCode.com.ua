@@ -10,23 +10,9 @@ import AVFoundation
 
 @main
 struct StreetcodeComUaApp: App {
-    @Environment(\.scenePhase) private var scenePhase
-    
     var body: some Scene {
         WindowGroup {
             TabBarView()
-            //                .onChange(of: scenePhase) { newScenePhase in
-            //                    if newScenePhase == .background {
-            //                        ScannerViewModel.saveLastPermissionState()
-            //                    }
-            //                }
-                .onChange(of: scenePhase) { newScenePhase in
-                    if newScenePhase == .background {
-                        Task {
-                            await CameraAccessService().saveLastPermissionState()
-                        }
-                    }
-                }
         }
     }
 }

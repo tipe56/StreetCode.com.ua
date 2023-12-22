@@ -5,14 +5,17 @@
 //  Created by Siarhei Ramaniuk on 8.12.23.
 //
 
-// swiftlint:disable trailing_whitespace
 import SwiftUI
 
 struct ScannerView: View {
     
     // MARK: Properties
-    @StateObject private var viewModel = ScannerViewModel()
-    
+    @ObservedObject private var viewModel: ScannerViewModel
+
+    init(cameraAccessService: CameraAccessServicable) {
+      self.viewModel = ScannerViewModel(cameraAccessService: cameraAccessService)
+    }
+
     // MARK: Body
     var body: some View {
         ZStack {
@@ -131,7 +134,5 @@ struct ScannerView: View {
 }
 
 #Preview {
-    ScannerView()
+    ScannerView(cameraAccessService: CameraAccessService())
 }
-
-// swiftlint:enable trailing_whitespace

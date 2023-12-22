@@ -16,7 +16,8 @@ enum Tab: String, CaseIterable, Identifiable, Hashable {
 }
 
 struct TabBarView: View {
-    
+    private let cameraAccessService: CameraAccessServicable = CameraAccessService()
+
     @State var selectedTab: Tab = .personGridView
     
     var body: some View {
@@ -26,7 +27,7 @@ struct TabBarView: View {
                 .tag(Tab.personGridView)
                 .id("Tab.personGridView")
             
-            ScannerView()
+            ScannerView(cameraAccessService: cameraAccessService)
                 .tabItem { Label("Scanner", systemImage: "qrcode.viewfinder") }
                 .tag(Tab.scannerView)
                 .id("Tab.scannerView")
@@ -37,36 +38,20 @@ struct TabBarView: View {
                 .id("Tab.mapView")
             
         }.tint(Color.red500)
-            .onAppear {
-                Task {
-                    await setupStartTab()
-                }
-            }
-    }
-    
-    func setupStartTab() async {
-        let cameraAccessService = CameraAccessService()
-        let savedCameraAccessStatus = cameraAccessService.readLastPermissionState()
-        let currentCameraAccessStatus = await cameraAccessService.checkCameraAccess()
-        
-        await MainActor.run {
-            if savedCameraAccessStatus != currentCameraAccessStatus {
-                selectedTab = .scannerView
-            } else {
-                selectedTab = .personGridView
-            }
+        .onAppear {
+          setupStartTab()
         }
     }
     
-//    let savedCameraAccessStatus = UserDefaults.standard.bool(forKey: "isAccessGranted")
-    
-    //        ScannerViewModel.checkCameraAccess { currentCameraAccessStatus in
-    //            if savedCameraAccessStatus != currentCameraAccessStatus {
-    //                selectedTab = .scannerView
-    //            } else {
-    //                selectedTab = .personGridView
-    //            }
-    //        }
+    func setupStartTab() {
+      Task {
+        let access = await cameraAccessService.checkAccess(for: .video)
+
+        await MainActor.run {
+          selectedTab = access ? .scannerView : .personGridView
+        }
+      }
+    }
 }
 
 #Preview {

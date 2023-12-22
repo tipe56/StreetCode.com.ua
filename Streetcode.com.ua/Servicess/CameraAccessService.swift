@@ -8,31 +8,12 @@
 import Foundation
 import AVFoundation
 
-class CameraAccessService {
-//    func checkCameraAccess(completion: @escaping (Bool) -> Void) {
-//        Task {
-//            let isAccessGranted = await AVCaptureDevice.requestAccess(for: .video)
-//            completion(isAccessGranted)
-//        }
-//    }
-//    
-//    func saveLastPermissionState() {
-//        ScannerViewModel.checkCameraAccess { isAccessGranted in
-//            UserDefaults.standard.set(isAccessGranted, forKey: "isAccessGranted")
-//        }
-//    }
-    
-    func checkCameraAccess() async -> Bool {
-             await AVCaptureDevice.requestAccess(for: .video)
-    }
-    
-    
-    func saveLastPermissionState() async {
-        let isAccessGranted = await checkCameraAccess()
-        UserDefaults.standard.set(isAccessGranted, forKey: "isAccessGranted")
-    }
-    
-    func readLastPermissionState() -> Bool {
-        UserDefaults.standard.bool(forKey: "isAccessGranted")
+protocol CameraAccessServicable {
+  func checkAccess(for mediaType: AVMediaType) async -> Bool
+}
+
+final class CameraAccessService: CameraAccessServicable {
+    func checkAccess(for mediaType: AVMediaType) async -> Bool {
+        await AVCaptureDevice.requestAccess(for: mediaType)
     }
 }
