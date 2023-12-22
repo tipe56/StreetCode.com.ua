@@ -20,6 +20,7 @@ final class ScannerViewModel: NSObject, ObservableObject, ScannerVCDelegate  {
     //TODO: Make realization of torch.
     
     // MARK: Properties
+    
     @Published var captureSession = AVCaptureSession()
     @Published var isScanning: Bool = false
     @Published var cameraAccessApproved = false
@@ -129,43 +130,63 @@ final class ScannerViewModel: NSObject, ObservableObject, ScannerVCDelegate  {
         UIApplication.shared.open(url)
     }
     
-    func checkCameraPermission() {
-        
-        Task {
-            let accessGranted = await AVCaptureDevice.requestAccess(for: .video)
-            
-            DispatchQueue.main.async {
-                if accessGranted {
-                    if self.captureSession.inputs.isEmpty {
-                        print("new setup")
-                        // New setup
-                        self.setupCaptureSession()
-                    } else {
-                        // Use existing
-                        print("Use existing setup")
-                        self.reActivateCamera()
-                    }
+    func checkCameraPermission() async {
+   
+        let accessGranted = await CameraAccessService().checkCameraAccess()
+        await MainActor.run {
+            if accessGranted {
+                if self.captureSession.inputs.isEmpty {
+                    print("new setup")
+                    // New setup
+                    self.setupCaptureSession()
                 } else {
-                    print("No access camera")
-                    self.cameraAccessApproved = false
-                    self.showPermissionAlert.toggle()
+                    // Use existing
+                    print("Use existing setup")
+                    self.reActivateCamera()
                 }
+            } else {
+                print("No access camera")
+                self.cameraAccessApproved = false
+                self.showPermissionAlert.toggle()
             }
         }
+        
+        
+//        Task {
+//            let accessGranted = await AVCaptureDevice.requestAccess(for: .video)
+//            
+//            DispatchQueue.main.async {
+//                if accessGranted {
+//                    if self.captureSession.inputs.isEmpty {
+//                        print("new setup")
+//                        // New setup
+//                        self.setupCaptureSession()
+//                    } else {
+//                        // Use existing
+//                        print("Use existing setup")
+//                        self.reActivateCamera()
+//                    }
+//                } else {
+//                    print("No access camera")
+//                    self.cameraAccessApproved = false
+//                    self.showPermissionAlert.toggle()
+//                }
+//            }
+//        }
     }
     
-    static func checkCameraAccess(completion: @escaping (Bool) -> Void) {
-        Task {
-            let isAccessGranted = await AVCaptureDevice.requestAccess(for: .video)
-            completion(isAccessGranted)
-        }
-    }
-    
-    static func saveLastPermissionState() {
-        ScannerViewModel.checkCameraAccess { isAccessGranted in
-            UserDefaults.standard.set(isAccessGranted, forKey: "isAccessGranted")
-        }
-    }
+//    static func checkCameraAccess(completion: @escaping (Bool) -> Void) {
+//        Task {
+//            let isAccessGranted = await AVCaptureDevice.requestAccess(for: .video)
+//            completion(isAccessGranted)
+//        }
+//    }
+//    
+//    static func saveLastPermissionState() {
+//        ScannerViewModel.checkCameraAccess { isAccessGranted in
+//            UserDefaults.standard.set(isAccessGranted, forKey: "isAccessGranted")
+//        }
+//    }
 }
 
 //MARK: - Extensions

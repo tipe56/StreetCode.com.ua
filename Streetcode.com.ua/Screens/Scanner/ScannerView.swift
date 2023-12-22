@@ -40,7 +40,9 @@ struct ScannerView: View {
                 Spacer(minLength: 15)
                 
                 Button {
-                    viewModel.checkCameraPermission()
+                    Task {
+                        await viewModel.checkCameraPermission()
+                    }
                     // Temporary output
                     viewModel.qrStringItem = ""
                 } label: {
@@ -53,7 +55,9 @@ struct ScannerView: View {
             .padding(15)
         }
         .onAppear {
-            viewModel.checkCameraPermission()
+            Task {
+                await viewModel.checkCameraPermission()
+            }
         }
         .onChange(of: viewModel.cameraAccessApproved, perform: { access in
             if access {

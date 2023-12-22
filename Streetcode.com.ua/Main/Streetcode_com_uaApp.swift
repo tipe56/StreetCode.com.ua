@@ -15,9 +15,16 @@ struct StreetcodeComUaApp: App {
     var body: some Scene {
         WindowGroup {
             TabBarView()
+            //                .onChange(of: scenePhase) { newScenePhase in
+            //                    if newScenePhase == .background {
+            //                        ScannerViewModel.saveLastPermissionState()
+            //                    }
+            //                }
                 .onChange(of: scenePhase) { newScenePhase in
                     if newScenePhase == .background {
-                        ScannerViewModel.saveLastPermissionState()
+                        Task {
+                            await CameraAccessService().saveLastPermissionState()
+                        }
                     }
                 }
         }

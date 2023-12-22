@@ -38,13 +38,18 @@ struct TabBarView: View {
             
         }.tint(Color.red500)
             .onAppear {
-                setupStartTab()
+                Task {
+                    await setupStartTab()
+                }
             }
     }
     
-    func setupStartTab() {
-        let savedCameraAccessStatus = UserDefaults.standard.bool(forKey: "isAccessGranted")
-        ScannerViewModel.checkCameraAccess { currentCameraAccessStatus in
+    func setupStartTab() async {
+        let cameraAccessService = CameraAccessService()
+        let savedCameraAccessStatus = cameraAccessService.readLastPermissionState()
+        let currentCameraAccessStatus = await cameraAccessService.checkCameraAccess()
+        
+        await MainActor.run {
             if savedCameraAccessStatus != currentCameraAccessStatus {
                 selectedTab = .scannerView
             } else {
@@ -52,6 +57,16 @@ struct TabBarView: View {
             }
         }
     }
+    
+//    let savedCameraAccessStatus = UserDefaults.standard.bool(forKey: "isAccessGranted")
+    
+    //        ScannerViewModel.checkCameraAccess { currentCameraAccessStatus in
+    //            if savedCameraAccessStatus != currentCameraAccessStatus {
+    //                selectedTab = .scannerView
+    //            } else {
+    //                selectedTab = .personGridView
+    //            }
+    //        }
 }
 
 #Preview {

@@ -30,6 +30,7 @@
 		AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */; };
 		AD5EFA652B0FD3BF0085AB01 /* PersonPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA642B0FD3BF0085AB01 /* PersonPreviewView.swift */; };
 		AD5EFA672B0FF25B0085AB01 /* PersonPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA662B0FF25B0085AB01 /* PersonPreviewViewModel.swift */; };
+		ADAFF9262B35A52B0060C32E /* CameraAccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAFF9252B35A52B0060C32E /* CameraAccessService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCellView.swift; sourceTree = "<group>"; };
 		AD5EFA642B0FD3BF0085AB01 /* PersonPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPreviewView.swift; sourceTree = "<group>"; };
 		AD5EFA662B0FF25B0085AB01 /* PersonPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPreviewViewModel.swift; sourceTree = "<group>"; };
+		ADAFF9252B35A52B0060C32E /* CameraAccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAccessService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 		AD5EFA4D2B0F93E70085AB01 /* Streetcode.com.ua */ = {
 			isa = PBXGroup;
 			children = (
+				ADAFF9242B35A5120060C32E /* Servicess */,
 				AD2DEE5A2B1207E90088634E /* Main */,
 				ADAFF9232B344F270060C32E /* Resources */,
 				AD20689C2B17DD9400A98304 /* Utilities */,
@@ -260,6 +263,14 @@
 				AD5EFA622B0FA5020085AB01 /* Fonts */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		ADAFF9242B35A5120060C32E /* Servicess */ = {
+			isa = PBXGroup;
+			children = (
+				ADAFF9252B35A52B0060C32E /* CameraAccessService.swift */,
+			);
+			path = Servicess;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,7 +321,6 @@
 			);
 			mainGroup = AD5EFA422B0F93E70085AB01;
 			packageReferences = (
-				AD2068AB2B1F26CD00A98304 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = AD5EFA4C2B0F93E70085AB01 /* Products */;
 			projectDirPath = "";
@@ -352,6 +362,7 @@
 				AD5EFA652B0FD3BF0085AB01 /* PersonPreviewView.swift in Sources */,
 				AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */,
 				AD2068CC2B21EE2A00A98304 /* ScannerViewModel.swift in Sources */,
+				ADAFF9262B35A52B0060C32E /* CameraAccessService.swift in Sources */,
 				AD2068C72B20C72600A98304 /* Permission.swift in Sources */,
 				AD2068DD2B231BA500A98304 /* ScannerView.swift in Sources */,
 				AD5EFA5F2B0F96A60085AB01 /* PersonGridView.swift in Sources */,
