@@ -10,7 +10,7 @@ import Foundation
 
 enum CatalogRequest {
     private struct Constants {
-        static let baseURL = "backend.streetcode.com.ua/api"
+        static let baseURL = "backend.streetcode.com.ua"
     }
     
     case getCount
@@ -28,26 +28,22 @@ extension CatalogRequest: RequestProtocol {
     var path: String {
         switch self {
         case .getCount:
-            "/streetcode/getCount"
-        case .getCatalog(let page, let count):
-            "/streetcode/getAllCatalog"
+            "/api/streetcode/getCount"
+        case .getCatalog:
+            "/api/streetcode/getAllCatalog"
         }
     }
     
     var headers: [String : String] {
         switch self {
-        case .getCount:
-            [:]
-        case .getCatalog(let page, let count):
+        case .getCount, .getCatalog:
             [:]
         }
     }
     
     var parameters: [String : Any] {
         switch self {
-        case .getCount:
-            [:]
-        case .getCatalog(let page, let count):
+        case .getCount, .getCatalog:
             [:]
         }
     }
@@ -64,9 +60,7 @@ extension CatalogRequest: RequestProtocol {
     
     var requestType: RequestType {
         switch self {
-        case .getCount:
-            .GET
-        case .getCatalog:
+        case .getCount, .getCatalog:
             .GET
         }
     }  

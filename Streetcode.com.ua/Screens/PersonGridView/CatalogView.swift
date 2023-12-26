@@ -9,27 +9,23 @@
 
 import SwiftUI
 
-struct CatalogView<VM>: View where VM: CatalogViewModeble {
+struct CatalogView<VM>: View where VM: CatalogViewModelProtocol {
     
-    @ObservedObject var vm: VM
+    @ObservedObject var viewmodel: VM
     
     init(viewModel: VM) {
-        vm = viewModel
+        viewmodel = viewModel
     }
     
     var body: some View {
         VStack {
             Button(action: {
-                Task {
-                    await vm.getCatalogVM()
-                }
-                
-                print(vm.catalog.count)
+                viewmodel.getCatalogVM()
             }, label: {
                 Text("Button")
             })
             List {
-                ForEach(vm.catalog) { person in
+                ForEach(viewmodel.catalog) { person in
                     Text(person.title)
                 }
             }

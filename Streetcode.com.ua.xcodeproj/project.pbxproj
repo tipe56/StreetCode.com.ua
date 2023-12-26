@@ -82,6 +82,7 @@
 		AD20689C2B17DD9400A98304 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				ADEDBC4E2B3B5AAD00B036F1 /* Errors */,
 				AD2068A02B17DE4D00A98304 /* Modifiers */,
 				AD20689D2B17DD9E00A98304 /* Extensions */,
 			);
@@ -115,6 +116,9 @@
 		AD2DEE582B1206DB0088634E /* PersonGridView */ = {
 			isa = PBXGroup;
 			children = (
+				AD5EC5EB2B2A18930012A7CD /* CatalogView.swift */,
+				AD5EC5EF2B2A2FB30012A7CD /* CatalogVM.swift */,
+				ADAFF91F2B2DDFEE0060C32E /* CatalogRequest.swift */,
 				ADAFF91B2B2CA6DE0060C32E /* CatalogViewViewModel.swift */,
 				AD5EFA5E2B0F96A60085AB01 /* PersonGridView.swift */,
 				AD2DEE5C2B1208530088634E /* Subviews */,
@@ -169,11 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				AD5EC5E92B2A141E0012A7CD /* WebAPIManager.swift */,
-				ADAFF91F2B2DDFEE0060C32E /* CatalogRequest.swift */,
 				ADAFF91D2B2CA9690060C32E /* RequestProtocol.swift */,
-				AD5EC5EB2B2A18930012A7CD /* CatalogView.swift */,
-				AD5EC5EF2B2A2FB30012A7CD /* CatalogVM.swift */,
-				ADAFF9212B2DE0D10060C32E /* NetworkError.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -230,6 +230,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		ADEDBC4E2B3B5AAD00B036F1 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				ADAFF9212B2DE0D10060C32E /* NetworkError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -278,7 +286,6 @@
 			);
 			mainGroup = AD5EFA422B0F93E70085AB01;
 			packageReferences = (
-				AD2068AB2B1F26CD00A98304 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = AD5EFA4C2B0F93E70085AB01 /* Products */;
 			projectDirPath = "";

@@ -31,25 +31,29 @@ extension DataParserProtocol {
     }
 }
 
-private class DefaultDataParser: DataParserProtocol {}
+class DefaultDataParser: DataParserProtocol {}
 
 protocol WebAPIManagerProtocol {
-    func perform(_ request: RequestProtocol) async throws -> Data
+//    func perform(_ request: RequestProtocol) async throws -> Data
     func perform<T: Decodable>(
         _ request: RequestProtocol,
         parser: DataParserProtocol
     ) async throws -> T
+    
+   // func perform<T: Decodable>(_ request: RequestProtocol) async -> Result<T, APIError>
 }
 
 public class WebAPIManager: WebAPIManagerProtocol {
+    
     private let urlSession: URLSession
     
     public init(urlSession: URLSession = URLSession.shared) {
         self.urlSession = urlSession
     }
     
-    public func perform(_ request: RequestProtocol) async throws -> Data {
+    private func perform(_ request: RequestProtocol) async throws -> Data {
         let (data, response) = try await urlSession.data(for: request.makeURLRequest())
+        
         guard let httpResponse = response as? HTTPURLResponse,
             (200..<300).contains(httpResponse.statusCode)
         else {
@@ -63,7 +67,7 @@ public class WebAPIManager: WebAPIManagerProtocol {
         parser: DataParserProtocol = DefaultDataParser()
     ) async throws -> T {
         let data = try await perform(request)
-        let decoded: T = try parser.parse(data: data)
+        let decoded: T = try parser.parseJSON(data: data)
         return decoded
     }
     
@@ -78,10 +82,11 @@ public class WebAPIManager: WebAPIManagerProtocol {
 //        }
 //    }
     
-//    func get<T: Decodable>(with api: CatalogRequest) async -> Result<T, APIError> {
-//        var result: (data: Data, response: URLResponse)?
+//    func perform<T: Decodable>(_ request: RequestProtocol) async -> Result<T, APIError> {
+////        var result: (data: Data, response: URLResponse)?
 //        do {
-//            result = try await URLSession.shared.data(for: api.request)
+//            
+//            let (data, response) = try await urlSession.data(for: request.makeURLRequest())
 //            
 //            guard let response = result?.response as? HTTPURLResponse,
 //                    response.statusCode == 200 else {

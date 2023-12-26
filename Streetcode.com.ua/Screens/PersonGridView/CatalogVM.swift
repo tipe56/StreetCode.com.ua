@@ -9,14 +9,13 @@
 
 import SwiftUI
 
-protocol CatalogViewModeble: ObservableObject {
+protocol CatalogViewModelProtocol: ObservableObject {
     var catalog: [CatalogPersonModel] { get }
-    
-    func getCatalogVM() async
+    func getCatalogVM()
 }
 
-@MainActor
-final class CatalogVM: CatalogViewModeble {
+
+final class CatalogVM: CatalogViewModelProtocol {
     
     @Published var catalog = [CatalogPersonModel]()
     private let networkManager: WebAPIManagerProtocol
@@ -25,15 +24,24 @@ final class CatalogVM: CatalogViewModeble {
         self.networkManager = networkManager
     }
     
-    func getCatalogVM() async {
-        let result = await networkManager.getCatalog()
-        
-        switch result {
-        case .success(let success):
-            self.catalog = success
-        case .failure(let failure):
-            print("")
+    @MainActor
+    func getCatalogVM() {
+        Task {
+            do {
+                let count: Int = try await networkManager.perform(CatalogRequest.getCount, parser: DefaultDataParser())
+                catalog = try await networkManager.perform(CatalogRequest.getCatalog(page: 1, count: count), parser: DefaultDataParser())
+            } catch {
+                print(NetworkError.invalidServerResponse.localizedDescription)
+            }
         }
+//        let result = await networkManager.getCatalog()
+//        
+//        switch result {
+//        case .success(let success):
+//            self.catalog = success
+//        case .failure(let failure):
+//            print("")
+//        }
     }
     
     
@@ -85,7 +93,7 @@ final class CatalogVM: CatalogViewModeble {
 //        }
 //    }
     
-    func getAny(request: CatalogRequest){
+//    func getAny(request: CatalogRequest){
 //        NetworkManager.shared.getAny(.getCount) { result in
 //            switch result {
 //            case .success(let success):
@@ -94,26 +102,26 @@ final class CatalogVM: CatalogViewModeble {
 //                <#code#>
 //            }
 //        }
-    }
+//    }
 }
 
-#if DEBUG
-
-final class CatalogTestVM: CatalogViewModeble {
-    @Published var catalog = [CatalogPersonModel]()
-    
-    func getCatalogVM() {
-        catalog = [CatalogPersonModel(id: 12,
-                                       title: "Test Title",
-                                       url: "",
-                                       alias: "Test Alias",
-                                       imageID: 12),
-                   CatalogPersonModel(id: 123,
-                                       title: "Test Title 2",
-                                       url: "",
-                                       alias: "Test Alias 2",
-                                       imageID: 123)]
-    }
-}
-
-#endif
+//#if DEBUG
+//
+//final class CatalogTestVM: CatalogViewModelProtocol {
+//    @Published var catalog = [CatalogPersonModel]()
+//    
+//    func getCatalogVM() {
+//        catalog = [CatalogPersonModel(id: 12,
+//                                       title: "Test Title",
+//                                       url: "",
+//                                       alias: "Test Alias",
+//                                       imageID: 12),
+//                   CatalogPersonModel(id: 123,
+//                                       title: "Test Title 2",
+//                                       url: "",
+//                                       alias: "Test Alias 2",
+//                                       imageID: 123)]
+//    }
+//}
+//
+//#endif
