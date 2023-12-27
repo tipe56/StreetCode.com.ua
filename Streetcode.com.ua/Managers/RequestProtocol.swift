@@ -22,6 +22,22 @@ public protocol RequestProtocol {
 }
 
 public extension RequestProtocol {
+    
+    var urlAbsolute: URL? {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = host
+        components.path = path
+        
+        if !urlParameters.isEmpty {
+            components.queryItems = urlParameters.map {
+                URLQueryItem(name: $0, value: $1)
+            }
+        }
+   
+        return components.url
+    }
+    
     func makeURLRequest() throws -> URLRequest {
         var components = URLComponents()
         components.scheme = "https"

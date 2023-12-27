@@ -10,11 +10,11 @@ import SwiftUI
 @main
 struct StreetcodeComUaApp: App {
     private let networkManager = WebAPIManager()
+    private let imageDecoder = ImageDecoder()
 
     var body: some Scene {
         WindowGroup {
-//            PersonGridView()
-            CatalogView(viewModel: CatalogVM(networkManager: networkManager))
+            CatalogView(viewmodel: CatalogVM(networkManager: networkManager), networkManager: networkManager, imageDecoder: imageDecoder)
         }
     }
 }

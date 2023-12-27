@@ -26,18 +26,18 @@ struct CatalogPersonModel: Codable, Identifiable {
         case imageID = "imageId"
     }
     
-    static let sample = CatalogPersonModel(id: 438,
+    static let mockData = CatalogPersonModel(id: 438,
                                            title: "Роман Рáтушний «Сенека»",
                                            url: "roman-ratushnyi-seneka",
                                            alias: "Активіст, журналіст, доброволець",
                                            imageID: 2136)
 }
 
-struct CatalogPersonSample {
-    static let sample = CatalogPersonModel(id: 438,
-                                           title: "Роман Рáтушний «Сенека»",
-                                           url: "roman-ratushnyi-seneka",
-                                           alias: "Активіст, журналіст, доброволець",
-                                           imageID: 2136)
-}
+//struct CatalogPersonSample {
+//    static let sample = CatalogPersonModel(id: 438,
+//                                           title: "Роман Рáтушний «Сенека»",
+//                                           url: "roman-ratushnyi-seneka",
+//                                           alias: "Активіст, журналіст, доброволець",
+//                                           imageID: 2136)
+//}
 

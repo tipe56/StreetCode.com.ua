@@ -11,7 +11,14 @@ import SwiftUI
 
 struct PersonCellView: View {
     
-    let person: HistoricalPerson
+    let person: CatalogPersonModel
+    @ObservedObject var imageLoader: ImageLoader
+    
+    init(person: CatalogPersonModel, imageLoader: ImageLoader) {
+        self.person = person
+        self.imageLoader = imageLoader
+    }
+    
     
     var body: some View {
         VStack {
@@ -19,8 +26,7 @@ struct PersonCellView: View {
                 .fill(Color.gray100)
                 .aspectRatio(1, contentMode: .fit)
                 .overlay(alignment: .top) {
-                    Image(person.imageBundle)
-                        .resizable()
+                    CatalogRemoteImage(imageLoader: imageLoader, imageId: person.imageID)
                         .scaledToFill()
                         .offset(y: 5)
                 }
@@ -36,12 +42,8 @@ struct PersonCellView: View {
                 Text(person.title)
                     .font(.closer(.medium, size: 18))
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                
-                if let aliasTitle = person.aliasTitle {
-                    Text("\"\(aliasTitle)\"")
-                        .font(.closer(.medium, size: 14))
-                }
-                
+                Text(person.alias)
+                    .font(.closer(.medium, size: 14))
             }
             .frame(height: 45)
             .minimumScaleFactor(0.6)
@@ -53,6 +55,6 @@ struct PersonCellView: View {
 
 struct PersonCellView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonCellView(person: MockData.sampleHistoricalPerson)
+        PersonCellView(person: CatalogPersonModel.mockData, imageLoader: ImageLoader(networkManager: WebAPIManager(), imageDecoder: ImageDecoder()))
     }
 }

@@ -15,12 +15,13 @@ enum CatalogRequest {
     
     case getCount
     case getCatalog(page: Int, count: Int)
+    case getCatalogImage(id: Int)
 }
 
 extension CatalogRequest: RequestProtocol {
     var host: String {
         switch self {
-        case .getCount, .getCatalog:
+        case .getCount, .getCatalog, .getCatalogImage:
             Constants.baseURL
         }
     }
@@ -31,19 +32,21 @@ extension CatalogRequest: RequestProtocol {
             "/api/streetcode/getCount"
         case .getCatalog:
             "/api/streetcode/getAllCatalog"
+        case .getCatalogImage(id: let id):
+            "/api/image/getById/\(id)"
         }
     }
     
     var headers: [String : String] {
         switch self {
-        case .getCount, .getCatalog:
+        case .getCount, .getCatalog, .getCatalogImage:
             [:]
         }
     }
     
     var parameters: [String : Any] {
         switch self {
-        case .getCount, .getCatalog:
+        case .getCount, .getCatalog, .getCatalogImage:
             [:]
         }
     }
@@ -55,12 +58,15 @@ extension CatalogRequest: RequestProtocol {
         case .getCatalog(let page, let count):
             ["page" : "\(page)",
              "count" : "\(count)"]
+        case .getCatalogImage:
+            [:]
+//            ["": "\(id)"]
         }
     }
     
     var requestType: RequestType {
         switch self {
-        case .getCount, .getCatalog:
+        case .getCount, .getCatalog, .getCatalogImage:
             .GET
         }
     }  
