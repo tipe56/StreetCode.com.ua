@@ -15,10 +15,14 @@ protocol CatalogViewModelProtocol: ObservableObject {
     func getCatalogVM()
 }
 
+extension CatalogViewModelProtocol {
+    var isLoading: Bool { false }
+}
 
 final class CatalogVM: CatalogViewModelProtocol {
     
     @Published var catalog: [CatalogPersonModel]
+    @Published var isLoading = false
     public let container: DIContainerable
     private let networkManager: WebAPIManagerProtocol?
     
@@ -29,6 +33,7 @@ final class CatalogVM: CatalogViewModelProtocol {
     }
     
     func getCatalogVM() {
+        isLoading = true
         Task {
             guard let networkManager else { return }
 
@@ -40,6 +45,7 @@ final class CatalogVM: CatalogViewModelProtocol {
                 case .success(let success):
                     await MainActor.run {
                         catalog = success
+                        isLoading = false
                     }
                 case .failure:
                     break

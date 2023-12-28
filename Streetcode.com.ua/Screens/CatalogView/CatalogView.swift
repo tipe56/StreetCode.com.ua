@@ -14,19 +14,25 @@ struct CatalogView<VM>: View where VM: CatalogViewModelProtocol {
     
     private let pageTitle: String = "Стріткоди"
     @ObservedObject var viewmodel: VM
-
+    
     init(viewmodel: VM) {
         self.viewmodel = viewmodel
     }
     
     // MARK: Body
     var body: some View {
-        VStack {
-            Section {
-                gridView
-            } header: {
-                gridHeader
-                    .padding(.bottom, 5)
+        ZStack {
+            VStack {
+                Section {
+                    gridView
+                    
+                } header: {
+                    gridHeader
+                        .padding(.bottom, 5)
+                }
+            }
+            if viewmodel.isLoading {
+                LoadingView(gifBundlename: "Logo-animation_40")
             }
         }
         .padding(.horizontal, 4)
@@ -36,9 +42,7 @@ struct CatalogView<VM>: View where VM: CatalogViewModelProtocol {
             viewmodel.getCatalogVM()
         }
     }
-    
-    
-    
+     
     //MARK: ViewBuilders
     @ViewBuilder private var gridHeader: some View {
         HStack(alignment: .center) {
@@ -55,27 +59,27 @@ struct CatalogView<VM>: View where VM: CatalogViewModelProtocol {
         
         let columns: [GridItem] = .init(repeating: GridItem(.flexible()), count: 2)
         
-//        var presentView: Binding<Bool> {
-//            .init {
-//                viewModel.selectedPerson != nil
-//            } set: { _ in
-//                viewModel.selectedPerson = nil
-//            }
-//        }
+        //        var presentView: Binding<Bool> {
+        //            .init {
+        //                viewModel.selectedPerson != nil
+        //            } set: { _ in
+        //                viewModel.selectedPerson = nil
+        //            }
+        //        }
         
         ScrollView {
             LazyVGrid(columns: columns) {
                 ForEach(viewmodel.catalog) { person in
                     PersonCellView(person: person, container: viewmodel.container)
-//                        .onTapGesture {
-//                            viewModel.selectedPerson = person
-//                        }
+                    //                        .onTapGesture {
+                    //                            viewModel.selectedPerson = person
+                    //                        }
                 }
             }
         }
-//        .sheet(item: $viewModel.selectedPerson) { selectedPerson in
-//            PersonPreviewView(person: selectedPerson)
-//        }
+        //        .sheet(item: $viewModel.selectedPerson) { selectedPerson in
+        //            PersonPreviewView(person: selectedPerson)
+        //        }
     }
 }
 
