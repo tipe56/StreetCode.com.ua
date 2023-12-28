@@ -14,15 +14,9 @@ struct CatalogView<VM>: View where VM: CatalogViewModelProtocol {
     
     private let pageTitle: String = "Стріткоди"
     @ObservedObject var viewmodel: VM
-        
-    // Dependency
-    private let networkManager: WebAPIManagerProtocol
-    private let imageDecoder: ImageDecoderProtocol
-    
-    init(viewmodel: VM, networkManager: WebAPIManagerProtocol, imageDecoder: ImageDecoderProtocol) {
+
+    init(viewmodel: VM) {
         self.viewmodel = viewmodel
-        self.networkManager = networkManager
-        self.imageDecoder = imageDecoder
     }
     
     // MARK: Body
@@ -72,7 +66,7 @@ struct CatalogView<VM>: View where VM: CatalogViewModelProtocol {
         ScrollView {
             LazyVGrid(columns: columns) {
                 ForEach(viewmodel.catalog) { person in
-                    PersonCellView(person: person, imageLoader: ImageLoader(networkManager: networkManager, imageDecoder: imageDecoder))
+                    PersonCellView(person: person, container: viewmodel.container)
 //                        .onTapGesture {
 //                            viewModel.selectedPerson = person
 //                        }

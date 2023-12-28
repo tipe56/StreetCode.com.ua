@@ -8,9 +8,9 @@
 // swiftlint:disable all
 
 import SwiftUI
-
+/*
 final class PersonPreviewViewModel: ObservableObject {
     @Published var selectedPerson: HistoricalPerson? 
 }
-
+*/
 

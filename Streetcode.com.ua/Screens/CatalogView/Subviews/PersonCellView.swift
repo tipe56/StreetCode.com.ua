@@ -12,11 +12,12 @@ import SwiftUI
 struct PersonCellView: View {
     
     let person: CatalogPersonModel
-    @ObservedObject var imageLoader: ImageLoader
+
+    private let imageLoader: ImageLoaderable?
     
-    init(person: CatalogPersonModel, imageLoader: ImageLoader) {
+    init(person: CatalogPersonModel, container: DIContainerable) {
         self.person = person
-        self.imageLoader = imageLoader
+        self.imageLoader = container.resolve()
     }
     
     
@@ -55,6 +56,6 @@ struct PersonCellView: View {
 
 struct PersonCellView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonCellView(person: CatalogPersonModel.mockData, imageLoader: ImageLoader(networkManager: WebAPIManager(), imageDecoder: ImageDecoder()))
+        PersonCellView(person: CatalogPersonModel.mockData, container: DIContainer())
     }
 }

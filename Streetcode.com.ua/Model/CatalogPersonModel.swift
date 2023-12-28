@@ -16,7 +16,7 @@ import Foundation
 
 
 
-struct CatalogPersonModel: Codable, Identifiable {
+struct CatalogPersonModel: Codable, Identifiable, DataDecodable {
     let id: Int
     let title, url, alias: String
     let imageID: Int
@@ -32,6 +32,9 @@ struct CatalogPersonModel: Codable, Identifiable {
                                            alias: "Активіст, журналіст, доброволець",
                                            imageID: 2136)
 }
+
+
+
 
 //struct CatalogPersonSample {
 //    static let sample = CatalogPersonModel(id: 438,

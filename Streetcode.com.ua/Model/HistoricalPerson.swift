@@ -9,7 +9,7 @@
 
 import Foundation
 
-struct HistoricalPerson: Identifiable {
+/*struct HistoricalPerson: Identifiable {
     let id: Int
     let title: String
     let aliasTitle: String?
@@ -79,6 +79,7 @@ struct MockData {
 }
 
 
+*/
 
 
 

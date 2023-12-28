@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - CatalogImageModel
-struct CatalogImageModel: Codable {
+struct CatalogImageModel: Codable, DataDecodable {
     let id: Int
     let blobName, base64, mimeType: String
     let imageDetails: ImageDetails

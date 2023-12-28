@@ -9,12 +9,26 @@ import SwiftUI
 
 @main
 struct StreetcodeComUaApp: App {
-    private let networkManager = WebAPIManager()
-    private let imageDecoder = ImageDecoder()
+    private let container: DIContainerable = DIContainer()
 
+    init() {
+        registerServices()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            CatalogView(viewmodel: CatalogVM(networkManager: networkManager), networkManager: networkManager, imageDecoder: imageDecoder)
+            CatalogView(viewmodel: CatalogVM(container: container))
         }
+    }
+    
+    func registerServices() {
+        let networkmanager: WebAPIManagerProtocol = WebAPIManager()
+        let imageDecoder: ImageDecoderProtocol = ImageDecoder()
+        
+        container.register(type: WebAPIManagerProtocol.self, 
+                           instance: networkmanager)
+        container.register(type: ImageLoaderable.self,
+                           instance: ImageLoader(networkManager: networkmanager, 
+                                                 imageDecoder: imageDecoder))
     }
 }

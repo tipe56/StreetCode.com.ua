@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+/*
 struct PersonPreviewView: View {
     // MARK: Properties
     let person: HistoricalPerson
@@ -103,4 +105,5 @@ struct PersonTitlesView: View {
     }
 }
 
+ */
 

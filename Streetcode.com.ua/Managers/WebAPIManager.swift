@@ -9,13 +9,6 @@
 
 import UIKit
 
-enum APIError: Error {
-    case invalidURL
-    case networkError(Error)
-    case invalidServerResponse
-    case decodingError(Error)
-}
-
 protocol DataParserProtocol {
     func parse<T: Decodable>(data: Data) throws -> T
 //    func parseJSON<T: Decodable>(data: Data) throws -> T
@@ -43,11 +36,24 @@ class DefaultDataParser: DataParserProtocol {
 }
 
 protocol WebAPIManagerProtocol {
-//    func perform(_ request: RequestProtocol) async throws -> Data
-    func perform<T: Decodable>(_ request: RequestProtocol, parser: DataParserProtocol) async throws -> T
-    func performResult<T: Decodable>(_ request: RequestProtocol, parser: DataParserProtocol) async -> Result<T, APIError>
+    func perform<T: DataDecodable>(_ request: RequestProtocol) async -> Result<T, APIError>
+    func perform<T: DataDecodable>(_ request: RequestProtocol) async -> Result<Array<T>, APIError>
 }
 
+protocol DataDecodable: Decodable {
+    static func parse<T: Decodable>(data: Data) throws -> T
+    static func parseArray<T: Decodable>(data: Data) throws -> Array<T>
+}
+
+extension DataDecodable {
+    static func parse<T: Decodable>(data: Data) throws -> T {
+        try JSONDecoder().decode(T.self, from: data)
+    }
+    
+    static func parseArray<T: Decodable>(data: Data) throws -> Array<T> {
+        try JSONDecoder().decode(Array<T>.self, from: data)
+    }
+}
 
 public class WebAPIManager: WebAPIManagerProtocol {
     
@@ -57,27 +63,10 @@ public class WebAPIManager: WebAPIManagerProtocol {
         self.urlSession = urlSession
     }
     
-//    private func perform(_ request: RequestProtocol) async throws -> Data {
-//        let (data, response) = try await urlSession.data(for: request.makeURLRequest())
-//        
-//        guard let httpResponse = response as? HTTPURLResponse,
-//            (200..<300).contains(httpResponse.statusCode)
-//        else {
-//            throw NetworkError.invalidServerResponse
-//        }
-//        return data
-//    }
-    
-    func perform<T: Decodable>(_ request: RequestProtocol, parser: DataParserProtocol = DefaultDataParser()) async throws -> T {
-        let data = try await perform(request)
-        let decoded: T = try parser.parse(data: data)
-        return decoded
-    }
-    
-    func performResult<T: Decodable>(_ request: RequestProtocol, parser: DataParserProtocol = DefaultDataParser()) async -> Result<T, APIError> {
+    func perform<T: DataDecodable>(_ request: RequestProtocol) async -> Result<T, APIError> {
         do {
             let data = try await perform(request)
-            let decoded: T = try parser.parse(data: data)
+            let decoded: T = try T.parse(data: data)
             return .success(decoded)
         } catch let error as APIError {
             return .failure(error)
@@ -85,7 +74,19 @@ public class WebAPIManager: WebAPIManagerProtocol {
             return .failure(.networkError(error))
         }
     }
-
+    
+    func perform<T: DataDecodable>(_ request: RequestProtocol) async -> Result<Array<T>, APIError> {
+            do {
+                let data = try await perform(request)
+                let decoded: Array<T> = try T.parseArray(data: data)
+                return .success(decoded)
+            } catch let error as APIError {
+                return .failure(error)
+            } catch {
+                return .failure(.networkError(error))
+            }
+        }
+    
     private func perform(_ request: RequestProtocol) async throws -> Data {
         let (data, response) = try await urlSession.data(for: try request.makeURLRequest())
         guard let httpResponse = response as? HTTPURLResponse, (200..<300).contains(httpResponse.statusCode) else {
@@ -93,6 +94,5 @@ public class WebAPIManager: WebAPIManagerProtocol {
         }
         return data
     }
- 
 }
 

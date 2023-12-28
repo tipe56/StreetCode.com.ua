@@ -25,13 +25,15 @@
 		AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */; };
 		AD5EFA652B0FD3BF0085AB01 /* PersonPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA642B0FD3BF0085AB01 /* PersonPreviewView.swift */; };
 		AD5EFA672B0FF25B0085AB01 /* PersonPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA662B0FF25B0085AB01 /* PersonPreviewViewModel.swift */; };
-		ADAFF91C2B2CA6DE0060C32E /* CatalogViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAFF91B2B2CA6DE0060C32E /* CatalogViewViewModel.swift */; };
 		ADAFF91E2B2CA9690060C32E /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAFF91D2B2CA9690060C32E /* RequestProtocol.swift */; };
 		ADAFF9202B2DDFEE0060C32E /* CatalogRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAFF91F2B2DDFEE0060C32E /* CatalogRequest.swift */; };
-		ADAFF9222B2DE0D10060C32E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAFF9212B2DE0D10060C32E /* NetworkError.swift */; };
+		ADAFF9222B2DE0D10060C32E /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAFF9212B2DE0D10060C32E /* Error.swift */; };
 		ADEDBC502B3C54DC00B036F1 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBC4F2B3C54DC00B036F1 /* ImageLoader.swift */; };
 		ADEDBC522B3C648F00B036F1 /* CatalogImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBC512B3C648F00B036F1 /* CatalogImageModel.swift */; };
 		ADEDBC562B3CA1F800B036F1 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBC552B3CA1F800B036F1 /* LoadingView.swift */; };
+		ADEDBC582B3CAFA900B036F1 /* Int + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBC572B3CAFA900B036F1 /* Int + Ext.swift */; };
+		ADEDBC5A2B3CBF5700B036F1 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBC592B3CBF5700B036F1 /* DIContainer.swift */; };
+		ADEDBC5C2B3D7FF100B036F1 /* CatalogRemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBC5B2B3D7FF100B036F1 /* CatalogRemoteImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,13 +57,15 @@
 		AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCellView.swift; sourceTree = "<group>"; };
 		AD5EFA642B0FD3BF0085AB01 /* PersonPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPreviewView.swift; sourceTree = "<group>"; };
 		AD5EFA662B0FF25B0085AB01 /* PersonPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPreviewViewModel.swift; sourceTree = "<group>"; };
-		ADAFF91B2B2CA6DE0060C32E /* CatalogViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewViewModel.swift; sourceTree = "<group>"; };
 		ADAFF91D2B2CA9690060C32E /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		ADAFF91F2B2DDFEE0060C32E /* CatalogRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogRequest.swift; sourceTree = "<group>"; };
-		ADAFF9212B2DE0D10060C32E /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		ADAFF9212B2DE0D10060C32E /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		ADEDBC4F2B3C54DC00B036F1 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		ADEDBC512B3C648F00B036F1 /* CatalogImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogImageModel.swift; sourceTree = "<group>"; };
 		ADEDBC552B3CA1F800B036F1 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		ADEDBC572B3CAFA900B036F1 /* Int + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + Ext.swift"; sourceTree = "<group>"; };
+		ADEDBC592B3CBF5700B036F1 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		ADEDBC5B2B3D7FF100B036F1 /* CatalogRemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogRemoteImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,7 @@
 				ADEDBC4E2B3B5AAD00B036F1 /* Errors */,
 				AD2068A02B17DE4D00A98304 /* Modifiers */,
 				AD20689D2B17DD9E00A98304 /* Extensions */,
+				ADEDBC592B3CBF5700B036F1 /* DIContainer.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -97,6 +102,7 @@
 		AD20689D2B17DD9E00A98304 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				ADEDBC572B3CAFA900B036F1 /* Int + Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -123,7 +129,6 @@
 			children = (
 				AD5EC5EF2B2A2FB30012A7CD /* CatalogVM.swift */,
 				ADAFF91F2B2DDFEE0060C32E /* CatalogRequest.swift */,
-				ADAFF91B2B2CA6DE0060C32E /* CatalogViewViewModel.swift */,
 				AD5EFA5E2B0F96A60085AB01 /* CatalogView.swift */,
 				AD2DEE5C2B1208530088634E /* Subviews */,
 			);
@@ -161,6 +166,7 @@
 		AD2DEE5C2B1208530088634E /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				ADEDBC5B2B3D7FF100B036F1 /* CatalogRemoteImage.swift */,
 				AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */,
 			);
 			path = Subviews;
@@ -239,7 +245,7 @@
 		ADEDBC4E2B3B5AAD00B036F1 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
-				ADAFF9212B2DE0D10060C32E /* NetworkError.swift */,
+				ADAFF9212B2DE0D10060C32E /* Error.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -323,16 +329,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADAFF9222B2DE0D10060C32E /* NetworkError.swift in Sources */,
+				ADAFF9222B2DE0D10060C32E /* Error.swift in Sources */,
 				AD5EFA5D2B0F94AD0085AB01 /* HistoricalPerson.swift in Sources */,
 				AD5EC5F02B2A2FB30012A7CD /* CatalogVM.swift in Sources */,
 				AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */,
 				ADAFF9202B2DDFEE0060C32E /* CatalogRequest.swift in Sources */,
+				ADEDBC582B3CAFA900B036F1 /* Int + Ext.swift in Sources */,
 				AD5EC5EA2B2A141E0012A7CD /* WebAPIManager.swift in Sources */,
-				ADAFF91C2B2CA6DE0060C32E /* CatalogViewViewModel.swift in Sources */,
+				ADEDBC5A2B3CBF5700B036F1 /* DIContainer.swift in Sources */,
 				AD2068782B15024500A98304 /* RadiusButtonStyle.swift in Sources */,
 				AD2068732B14DEAE00A98304 /* BackgroundView.swift in Sources */,
 				AD5EC5EE2B2A1BE30012A7CD /* CatalogPersonModel.swift in Sources */,
+				ADEDBC5C2B3D7FF100B036F1 /* CatalogRemoteImage.swift in Sources */,
 				ADAFF91E2B2CA9690060C32E /* RequestProtocol.swift in Sources */,
 				AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */,
 				AD5EFA652B0FD3BF0085AB01 /* PersonPreviewView.swift in Sources */,
