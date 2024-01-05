@@ -7,28 +7,42 @@
 
 import SwiftUI
 
-struct RemoteImage: View {
-    var image: Image?
-    
-    var body: some View {
-        image?.resizable() ?? Image("catalog-placeholder").resizable()
-    }
-}
-
 struct CatalogRemoteImage: View {
     let imageLoader: ImageLoaderable?
     let imageId: Int
-    @State var image: Image?
+    let imagePlaceholder: Image
+    @State private var image: Image?
+    @State var isFailLoading: Bool
     
     var body: some View {
-        RemoteImage(image: image)
-            .onAppear {
-                Task {
-                   let image = await imageLoader?.loadImage(imageId: imageId)
-                    await MainActor.run {
+        Group {
+            if isFailLoading {
+                imagePlaceholder.resizable()
+            } else {
+                catalogImage
+            }
+        }
+        .onAppear {
+            Task {
+                let image = await imageLoader?.loadImage(imageId: imageId)
+                await MainActor.run {
+                    withAnimation {
                         self.image = image
                     }
                 }
             }
+        }
+    }
+    
+    @ViewBuilder private var catalogImage: some View {
+        if let image {
+            image
+                .resizable()
+                .offset(y: 35)
+        } else {
+            ProgressView()
+        }
     }
 }
+
+

@@ -21,22 +21,7 @@ struct PersonCellView: View {
     
     var body: some View {
         VStack {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.gray100)
-                .aspectRatio(1, contentMode: .fit)
-                .overlay(alignment: .top) {
-                    CatalogRemoteImage(imageLoader: imageLoader, imageId: person.imageID)
-                        .scaledToFill()
-                        .offset(y: 5)
-                }
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .padding(6)
-                .shadow(
-                    color: Color.gray600,
-                    radius: 4,
-                    x: 0,
-                    y: 4)
-            
+            catalogImage
             VStack {
                 Text(person.title)
                     .font(.closer(.medium, size: 18))
@@ -48,6 +33,27 @@ struct PersonCellView: View {
             .foregroundColor(Color(.label))
             .multilineTextAlignment(.center)
         }
+    }
+    
+    
+    @ViewBuilder private var catalogImage: some View {
+        RoundedRectangle(cornerRadius: 20)
+            .fill(Color.gray100)
+            .aspectRatio(1, contentMode: .fit)
+            .overlay {
+                CatalogRemoteImage(imageLoader: imageLoader,
+                                   imageId: person.imageID,
+                                   imagePlaceholder: Image("catalog-placeholder"),
+                                   isFailLoading: imageLoader?.isFailLoading ?? false)
+                .scaledToFill()
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .padding(6)
+            .shadow(
+                color: Color.gray600,
+                radius: 4,
+                x: 0,
+                y: 4)
     }
 }
 

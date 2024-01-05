@@ -9,12 +9,14 @@ import SwiftUI
 
 protocol ImageLoaderable {
     func loadImage(imageId: Int) async -> Image?
+    var isFailLoading: Bool { get }
 }
 
 final class ImageLoader: ImageLoaderable, ObservableObject {
     private let cache = NSCache<NSString, UIImage>()
     private let networkManager: WebAPIManagerProtocol
     let imageDecoder: ImageDecoderProtocol
+    @Published var isFailLoading: Bool = false
     
     init(networkManager: WebAPIManagerProtocol, imageDecoder: ImageDecoderProtocol) {
         self.networkManager = networkManager
@@ -22,6 +24,7 @@ final class ImageLoader: ImageLoaderable, ObservableObject {
     }
     
     func loadImage(imageId: Int) async -> Image? {
+        isFailLoading = false
         let request = CatalogRequest.getCatalogImage(id: imageId)
         
         if let urlString = request.urlAbsolute?.absoluteString {
@@ -41,12 +44,15 @@ final class ImageLoader: ImageLoaderable, ObservableObject {
                         return Image(uiImage: decoded)
                     }
                 } catch {
+                    isFailLoading = true
                     print(error.localizedDescription)
                 }
             case .failure:
+                isFailLoading = true
                 print("failure")
             }
         }
+        isFailLoading = true
         return nil
     }
 }
