@@ -10,7 +10,6 @@
 import SwiftUI
 
 struct CatalogView<VM>: View where VM: CatalogViewModelProtocol {
-    // MARK: Properties
     
     private let pageTitle: String = "Стріткоди"
     @ObservedObject var viewmodel: VM
@@ -21,71 +20,63 @@ struct CatalogView<VM>: View where VM: CatalogViewModelProtocol {
     
     // MARK: Body
     var body: some View {
-        ZStack {
-            VStack {
-                Section {
-                    gridView
-                    
-                } header: {
-                    gridHeader
-                        .padding(.bottom, 5)
-                }
+        NavigationStack {
+            ZStack {
+                if viewmodel.isLoading { LoadingView(gifBundlename: "Logo-animation_40") }
+                catalogGridView
             }
-            if viewmodel.isLoading {
-                LoadingView(gifBundlename: "Logo-animation_40")
+            .padding(.horizontal, 4)
+            .customNavigationBarModifier(hideSeparator: true)
+            .navigationTitle(pageTitle)
+            .background {
+                BackgroundView()
             }
         }
-        .padding(.horizontal, 4)
-        .background {
-            BackgroundView()
-        }.onAppear {
+        .tint(Color.red500)
+        .onAppear {
             viewmodel.getCatalogVM()
         }
     }
-     
-    //MARK: ViewBuilders
-    @ViewBuilder private var gridHeader: some View {
-        HStack(alignment: .center) {
-            Text(pageTitle)
-                .padding(.leading, 10)
-                .font(.closer(.medium, size: 45))
-                .foregroundColor(.gray700)
-            Spacer()
-        }.frame(maxHeight: 30)
-    }
     
     
-    @ViewBuilder private var gridView: some View {
+    
+    // MARK: ViewBuilder
+    @ViewBuilder private var catalogGridView: some View {
         
         let columns: [GridItem] = .init(repeating: GridItem(.flexible()), count: 2)
         
-        //        var presentView: Binding<Bool> {
-        //            .init {
-        //                viewModel.selectedPerson != nil
-        //            } set: { _ in
-        //                viewModel.selectedPerson = nil
-        //            }
-        //        }
-        
         ScrollView {
             LazyVGrid(columns: columns) {
-                ForEach(viewmodel.catalog) { person in
-                    PersonCellView(person: person, container: viewmodel.container)
-                    //                        .onTapGesture {
-                    //                            viewModel.selectedPerson = person
-                    //                        }
+                ForEach(viewmodel.filteredCatalog) { person in
+                    NavigationLink {
+                        ScrollView {
+                            Text(person.title)
+                                .font(.title3)
+                                .bold()
+                                .navigationTitle(person.title.components(separatedBy: " ").first ?? "")
+                        }
+                    } label: {
+                        PersonCellView(person: person, container: viewmodel.container)
+                    }
                 }
             }
+            
         }
-        //        .sheet(item: $viewModel.selectedPerson) { selectedPerson in
-        //            PersonPreviewView(person: selectedPerson)
-        //        }
+        .searchable(text: $viewmodel.searchTerm, placement: .toolbar, prompt: Text("Я шукаю..."))
+        .overlay {
+            if viewmodel.filteredCatalog.isEmpty && !viewmodel.isLoading {
+                SearchUnavailableView(image: Image(systemName: "person.slash"),
+                                      description: "Такого героя поки що немає в каталозі",
+                                      searchText: viewmodel.searchTerm)
+            }
+        }
     }
 }
 
 // MARK: Previews
-//struct CatalogView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CatalogView(
-//    }
-//}
+struct CatalogView_Previews: PreviewProvider {
+    static var vm = CatalogVM(container: DIContainer())
+    static var previews: some View {
+        CatalogView(viewmodel: CatalogView_Previews.vm)
+    }
+}

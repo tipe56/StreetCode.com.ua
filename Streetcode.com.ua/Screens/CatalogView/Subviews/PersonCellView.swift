@@ -12,14 +12,12 @@ import SwiftUI
 struct PersonCellView: View {
     
     let person: CatalogPersonModel
-
     private let imageLoader: ImageLoaderable?
     
     init(person: CatalogPersonModel, container: DIContainerable) {
         self.person = person
         self.imageLoader = container.resolve()
     }
-    
     
     var body: some View {
         VStack {
@@ -42,7 +40,6 @@ struct PersonCellView: View {
             VStack {
                 Text(person.title)
                     .font(.closer(.medium, size: 18))
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 Text(person.alias)
                     .font(.closer(.medium, size: 14))
             }

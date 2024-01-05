@@ -23,8 +23,6 @@
 		AD5EFA5D2B0F94AD0085AB01 /* HistoricalPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA5C2B0F94AD0085AB01 /* HistoricalPerson.swift */; };
 		AD5EFA5F2B0F96A60085AB01 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA5E2B0F96A60085AB01 /* CatalogView.swift */; };
 		AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */; };
-		AD5EFA652B0FD3BF0085AB01 /* PersonPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA642B0FD3BF0085AB01 /* PersonPreviewView.swift */; };
-		AD5EFA672B0FF25B0085AB01 /* PersonPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EFA662B0FF25B0085AB01 /* PersonPreviewViewModel.swift */; };
 		ADAFF91E2B2CA9690060C32E /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAFF91D2B2CA9690060C32E /* RequestProtocol.swift */; };
 		ADAFF9202B2DDFEE0060C32E /* CatalogRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAFF91F2B2DDFEE0060C32E /* CatalogRequest.swift */; };
 		ADAFF9222B2DE0D10060C32E /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAFF9212B2DE0D10060C32E /* Error.swift */; };
@@ -35,6 +33,8 @@
 		ADEDBC5A2B3CBF5700B036F1 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBC592B3CBF5700B036F1 /* DIContainer.swift */; };
 		ADEDBC5C2B3D7FF100B036F1 /* CatalogRemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBC5B2B3D7FF100B036F1 /* CatalogRemoteImage.swift */; };
 		ADEDBC5E2B3DCF5300B036F1 /* Logo-animation_40.gif in Resources */ = {isa = PBXBuildFile; fileRef = ADEDBC5D2B3DCF5300B036F1 /* Logo-animation_40.gif */; };
+		ADEDBCC02B45965900B036F1 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBCBF2B45965900B036F1 /* CustomNavigationBar.swift */; };
+		ADEDBCC22B45E2D300B036F1 /* SearchUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBCC12B45E2D300B036F1 /* SearchUnavailableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,8 +56,6 @@
 		AD5EFA5C2B0F94AD0085AB01 /* HistoricalPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalPerson.swift; sourceTree = "<group>"; };
 		AD5EFA5E2B0F96A60085AB01 /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
 		AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCellView.swift; sourceTree = "<group>"; };
-		AD5EFA642B0FD3BF0085AB01 /* PersonPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPreviewView.swift; sourceTree = "<group>"; };
-		AD5EFA662B0FF25B0085AB01 /* PersonPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPreviewViewModel.swift; sourceTree = "<group>"; };
 		ADAFF91D2B2CA9690060C32E /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		ADAFF91F2B2DDFEE0060C32E /* CatalogRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogRequest.swift; sourceTree = "<group>"; };
 		ADAFF9212B2DE0D10060C32E /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -68,6 +66,8 @@
 		ADEDBC592B3CBF5700B036F1 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		ADEDBC5B2B3D7FF100B036F1 /* CatalogRemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogRemoteImage.swift; sourceTree = "<group>"; };
 		ADEDBC5D2B3DCF5300B036F1 /* Logo-animation_40.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Logo-animation_40.gif"; sourceTree = "<group>"; };
+		ADEDBCBF2B45965900B036F1 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		ADEDBCC12B45E2D300B036F1 /* SearchUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUnavailableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				AD2068722B14DEAE00A98304 /* BackgroundView.swift */,
+				ADEDBCC12B45E2D300B036F1 /* SearchUnavailableView.swift */,
 				ADEDBC552B3CA1F800B036F1 /* LoadingView.swift */,
 			);
 			path = Views;
@@ -113,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				AD2068772B15024500A98304 /* RadiusButtonStyle.swift */,
+				ADEDBCBF2B45965900B036F1 /* CustomNavigationBar.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -121,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				AD2DEE582B1206DB0088634E /* CatalogView */,
-				AD2DEE592B1206F50088634E /* PersonPreview */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -135,15 +136,6 @@
 				AD2DEE5C2B1208530088634E /* Subviews */,
 			);
 			path = CatalogView;
-			sourceTree = "<group>";
-		};
-		AD2DEE592B1206F50088634E /* PersonPreview */ = {
-			isa = PBXGroup;
-			children = (
-				AD5EFA642B0FD3BF0085AB01 /* PersonPreviewView.swift */,
-				AD5EFA662B0FF25B0085AB01 /* PersonPreviewViewModel.swift */,
-			);
-			path = PersonPreview;
 			sourceTree = "<group>";
 		};
 		AD2DEE5A2B1207E90088634E /* Main */ = {
@@ -334,7 +326,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADAFF9222B2DE0D10060C32E /* Error.swift in Sources */,
+				ADEDBCC22B45E2D300B036F1 /* SearchUnavailableView.swift in Sources */,
 				AD5EFA5D2B0F94AD0085AB01 /* HistoricalPerson.swift in Sources */,
+				ADEDBCC02B45965900B036F1 /* CustomNavigationBar.swift in Sources */,
 				AD5EC5F02B2A2FB30012A7CD /* CatalogVM.swift in Sources */,
 				AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */,
 				ADAFF9202B2DDFEE0060C32E /* CatalogRequest.swift in Sources */,
@@ -347,13 +341,11 @@
 				ADEDBC5C2B3D7FF100B036F1 /* CatalogRemoteImage.swift in Sources */,
 				ADAFF91E2B2CA9690060C32E /* RequestProtocol.swift in Sources */,
 				AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */,
-				AD5EFA652B0FD3BF0085AB01 /* PersonPreviewView.swift in Sources */,
 				ADEDBC502B3C54DC00B036F1 /* ImageLoader.swift in Sources */,
 				AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */,
 				ADEDBC522B3C648F00B036F1 /* CatalogImageModel.swift in Sources */,
 				AD5EFA5F2B0F96A60085AB01 /* CatalogView.swift in Sources */,
 				ADEDBC562B3CA1F800B036F1 /* LoadingView.swift in Sources */,
-				AD5EFA672B0FF25B0085AB01 /* PersonPreviewViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,10 +482,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = Streetcode.com.ua/Main/Assets.xcassets;
-				DEVELOPMENT_TEAM = 9G9R77J9L4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Streetcode-com-ua-Info.plist";
@@ -510,6 +503,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Siarhei-Ramaniuk.Streetcode-com-ua";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -521,10 +515,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = Streetcode.com.ua/Main/Assets.xcassets;
-				DEVELOPMENT_TEAM = 9G9R77J9L4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Streetcode-com-ua-Info.plist";
@@ -541,6 +536,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Siarhei-Ramaniuk.Streetcode-com-ua";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
