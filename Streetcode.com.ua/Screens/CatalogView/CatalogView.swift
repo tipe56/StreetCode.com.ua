@@ -22,7 +22,10 @@ struct CatalogView<VM>: View where VM: CatalogViewModelProtocol {
     var body: some View {
         NavigationStack {
             ZStack {
-                if viewmodel.isLoading { LoadingView(gifBundlename: "Logo-animation_40") }
+                if viewmodel.isLoading {
+                    LoadingView(gifBundleName: "Logo-animation_40", width: 420, height: 420)
+                        .offset(y: -60.0)
+                }
                 catalogGridView
             }
             .padding(.horizontal, 4)
@@ -37,8 +40,6 @@ struct CatalogView<VM>: View where VM: CatalogViewModelProtocol {
             viewmodel.getCatalogVM()
         }
     }
-    
-    
     
     // MARK: ViewBuilder
     @ViewBuilder private var catalogGridView: some View {

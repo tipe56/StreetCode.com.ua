@@ -14,7 +14,6 @@ struct SearchUnavailableView: View {
     let description: String
     var searchText: String
     
-    
     init(image: Image, description: String, searchText: String, searchMessage: String = "Немає результатів для:") {
         self.image = image
         self.description = description

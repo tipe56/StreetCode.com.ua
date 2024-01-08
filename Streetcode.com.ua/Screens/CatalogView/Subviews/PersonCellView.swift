@@ -35,7 +35,6 @@ struct PersonCellView: View {
         }
     }
     
-    
     @ViewBuilder private var catalogImage: some View {
         RoundedRectangle(cornerRadius: 20)
             .fill(Color.gray100)

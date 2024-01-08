@@ -25,7 +25,7 @@ struct StreetcodeComUaApp: App {
         let networkmanager: WebAPIManagerProtocol = WebAPIManager()
         let imageDecoder: ImageDecoderProtocol = ImageDecoder()
         
-        container.register(type: WebAPIManagerProtocol.self, 
+        container.register(type: WebAPIManagerProtocol.self,
                            instance: networkmanager)
         container.register(type: ImageLoaderable.self,
                            instance: ImageLoader(networkManager: networkmanager, 

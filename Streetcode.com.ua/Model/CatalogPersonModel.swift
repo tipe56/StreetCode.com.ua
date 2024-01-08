@@ -7,15 +7,6 @@
 
 import Foundation
 
-//"id": 438,
-//    "title": "Роман Рáтушний «Сенека»",
-//    "url": "roman-ratushnyi-seneka",
-//    "alias": "Активіст, журналіст, доброволець",
-//    "imageId": 2136
-
-
-
-
 struct CatalogPersonModel: Codable, Identifiable, DataDecodable {
     let id: Int
     let title, url, alias: String
@@ -32,15 +23,4 @@ struct CatalogPersonModel: Codable, Identifiable, DataDecodable {
                                            alias: "Активіст, журналіст, доброволець",
                                            imageID: 2136)
 }
-
-
-
-
-//struct CatalogPersonSample {
-//    static let sample = CatalogPersonModel(id: 438,
-//                                           title: "Роман Рáтушний «Сенека»",
-//                                           url: "roman-ratushnyi-seneka",
-//                                           alias: "Активіст, журналіст, доброволець",
-//                                           imageID: 2136)
-//}
 
