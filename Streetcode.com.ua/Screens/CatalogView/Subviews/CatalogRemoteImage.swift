@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CatalogRemoteImage: View {
-    let imageLoader: ImageLoaderable?
+    let imageLoader: ImageLoadableType?
     let imageId: Int
     let imagePlaceholder: Image
     @State private var image: Image?

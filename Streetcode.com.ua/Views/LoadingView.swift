@@ -35,13 +35,11 @@ struct GifImageRepresentable: UIViewRepresentable {
         let imageViewSize = CGSize(width: width, height: height)
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalToConstant: imageViewSize.width),
-            imageView.heightAnchor.constraint(equalToConstant: imageViewSize.height)
-        ])
-        
-        NSLayoutConstraint.activate([
+            imageView.heightAnchor.constraint(equalToConstant: imageViewSize.height),
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+        
         return view
     }
     
@@ -57,7 +55,7 @@ struct GifImageSource {
             return nil
         }
         guard let imageData = try? Data(contentsOf: bundleURL) else {
-            print("GifImageSource: Cannot turn image named \"\(name)\" into NSData")
+            print("GifImageSource: Cannot turn image named \"\(name)\" into Data")
             return nil
         }
         guard let image = animatedImage(withGIFData: imageData) else { return nil}
@@ -66,7 +64,7 @@ struct GifImageSource {
     
     private func animatedImage(withGIFData data: Data) -> UIImage? {
         guard let source = CGImageSourceCreateWithData(data as CFData, nil) else {
-            print("GifImageSource: Cannot casting data to CFData")
+            print("GifImageSource: Cannot casting Data to CFData")
             return nil
         }
         
@@ -91,7 +89,6 @@ struct GifImageSource {
         return animatedImage
     }
 }
-
 
 #Preview {
     LoadingView(gifBundleName: "Logo-animation_40", width: 420, height: 420)

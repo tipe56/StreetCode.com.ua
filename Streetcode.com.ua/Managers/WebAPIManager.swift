@@ -5,16 +5,13 @@
 //  Created by Siarhei Ramaniuk on 13.12.23.
 //
 
-// swiftlint:disable all
-
 import UIKit
 
-protocol DataParserProtocol {
+protocol DataParserType {
     func parse<T: Decodable>(data: Data) throws -> T
-//    func parseJSON<T: Decodable>(data: Data) throws -> T
 }
 
-extension DataParserProtocol {
+extension DataParserType {
     func parse<T: Decodable>(data: Data) throws -> T {
         try parseJSON(data: data)
     }
@@ -24,7 +21,7 @@ extension DataParserProtocol {
     }
 }
 
-class DefaultDataParser: DataParserProtocol {
+class DefaultDataParser: DataParserType {
     func parse<T: Decodable>(data: Data) throws -> T {
         let decoder = JSONDecoder()
         do {

@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - CatalogImageModel
-struct CatalogImageModel: Codable, DataDecodable {
+struct CatalogImage: Codable, DataDecodable {
     let id: Int
     let blobName, base64, mimeType: String
     let imageDetails: ImageDetails
@@ -35,9 +35,7 @@ class JSONNull: Codable, Hashable {
         return true
     }
 
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(0)
-    }
+    public func hash(into hasher: inout Hasher) { }
 
     public init() {}
 

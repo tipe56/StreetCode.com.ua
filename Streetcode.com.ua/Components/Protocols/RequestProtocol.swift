@@ -56,7 +56,7 @@ public extension RequestProtocol {
             urlRequest.httpBody = try JSONSerialization.data(
                 withJSONObject: parameters)
         }
-        
+
         return urlRequest
     }
 }

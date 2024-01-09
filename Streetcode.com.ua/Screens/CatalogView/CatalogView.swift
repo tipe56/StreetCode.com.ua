@@ -5,18 +5,12 @@
 //  Created by Siarhei Ramaniuk on 23.11.23.
 //
 
-// swiftlint:disable all
-
 import SwiftUI
 
-struct CatalogView<VM>: View where VM: CatalogViewModelProtocol {
+struct CatalogView<ViewModelType>: View where ViewModelType: CatalogViewModelType {
     
     private let pageTitle: String = "Стріткоди"
-    @ObservedObject var viewmodel: VM
-    
-    init(viewmodel: VM) {
-        self.viewmodel = viewmodel
-    }
+    @ObservedObject var viewmodel: ViewModelType
     
     // MARK: Body
     var body: some View {

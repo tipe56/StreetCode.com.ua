@@ -5,28 +5,26 @@
 //  Created by Siarhei Ramaniuk on 13.12.23.
 //
 
-// swiftlint:disable all
-
 import SwiftUI
 
-protocol CatalogViewModelProtocol: ObservableObject {
-    var catalog: [CatalogPersonModel] { get }
+protocol CatalogViewModelType: ObservableObject {
+    var catalog: [CatalogPerson] { get }
     var container: DIContainerable { get }
     var isLoading: Bool { get }
     var searchTerm: String { get set}
-    var filteredCatalog: [CatalogPersonModel] { get }
+    var filteredCatalog: [CatalogPerson] { get }
     func getCatalogVM()
 }
 
-final class CatalogVM: CatalogViewModelProtocol {
+final class CatalogVM: CatalogViewModelType {
     
-    @Published var catalog: [CatalogPersonModel]
+    @Published var catalog: [CatalogPerson] = []
     @Published var isLoading = false
     @Published var searchTerm: String = ""
     public let container: DIContainerable
     private let networkManager: WebAPIManagerProtocol?
     
-    var filteredCatalog: [CatalogPersonModel] {
+    var filteredCatalog: [CatalogPerson] {
         searchTerm.isEmpty ? self.catalog : self.catalog.filter {
             $0.title.lowercased().contains(searchTerm.lowercased()) || $0.alias.localizedCaseInsensitiveContains(searchTerm)
         }
@@ -34,7 +32,6 @@ final class CatalogVM: CatalogViewModelProtocol {
     
     init(container: DIContainerable) {
         self.container = container
-        self.catalog = [CatalogPersonModel]()
         self.networkManager = container.resolve()
     }
     
@@ -46,7 +43,7 @@ final class CatalogVM: CatalogViewModelProtocol {
             let result: Result<Int, APIError> = await networkManager.perform(CatalogRequest.getCount)
             switch result {
             case .success(let count):
-                let result: Result<[CatalogPersonModel], APIError> = await networkManager.perform(CatalogRequest.getCatalog(page: 1, count: count))
+                let result: Result<[CatalogPerson], APIError> = await networkManager.perform(CatalogRequest.getCatalog(page: 1, count: count))
                 switch result {
                 case .success(let success):
                     await MainActor.run {
