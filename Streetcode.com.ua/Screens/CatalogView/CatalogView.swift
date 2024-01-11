@@ -11,14 +11,16 @@ struct CatalogView<ViewModelType>: View where ViewModelType: CatalogViewModelTyp
     
     private let pageTitle: String = "Стріткоди"
     @ObservedObject var viewmodel: ViewModelType
-    
+//    @Environment(\.diContainer) var container
+
     // MARK: Body
     var body: some View {
         NavigationStack {
             ZStack {
                 if viewmodel.isLoading {
-                    LoadingView(gifBundleName: "Logo-animation_40", width: 420, height: 420)
-                        .offset(y: -60.0)
+                    LoadingView(gifName: "Logo-animation_40")
+                    .frame(width: 420, height: 420)
+                    .offset(y: -60.0)
                 }
                 catalogGridView
             }
@@ -31,6 +33,7 @@ struct CatalogView<ViewModelType>: View where ViewModelType: CatalogViewModelTyp
         }
         .tint(Color.red500)
         .onAppear {
+//            viewmodel.container = container
             viewmodel.getCatalogVM()
         }
     }

@@ -41,9 +41,7 @@ struct PersonCellView: View {
             .aspectRatio(1, contentMode: .fit)
             .overlay {
                 CatalogRemoteImage(imageLoader: imageLoader,
-                                   imageId: person.imageID,
-                                   imagePlaceholder: Image("catalog-placeholder"),
-                                   isFailLoading: imageLoader?.isFailLoading ?? false)
+                                   imageId: person.imageID)
                 .scaledToFill()
             }
             .clipShape(RoundedRectangle(cornerRadius: 20))

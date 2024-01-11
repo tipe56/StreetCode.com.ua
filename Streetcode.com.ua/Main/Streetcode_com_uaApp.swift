@@ -7,14 +7,27 @@
 
 import SwiftUI
 
+private struct DIContainerKey: EnvironmentKey {
+  typealias Value = DIContainerable
+
+  static var defaultValue: Value = DIContainer()
+}
+
+extension EnvironmentValues {
+  var diContainer: DIContainerable {
+    get { self[DIContainerKey.self] }
+    set { self[DIContainerKey.self] = newValue }
+  }
+}
+
 @main
 struct StreetcodeComUaApp: App {
-    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
+
     var body: some Scene {
         WindowGroup {
-            CatalogView(viewmodel: CatalogVM(container: appDelegate.container))
+          CatalogView(viewmodel: CatalogVM(container: appDelegate.container))
+//            .environment(\.diContainer, appDelegate.container)
         }
     }
 }

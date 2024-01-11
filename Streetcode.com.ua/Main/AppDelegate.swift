@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import SwiftUI
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    let container: DIContainerable = DIContainer()
-    
+//    @State private(set) var container: DIContainerable = DIContainer()
+    public let container: DIContainerable = DIContainer()
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         registerServices()
         return true

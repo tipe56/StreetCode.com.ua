@@ -9,22 +9,19 @@ import SwiftUI
 
 protocol ImageLoadableType {
     func loadImage(imageId: Int) async -> Image?
-    var isFailLoading: Bool { get }
 }
 
 final class ImageLoaderManager: ImageLoadableType, ObservableObject {
     private let cache = NSCache<NSString, UIImage>()
     private let networkManager: WebAPIManagerProtocol
     let imageDecoder: ImageDecoderable
-    @Published var isFailLoading: Bool = false
     
     init(networkManager: WebAPIManagerProtocol, imageDecoder: ImageDecoderable) {
         self.networkManager = networkManager
         self.imageDecoder = imageDecoder
     }
-    
+
     func loadImage(imageId: Int) async -> Image? {
-        isFailLoading = false
         let request = CatalogRequest.getCatalogImage(id: imageId)
         var cacheKey = NSString()
         
@@ -33,43 +30,33 @@ final class ImageLoaderManager: ImageLoadableType, ObservableObject {
         }
         
         guard let cacheImage = self.cache.object(forKey: cacheKey) else {
-            if let image = await networkImageRequest(request: request) {
+            if let image = await image(for: request) {
                 self.cache.setObject(image, forKey: cacheKey)
                 return Image(uiImage: image)
             } else {
-                isFailLoading = true
                 return nil
             }
         }
         return Image(uiImage: cacheImage)
     }
     
-    func networkImageRequest(request: CatalogRequest) async -> UIImage? {
+    private func image(for request: CatalogRequest) async -> UIImage? {
         let result: Result<CatalogImage, APIError> = await networkManager.perform(request)
-        var image: UIImage?
-        
+
         switch result {
         case .success(let imageModel):
-            do {
-                let decoded = try imageDecoder.decode(base64string: imageModel.base64)
-                if let decoded {
-                    image = decoded
-                }
-            } catch {
-                isFailLoading = true
-                print("ImageLoaderManager: Can't decode image with URL: \"\(String(describing: request.urlAbsolute))\"")
-            }
+          return imageModel.base64.base64Image
         case .failure:
-            isFailLoading = true
-            print("ImageLoaderManager: Can't download image by URL: \"\(String(describing: request.urlAbsolute))\"")
+          print("ImageLoaderManager: Can't download image by URL: \"\(String(describing: request.urlAbsolute))\"")
+          return nil
         }
-        return image
     }
 }
 
+extension String {
+  var base64Image: UIImage? {
+    guard let data = Data(base64Encoded: self) else { return nil }
 
-
-
-
-
-
+    return UIImage(data: data)
+  }
+}

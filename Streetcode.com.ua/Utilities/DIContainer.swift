@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import Combine
 
 protocol DIContainerable {
     func register<T>(type: T, instance: Any)
     func resolve<T>() -> T?
 }
 
-final class DIContainer: DIContainerable {
+final class DIContainer: DIContainerable/*, ObservableObject*/ {
     private var services: [String: Any] = [:]
     
     func register<T>(type: T, instance: Any) {
