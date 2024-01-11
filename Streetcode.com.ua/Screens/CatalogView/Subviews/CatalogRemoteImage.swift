@@ -11,7 +11,7 @@ struct CatalogRemoteImage: View {
     let imageLoader: ImageLoadableType?
     let imageId: Int
     var imagePlaceholder: Image
-    @State private var progressViewModel: ProgressView.ViewModel?
+    @State private var progressViewModel: ProgressImageView.ViewModel?
 
     init(imageLoader: ImageLoadableType?,
          imageId: Int,
@@ -22,7 +22,7 @@ struct CatalogRemoteImage: View {
     }
 
     var body: some View {
-      ProgressView(viewModel: progressViewModel)
+      ProgressImageView(viewModel: progressViewModel)
         .onAppear {
             Task {
                 let image = await imageLoader?.loadImage(imageId: imageId)
@@ -37,7 +37,7 @@ struct CatalogRemoteImage: View {
     }
 }
 
-struct ProgressView: View {
+struct ProgressImageView: View {
   struct ViewModel {
     var image: Image?
     var offsetY: CGFloat = 0
@@ -46,7 +46,7 @@ struct ProgressView: View {
   var viewModel: ViewModel?
 
   var body: some View {
-    if let image = viewModel?.image, 
+    if let image = viewModel?.image,
        let offset = viewModel?.offsetY {
       image.resizable().offset(y: offset)
     } else {

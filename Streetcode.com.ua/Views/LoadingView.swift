@@ -14,8 +14,6 @@ struct LoadingView: View {
 
     @State private var index = 0
 
-
-
     init(gifName: String) {
       guard let bundleURL = Bundle.main.url(forResource: gifName, withExtension: "gif"),
             let data = try? Data(contentsOf: bundleURL),

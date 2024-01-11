@@ -12,11 +12,10 @@ import SwiftUI
 struct PersonCellView: View {
     
     let person: CatalogPerson
-    private let imageLoader: ImageLoadableType?
-    
-    init(person: CatalogPerson, container: DIContainerable) {
+    @Environment(\.diContainer) var container
+
+    init(person: CatalogPerson) {
         self.person = person
-        self.imageLoader = container.resolve()
     }
     
     var body: some View {
@@ -40,7 +39,7 @@ struct PersonCellView: View {
             .fill(Color.gray100)
             .aspectRatio(1, contentMode: .fit)
             .overlay {
-                CatalogRemoteImage(imageLoader: imageLoader,
+              CatalogRemoteImage(imageLoader: container.resolve(),
                                    imageId: person.imageID)
                 .scaledToFill()
             }
@@ -56,6 +55,6 @@ struct PersonCellView: View {
 
 struct PersonCellView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonCellView(person: CatalogPerson.mockData, container: DIContainer())
+        PersonCellView(person: CatalogPerson.mockData)
     }
 }

@@ -11,7 +11,7 @@ struct CatalogView<ViewModelType>: View where ViewModelType: CatalogViewModelTyp
     
     private let pageTitle: String = "Стріткоди"
     @ObservedObject var viewmodel: ViewModelType
-//    @Environment(\.diContainer) var container
+    @Environment(\.diContainer) var container
 
     // MARK: Body
     var body: some View {
@@ -33,14 +33,13 @@ struct CatalogView<ViewModelType>: View where ViewModelType: CatalogViewModelTyp
         }
         .tint(Color.red500)
         .onAppear {
-//            viewmodel.container = container
+            viewmodel.container = container
             viewmodel.getCatalogVM()
         }
     }
     
     // MARK: ViewBuilder
     @ViewBuilder private var catalogGridView: some View {
-        
         let columns: [GridItem] = .init(repeating: GridItem(.flexible()), count: 2)
         
         ScrollView {
@@ -54,7 +53,7 @@ struct CatalogView<ViewModelType>: View where ViewModelType: CatalogViewModelTyp
                                 .navigationTitle(person.title.components(separatedBy: " ").first ?? "")
                         }
                     } label: {
-                        PersonCellView(person: person, container: viewmodel.container)
+                        PersonCellView(person: person)
                     }
                 }
             }
@@ -73,7 +72,7 @@ struct CatalogView<ViewModelType>: View where ViewModelType: CatalogViewModelTyp
 
 // MARK: Previews
 struct CatalogView_Previews: PreviewProvider {
-    static var vm = CatalogVM(container: DIContainer())
+    static var vm = CatalogVM()
     static var previews: some View {
         CatalogView(viewmodel: CatalogView_Previews.vm)
     }

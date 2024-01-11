@@ -26,8 +26,8 @@ struct StreetcodeComUaApp: App {
 
     var body: some Scene {
         WindowGroup {
-          CatalogView(viewmodel: CatalogVM(container: appDelegate.container))
-//            .environment(\.diContainer, appDelegate.container)
+          CatalogView(viewmodel: CatalogVM())
+            .environment(\.diContainer, appDelegate.container)
         }
     }
 }
