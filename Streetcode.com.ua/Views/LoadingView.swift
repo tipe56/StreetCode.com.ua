@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct LoadingView: View {
     let gifBundleName: String
@@ -93,4 +94,3 @@ struct GifImageSource {
 #Preview {
     LoadingView(gifBundleName: "Logo-animation_40", width: 420, height: 420)
 }
-

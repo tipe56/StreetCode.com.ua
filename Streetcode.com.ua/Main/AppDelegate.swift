@@ -15,15 +15,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         return true
     }
     
-    func registerServices() {
+    private func registerServices() {
         let networkmanager: WebAPIManagerProtocol = WebAPIManager()
-        let imageDecoder: ImageDecoderable = ImageDecoder()
         
         container.register(type: WebAPIManagerProtocol.self,
                            instance: networkmanager)
         container.register(type: ImageLoadableType.self,
-                           instance: ImageLoaderManager(networkManager: networkmanager,
-                                                        imageDecoder: imageDecoder))
+                                   instance: ImageLoaderManager(networkManager: networkmanager))
     }
 }
 

@@ -18,8 +18,8 @@ protocol CatalogViewModelType: ObservableObject {
 
 final class CatalogVM: CatalogViewModelType {
     
-    @Published var catalog: [CatalogPerson] = []
-    @Published var isLoading = false
+    @Published private(set) var catalog: [CatalogPerson] = []
+    @Published private(set) var isLoading = false
     @Published var searchTerm: String = ""
     public let container: DIContainerable
     private let networkManager: WebAPIManagerProtocol?
@@ -47,14 +47,16 @@ final class CatalogVM: CatalogViewModelType {
                 switch result {
                 case .success(let success):
                     await MainActor.run {
-                        catalog = success
+                        self.catalog = success
                         isLoading = false
                     }
                 case .failure:
+                    print("Error get catalog elements")
                     break
                     // TODO: handle error. Show alert message
                 }
             case .failure:
+                print("Error get count")
                 break
                 // TODO: handle error. Show alert message
             }
