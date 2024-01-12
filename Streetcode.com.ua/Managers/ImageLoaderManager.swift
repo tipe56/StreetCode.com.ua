@@ -14,9 +14,11 @@ protocol ImageLoadableType {
 final class ImageLoaderManager: ImageLoadableType, ObservableObject {
     private let cache = NSCache<NSString, UIImage>()
     private let networkManager: WebAPIManagerProtocol
+    private let logger: Loggering
     
-    init(networkManager: WebAPIManagerProtocol) {
+    init(networkManager: WebAPIManagerProtocol, logger: Loggering) {
         self.networkManager = networkManager
+        self.logger = logger
     }
     
     func loadImage(imageId: Int) async -> Image? {
@@ -32,6 +34,7 @@ final class ImageLoaderManager: ImageLoadableType, ObservableObject {
                 self.cache.setObject(image, forKey: cacheKey)
                 return Image(uiImage: image)
             } else {
+                logger.error("There is no image or can't covert uiImage to Image")
                 return nil
             }
         }
@@ -40,12 +43,11 @@ final class ImageLoaderManager: ImageLoadableType, ObservableObject {
     
     private func imageForRequest(_ request: CatalogRequest) async -> UIImage? {
         let result: Result<CatalogImage, APIError> = await networkManager.perform(request)
-        
         switch result {
         case .success(let imageModel):
             return imageModel.base64.base64Image
         case .failure:
-            print("ImageLoaderManager: Can't download image by URL: \"\(String(describing: request.urlAbsolute))\"")
+            logger.error("Can't download image by URL: \"\(request.urlAbsolute?.description ?? "")\"")
             return nil
         }
     }

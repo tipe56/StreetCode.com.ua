@@ -55,9 +55,11 @@ extension DataDecodable {
 public class WebAPIManager: WebAPIManagerProtocol {
     
     private let urlSession: URLSession
+    private let logger: Loggering
     
-    public init(urlSession: URLSession = .shared) {
+    init(urlSession: URLSession = .shared, logger: Loggering) {
         self.urlSession = urlSession
+        self.logger = logger
     }
     
     func perform<T: DataDecodable>(_ request: RequestProtocol) async -> Result<T, APIError> {
@@ -87,6 +89,7 @@ public class WebAPIManager: WebAPIManagerProtocol {
     private func perform(_ request: RequestProtocol) async throws -> Data {
         let (data, response) = try await urlSession.data(for: try request.makeURLRequest())
         guard let httpResponse = response as? HTTPURLResponse, (200..<300).contains(httpResponse.statusCode) else {
+            logger.error("Invalid Server Response")
             throw APIError.invalidServerResponse
         }
         return data

@@ -13,9 +13,11 @@ struct PersonCellView: View {
     
     let person: CatalogPerson
     private let imageLoader: ImageLoadableType?
+    private let container: DIContainerable
     
     init(person: CatalogPerson, container: DIContainerable) {
         self.person = person
+        self.container = container
         self.imageLoader = container.resolve()
     }
     
@@ -40,9 +42,8 @@ struct PersonCellView: View {
             .fill(Color.gray100)
             .aspectRatio(1, contentMode: .fit)
             .overlay {
-                CatalogRemoteImage(imageLoader: imageLoader,
-                                   imageId: person.imageID)
-                .scaledToFill()
+                CatalogRemoteImage(imageLoader: imageLoader, imageId: person.imageID)
+                    .scaledToFill()
             }
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .padding(6)

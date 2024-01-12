@@ -23,6 +23,7 @@ final class CatalogVM: CatalogViewModelType {
     @Published var searchTerm: String = ""
     public let container: DIContainerable
     private let networkManager: WebAPIManagerProtocol?
+    private let logger: Loggering?
     
     var filteredCatalog: [CatalogPerson] {
         searchTerm.isEmpty ? self.catalog : self.catalog.filter {
@@ -33,6 +34,7 @@ final class CatalogVM: CatalogViewModelType {
     init(container: DIContainerable) {
         self.container = container
         self.networkManager = container.resolve()
+        self.logger = container.resolve()
     }
     
     func getCatalogVM() {
@@ -51,12 +53,12 @@ final class CatalogVM: CatalogViewModelType {
                         isLoading = false
                     }
                 case .failure:
-                    print("Error get catalog elements")
+                    logger?.error("Failure of getting catalog elements")
                     break
                     // TODO: handle error. Show alert message
                 }
             case .failure:
-                print("Error get count")
+                logger?.error("Failure of getting count of catalog elements")
                 break
                 // TODO: handle error. Show alert message
             }

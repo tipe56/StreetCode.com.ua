@@ -14,6 +14,7 @@ struct CatalogRemoteImage: View {
     @State private var progressViewModel: ProgressImageView.ViewModel?
     
     init(imageLoader: ImageLoadableType?,
+         
          imageId: Int,
          imagePlaceholder: Image = Image("catalog-placeholder")) {
         self.imageLoader = imageLoader
