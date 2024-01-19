@@ -1,5 +1,5 @@
 //
-//  CatalogPreviewModel.swift
+//  CatalogPerson.swift
 //  Streetcode.com.ua
 //
 //  Created by Siarhei Ramaniuk on 13.12.23.
@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+// MARK: - CatalogPersonModel
 struct CatalogPerson: Codable, Identifiable, DataDecodable {
     let id: Int
     let title, url, alias: String

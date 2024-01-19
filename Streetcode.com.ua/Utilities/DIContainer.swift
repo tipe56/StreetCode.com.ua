@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol DIContainerable {
+protocol DIContainerType {
     func register<T>(type: T, instance: Any)
     func resolve<T>() -> T?
 }
 
-final class DIContainer: DIContainerable {
+final class DIContainer: DIContainerType {
     private var services: [String: Any] = [:]
     
     func register<T>(type: T, instance: Any) {

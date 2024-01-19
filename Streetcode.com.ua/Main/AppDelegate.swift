@@ -8,7 +8,7 @@
 import UIKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    let container: DIContainerable = DIContainer()
+    let container: DIContainerType = DIContainer()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         registerServices()
@@ -19,11 +19,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         let logger: Loggering = LoggerManager()
         let networkmanager: WebAPIManagerProtocol = WebAPIManager(logger: logger)
         
-        container.register(type: WebAPIManagerProtocol.self,
-                           instance: networkmanager)
-        container.register(type: ImageLoadableType.self,
-                           instance: ImageLoaderManager(networkManager: networkmanager, 
-                                                        logger: logger))
+        container.register(
+            type: WebAPIManagerProtocol.self,
+            instance: networkmanager)
+        container.register(
+            type: ImageLoadableType.self,
+            instance: ImageLoaderManager(networkManager: networkmanager, logger: logger))
     }
 }
 

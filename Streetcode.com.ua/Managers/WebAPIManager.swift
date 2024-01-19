@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol DataParserType {
+protocol DataParserProtocol  {
     func parse<T: Decodable>(data: Data) throws -> T
 }
 
-extension DataParserType {
+extension DataParserProtocol  {
     func parse<T: Decodable>(data: Data) throws -> T {
         try parseJSON(data: data)
     }
@@ -21,7 +21,7 @@ extension DataParserType {
     }
 }
 
-class DefaultDataParser: DataParserType {
+class DefaultDataParser: DataParserProtocol  {
     func parse<T: Decodable>(data: Data) throws -> T {
         let decoder = JSONDecoder()
         do {
@@ -34,7 +34,6 @@ class DefaultDataParser: DataParserType {
 
 protocol WebAPIManagerProtocol {
     func perform<T: DataDecodable>(_ request: RequestProtocol) async -> Result<T, APIError>
-    func perform<T: DataDecodable>(_ request: RequestProtocol) async -> Result<Array<T>, APIError>
 }
 
 protocol DataDecodable: Decodable {

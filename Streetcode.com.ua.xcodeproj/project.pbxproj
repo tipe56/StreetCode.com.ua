@@ -37,6 +37,9 @@
 		ADEDBC5E2B3DCF5300B036F1 /* Logo-animation_40.gif in Resources */ = {isa = PBXBuildFile; fileRef = ADEDBC5D2B3DCF5300B036F1 /* Logo-animation_40.gif */; };
 		ADEDBCC02B45965900B036F1 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBCBF2B45965900B036F1 /* CustomNavigationBar.swift */; };
 		ADEDBCC22B45E2D300B036F1 /* SearchUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBCC12B45E2D300B036F1 /* SearchUnavailableView.swift */; };
+		ADFB832C2B59913A0008B416 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB832B2B59913A0008B416 /* Array+Extension.swift */; };
+		ADFB832E2B59A2240008B416 /* ProgressImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB832D2B59A2240008B416 /* ProgressImageView.swift */; };
+		ADFB83302B59A4930008B416 /* GifImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB832F2B59A4930008B416 /* GifImageSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,9 @@
 		ADEDBC5D2B3DCF5300B036F1 /* Logo-animation_40.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Logo-animation_40.gif"; sourceTree = "<group>"; };
 		ADEDBCBF2B45965900B036F1 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		ADEDBCC12B45E2D300B036F1 /* SearchUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUnavailableView.swift; sourceTree = "<group>"; };
+		ADFB832B2B59913A0008B416 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		ADFB832D2B59A2240008B416 /* ProgressImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressImageView.swift; sourceTree = "<group>"; };
+		ADFB832F2B59A4930008B416 /* GifImageSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifImageSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,7 @@
 				AD2068A02B17DE4D00A98304 /* Modifiers */,
 				AD20689D2B17DD9E00A98304 /* Extensions */,
 				ADEDBC592B3CBF5700B036F1 /* DIContainer.swift */,
+				ADFB832F2B59A4930008B416 /* GifImageSource.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -110,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				ADEDBC572B3CAFA900B036F1 /* Int+Extension.swift */,
+				ADFB832B2B59913A0008B416 /* Array+Extension.swift */,
 				AD8068E22B5009EA007AAE00 /* String+Extension.swift */,
 			);
 			path = Extensions;
@@ -167,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				ADEDBC5B2B3D7FF100B036F1 /* CatalogRemoteImage.swift */,
+				ADFB832D2B59A2240008B416 /* ProgressImageView.swift */,
 				AD5EFA602B0F9B4E0085AB01 /* PersonCellView.swift */,
 			);
 			path = Subviews;
@@ -354,6 +363,7 @@
 				AD2DEE602B120EF70088634E /* Fonts+Constants.swift in Sources */,
 				ADAFF9202B2DDFEE0060C32E /* CatalogRequest.swift in Sources */,
 				ADEDBC582B3CAFA900B036F1 /* Int+Extension.swift in Sources */,
+				ADFB83302B59A4930008B416 /* GifImageSource.swift in Sources */,
 				AD5EC5EA2B2A141E0012A7CD /* WebAPIManager.swift in Sources */,
 				ADEDBC5A2B3CBF5700B036F1 /* DIContainer.swift in Sources */,
 				AD2068782B15024500A98304 /* RadiusButtonStyle.swift in Sources */,
@@ -362,12 +372,14 @@
 				AD5EC5EE2B2A1BE30012A7CD /* CatalogPerson.swift in Sources */,
 				ADEDBC5C2B3D7FF100B036F1 /* CatalogRemoteImage.swift in Sources */,
 				ADAFF91E2B2CA9690060C32E /* RequestProtocol.swift in Sources */,
+				ADFB832C2B59913A0008B416 /* Array+Extension.swift in Sources */,
 				AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */,
 				ADEDBC502B3C54DC00B036F1 /* ImageLoaderManager.swift in Sources */,
 				AD8068E92B5174C1007AAE00 /* LoggerManager.swift in Sources */,
 				AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */,
 				ADEDBC522B3C648F00B036F1 /* CatalogImage.swift in Sources */,
 				AD8068DF2B4D8427007AAE00 /* AppDelegate.swift in Sources */,
+				ADFB832E2B59A2240008B416 /* ProgressImageView.swift in Sources */,
 				AD5EFA5F2B0F96A60085AB01 /* CatalogView.swift in Sources */,
 				ADEDBC562B3CA1F800B036F1 /* LoadingView.swift in Sources */,
 			);

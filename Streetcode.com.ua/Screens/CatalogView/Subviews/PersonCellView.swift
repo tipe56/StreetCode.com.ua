@@ -13,9 +13,9 @@ struct PersonCellView: View {
     
     let person: CatalogPerson
     private let imageLoader: ImageLoadableType?
-    private let container: DIContainerable
+    private let container: DIContainerType
     
-    init(person: CatalogPerson, container: DIContainerable) {
+    init(person: CatalogPerson, container: DIContainerType) {
         self.person = person
         self.container = container
         self.imageLoader = container.resolve()
@@ -47,11 +47,10 @@ struct PersonCellView: View {
             }
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .padding(6)
-            .shadow(
-                color: Color.gray600,
-                radius: 4,
-                x: 0,
-                y: 4)
+            .shadow(color: Color.gray600,
+                    radius: 4,
+                    x: 0,
+                    y: 4)
     }
 }
 
