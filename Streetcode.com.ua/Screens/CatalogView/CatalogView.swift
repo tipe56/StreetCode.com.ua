@@ -31,7 +31,9 @@ struct CatalogView<ViewModelType>: View where ViewModelType: CatalogViewModelTyp
         }
         .tint(Color.red500)
         .onAppear {
-            viewmodel.getCatalogVM()
+            Task {
+                await viewmodel.getCatalogVM()
+            }
         }
     }
     

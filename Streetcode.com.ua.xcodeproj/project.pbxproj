@@ -42,6 +42,8 @@
 		ADEDBC5E2B3DCF5300B036F1 /* Logo-animation_40.gif in Resources */ = {isa = PBXBuildFile; fileRef = ADEDBC5D2B3DCF5300B036F1 /* Logo-animation_40.gif */; };
 		ADEDBCC02B45965900B036F1 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBCBF2B45965900B036F1 /* CustomNavigationBar.swift */; };
 		ADEDBCC22B45E2D300B036F1 /* SearchUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBCC12B45E2D300B036F1 /* SearchUnavailableView.swift */; };
+		ADFB83382B5E7F470008B416 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB83372B5E7F470008B416 /* Array+Extension.swift */; };
+		ADFB833A2B5ECEEB0008B416 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB83392B5ECEEA0008B416 /* CoreDataViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +84,8 @@
 		ADEDBC5D2B3DCF5300B036F1 /* Logo-animation_40.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Logo-animation_40.gif"; sourceTree = "<group>"; };
 		ADEDBCBF2B45965900B036F1 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		ADEDBCC12B45E2D300B036F1 /* SearchUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUnavailableView.swift; sourceTree = "<group>"; };
+		ADFB83372B5E7F470008B416 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		ADFB83392B5ECEEA0008B416 /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				ADEDBC572B3CAFA900B036F1 /* Int+Extension.swift */,
+				ADFB83372B5E7F470008B416 /* Array+Extension.swift */,
 				AD8068E22B5009EA007AAE00 /* String+Extension.swift */,
 			);
 			path = Extensions;
@@ -137,6 +142,8 @@
 		AD2DEE572B1206CE0088634E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				ADC0DAD22B56EB8E000AB530 /* Check CoreData.swift */,
+				ADFB83392B5ECEEA0008B416 /* CoreDataViewModel.swift */,
 				AD2DEE582B1206DB0088634E /* CatalogView */,
 			);
 			path = Screens;
@@ -197,7 +204,6 @@
 				ADEDBC4F2B3C54DC00B036F1 /* ImageLoaderManager.swift */,
 				AD8068E82B5174C1007AAE00 /* LoggerManager.swift */,
 				ADC0DAD02B56C603000AB530 /* DataManager.swift */,
-				ADC0DAD22B56EB8E000AB530 /* Check CoreData.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -371,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADAFF9222B2DE0D10060C32E /* Error.swift in Sources */,
+				ADFB83382B5E7F470008B416 /* Array+Extension.swift in Sources */,
 				ADEDBCC22B45E2D300B036F1 /* SearchUnavailableView.swift in Sources */,
 				ADEDBCC02B45965900B036F1 /* CustomNavigationBar.swift in Sources */,
 				AD5EC5F02B2A2FB30012A7CD /* CatalogVM.swift in Sources */,
@@ -394,6 +401,7 @@
 				AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */,
 				ADC0DACF2B56C4B8000AB530 /* CatalogPersonEntity+CoreDataProperties.swift in Sources */,
 				ADEDBC522B3C648F00B036F1 /* CatalogImage.swift in Sources */,
+				ADFB833A2B5ECEEB0008B416 /* CoreDataViewModel.swift in Sources */,
 				AD8068DF2B4D8427007AAE00 /* AppDelegate.swift in Sources */,
 				AD5EFA5F2B0F96A60085AB01 /* CatalogView.swift in Sources */,
 				ADC0DAD12B56C603000AB530 /* DataManager.swift in Sources */,

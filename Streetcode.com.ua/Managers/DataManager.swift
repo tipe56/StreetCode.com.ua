@@ -9,18 +9,19 @@ import SwiftUI
 import CoreData
 
 protocol DataManagable {
-    func createItem<T, A>(_ item: T, mapping: @escaping (T) -> A) where T: Codable, A: NSManagedObject
-    func createArray<T, A>(_ data: [T], mapping: @escaping (T) -> A) where T: Codable, A: NSManagedObject
+    func createItem<T, A>(_ item: T, mapping: @escaping (T) -> A?) where T: Codable, A: NSManagedObject
+    func createEntityFromArray<T, A>(_ data: [T], mapping: @escaping (T) -> A?) where T: Codable, A: NSManagedObject
     func fetch<T: NSManagedObject>(_ entity: T.Type, sortdescriptors: [NSSortDescriptor]?) -> [T]
     func update<T: NSManagedObject>(_ item: T, _ update: @escaping () -> Void)
     func delete<T : NSManagedObject>(item: T)
     func delete<T: NSManagedObject>(entities: [T], indexSet: IndexSet)
+    var context: NSManagedObjectContext { get }
 }
 
 final class DataManager: NSObject, ObservableObject, DataManagable {
     private let logger: Loggering
     private let persistentContainer: NSPersistentContainer
-    private var context: NSManagedObjectContext
+    var context: NSManagedObjectContext
     
     init(persistentContainerName: String = "Streetcode", logger: Loggering) {
         self.persistentContainer = NSPersistentContainer(name: persistentContainerName)
@@ -33,18 +34,17 @@ final class DataManager: NSObject, ObservableObject, DataManagable {
         }
     }
     
-    func createItem<T, A>(_ item: T, mapping: @escaping (T) -> A) where T: Codable, A: NSManagedObject {
+    func createItem<T, A>(_ item: T, mapping: @escaping (T) -> A?) where T: Codable, A: NSManagedObject {
         _ = mapping(item)
         saveContext()
     }
     
-    func createArray<T, A>(_ data: [T], mapping: @escaping (T) -> A) where T: Codable, A: NSManagedObject {
+    func createEntityFromArray<T, A>(_ data: [T], mapping: @escaping (T) -> A?) where T: Codable, A: NSManagedObject {
         _ = data.map { mapping($0) }
         saveContext()
     }
     
     func fetch<T: NSManagedObject>(_ entity: T.Type, sortdescriptors: [NSSortDescriptor]? = nil) -> [T] {
-        
         let request = NSFetchRequest<T>(entityName: String(describing: entity))
         if let sortdescriptors {
             request.sortDescriptors = sortdescriptors

@@ -34,7 +34,6 @@ class DefaultDataParser: DataParserType {
 
 protocol WebAPIManagerProtocol {
     func perform<T: DataDecodable>(_ request: RequestProtocol) async -> Result<T, APIError>
-    func perform<T: DataDecodable>(_ request: RequestProtocol) async -> Result<Array<T>, APIError>
 }
 
 protocol DataDecodable: Decodable {
@@ -66,18 +65,6 @@ public class WebAPIManager: WebAPIManagerProtocol {
         do {
             let data = try await perform(request)
             let decoded: T = try T.parse(data: data)
-            return .success(decoded)
-        } catch let error as APIError {
-            return .failure(error)
-        } catch {
-            return .failure(.networkError(error))
-        }
-    }
-    
-    func perform<T: DataDecodable>(_ request: RequestProtocol) async -> Result<Array<T>, APIError> {
-        do {
-            let data = try await perform(request)
-            let decoded: Array<T> = try T.parseArray(data: data)
             return .success(decoded)
         } catch let error as APIError {
             return .failure(error)

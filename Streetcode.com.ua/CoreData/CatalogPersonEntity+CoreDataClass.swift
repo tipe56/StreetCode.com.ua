@@ -11,13 +11,18 @@ import CoreData
 
 @objc(CatalogPersonEntity)
 public class CatalogPersonEntity: NSManagedObject {
+    convenience init(item: CatalogPerson, context: NSManagedObjectContext) {
+        self.init(context: context)
+        update(with: item)
+    }
     
-    init(item: CatalogPerson, context: NSManagedObjectContext) {
-        super.init(entity: Self.entity(), insertInto: context)
+    func update(with item: CatalogPerson) {
         self.id = Int16(item.id)
         self.title = item.title
         self.alias = item.alias
         self.imageID = Int16(item.imageID)
     }
-    
 }
+
+
+
