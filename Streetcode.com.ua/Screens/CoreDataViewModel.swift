@@ -31,7 +31,9 @@ class CoreDataViewModel: ObservableObject {
                                     url: text,
                                     alias: text,
                                     imageID: Int.random(in: 0...999))
-        
+        createEntity(newHero)
+        dataManager.saveContext()
+
         self.dataManager?.createItem(newHero) { _ in
             self.createEntity(newHero)
         }

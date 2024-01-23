@@ -24,9 +24,11 @@ extension CatalogPersonEntity {
     var wrappedAlias: String { alias ?? "No alias" }
     @NSManaged public var imageID: Int16
     var wrappedImageID: Int { Int(imageID) }
-
+    
 }
 
 extension CatalogPersonEntity : Identifiable {
 
 }
+
+

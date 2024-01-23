@@ -95,7 +95,7 @@ struct CheckCoreData: View {
         .onAppear {
             Task {
                 await viewModel.catalogVM.getCatalogVM()
-                viewModel.catalogOfPersons = viewModel.catalogVM.catalog
+//                viewModel.catalogOfPersons = viewModel.catalogVM.catalog
                 print("Number of elements in catalog of Persons: \(viewModel.catalogOfPersons.count)")
                 viewModel.fetch()
             }

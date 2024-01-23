@@ -18,7 +18,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     private func registerServices() {
         let logger: Loggering = LoggerManager()
         let networkmanager: WebAPIManagerProtocol = WebAPIManager(logger: logger)
-        let dataManager: DataManagable = DataManager(logger: logger)
+        let dataManager: DataManagable = CoreDataService(logger: logger)
         
         container.register(type: WebAPIManagerProtocol.self,
                            instance: networkmanager)

@@ -47,10 +47,10 @@ struct CatalogView<ViewModelType>: View where ViewModelType: CatalogViewModelTyp
                 ForEach(viewmodel.filteredCatalog) { person in
                     NavigationLink {
                         ScrollView {
-                            Text(person.title)
+                            Text(person.wrappedTitle)
                                 .font(.title3)
                                 .bold()
-                                .navigationTitle(person.title.components(separatedBy: " ").first ?? "")
+                                .navigationTitle(person.wrappedTitle.components(separatedBy: " ").first ?? "")
                         }
                     } label: {
                         PersonCellView(person: person, container: viewmodel.container)

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 @objc(CatalogPersonEntity)
-public class CatalogPersonEntity: NSManagedObject {
+public class CatalogPersonEntity: NSManagedObject{
     convenience init(item: CatalogPerson, context: NSManagedObjectContext) {
         self.init(context: context)
         update(with: item)
@@ -22,7 +22,9 @@ public class CatalogPersonEntity: NSManagedObject {
         self.alias = item.alias
         self.imageID = Int16(item.imageID)
     }
+    
 }
+
 
 
 

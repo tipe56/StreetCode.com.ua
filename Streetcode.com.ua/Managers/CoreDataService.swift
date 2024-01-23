@@ -9,16 +9,17 @@ import SwiftUI
 import CoreData
 
 protocol DataManagable {
+    var context: NSManagedObjectContext { get }
     func createItem<T, A>(_ item: T, mapping: @escaping (T) -> A?) where T: Codable, A: NSManagedObject
     func createEntityFromArray<T, A>(_ data: [T], mapping: @escaping (T) -> A?) where T: Codable, A: NSManagedObject
     func fetch<T: NSManagedObject>(_ entity: T.Type, sortdescriptors: [NSSortDescriptor]?) -> [T]
     func update<T: NSManagedObject>(_ item: T, _ update: @escaping () -> Void)
     func delete<T : NSManagedObject>(item: T)
     func delete<T: NSManagedObject>(entities: [T], indexSet: IndexSet)
-    var context: NSManagedObjectContext { get }
+    func count<T: NSManagedObject>(_ entity: T.Type) -> Int?
 }
 
-final class DataManager: NSObject, ObservableObject, DataManagable {
+final class CoreDataService: NSObject, ObservableObject, DataManagable {
     private let logger: Loggering
     private let persistentContainer: NSPersistentContainer
     var context: NSManagedObjectContext

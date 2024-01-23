@@ -31,7 +31,7 @@
 		ADC0DACB2B56C38A000AB530 /* Streetcode.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ADC0DAC92B56C38A000AB530 /* Streetcode.xcdatamodeld */; };
 		ADC0DACE2B56C4B8000AB530 /* CatalogPersonEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC0DACC2B56C4B8000AB530 /* CatalogPersonEntity+CoreDataClass.swift */; };
 		ADC0DACF2B56C4B8000AB530 /* CatalogPersonEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC0DACD2B56C4B8000AB530 /* CatalogPersonEntity+CoreDataProperties.swift */; };
-		ADC0DAD12B56C603000AB530 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC0DAD02B56C603000AB530 /* DataManager.swift */; };
+		ADC0DAD12B56C603000AB530 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC0DAD02B56C603000AB530 /* CoreDataService.swift */; };
 		ADC0DAD32B56EB8E000AB530 /* Check CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC0DAD22B56EB8E000AB530 /* Check CoreData.swift */; };
 		ADEDBC502B3C54DC00B036F1 /* ImageLoaderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBC4F2B3C54DC00B036F1 /* ImageLoaderManager.swift */; };
 		ADEDBC522B3C648F00B036F1 /* CatalogImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBC512B3C648F00B036F1 /* CatalogImage.swift */; };
@@ -73,7 +73,7 @@
 		ADC0DACA2B56C38A000AB530 /* Streetcode.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Streetcode.xcdatamodel; sourceTree = "<group>"; };
 		ADC0DACC2B56C4B8000AB530 /* CatalogPersonEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CatalogPersonEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		ADC0DACD2B56C4B8000AB530 /* CatalogPersonEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CatalogPersonEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		ADC0DAD02B56C603000AB530 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		ADC0DAD02B56C603000AB530 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		ADC0DAD22B56EB8E000AB530 /* Check CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Check CoreData.swift"; sourceTree = "<group>"; };
 		ADEDBC4F2B3C54DC00B036F1 /* ImageLoaderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderManager.swift; sourceTree = "<group>"; };
 		ADEDBC512B3C648F00B036F1 /* CatalogImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogImage.swift; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 				AD5EC5E92B2A141E0012A7CD /* WebAPIManager.swift */,
 				ADEDBC4F2B3C54DC00B036F1 /* ImageLoaderManager.swift */,
 				AD8068E82B5174C1007AAE00 /* LoggerManager.swift */,
-				ADC0DAD02B56C603000AB530 /* DataManager.swift */,
+				ADC0DAD02B56C603000AB530 /* CoreDataService.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -404,7 +404,7 @@
 				ADFB833A2B5ECEEB0008B416 /* CoreDataViewModel.swift in Sources */,
 				AD8068DF2B4D8427007AAE00 /* AppDelegate.swift in Sources */,
 				AD5EFA5F2B0F96A60085AB01 /* CatalogView.swift in Sources */,
-				ADC0DAD12B56C603000AB530 /* DataManager.swift in Sources */,
+				ADC0DAD12B56C603000AB530 /* CoreDataService.swift in Sources */,
 				ADEDBC562B3CA1F800B036F1 /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

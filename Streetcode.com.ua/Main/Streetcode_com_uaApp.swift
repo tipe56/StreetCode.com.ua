@@ -14,8 +14,8 @@ struct StreetcodeComUaApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            CatalogView(viewmodel: CatalogVM(container: appDelegate.container))
-            CheckCoreData(container: appDelegate.container)
+            CatalogView(viewmodel: CatalogVM(container: appDelegate.container))
+//            CheckCoreData(container: appDelegate.container)
         }
     }
 }

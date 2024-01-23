@@ -11,13 +11,11 @@ import SwiftUI
 
 struct PersonCellView: View {
     
-    let person: CatalogPerson
+    let person: CatalogPersonEntity
     private let imageLoader: ImageLoadableType?
-    private let container: DIContainerable
-    
-    init(person: CatalogPerson, container: DIContainerable) {
+
+    init(person: CatalogPersonEntity, container: DIContainerable) {
         self.person = person
-        self.container = container
         self.imageLoader = container.resolve()
     }
     
@@ -25,9 +23,9 @@ struct PersonCellView: View {
         VStack {
             catalogImage
             VStack {
-                Text(person.title)
+                Text(person.wrappedTitle)
                     .font(.closer(.medium, size: 18))
-                Text(person.alias)
+                Text(person.wrappedAlias)
                     .font(.closer(.medium, size: 14))
             }
             .frame(height: 45)
@@ -42,7 +40,7 @@ struct PersonCellView: View {
             .fill(Color.gray100)
             .aspectRatio(1, contentMode: .fit)
             .overlay {
-                CatalogRemoteImage(imageLoader: imageLoader, imageId: person.imageID)
+                CatalogRemoteImage(imageLoader: imageLoader, imageId: Int(person.imageID))
                     .scaledToFill()
             }
             .clipShape(RoundedRectangle(cornerRadius: 20))
@@ -55,8 +53,19 @@ struct PersonCellView: View {
     }
 }
 
+#if DEBUG
 struct PersonCellView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        PersonCellView(person: CatalogPerson.mockData, container: DIContainer())
+        
+        var manager = CoreDataService(logger: LoggerManager())
+        var personEntity = CatalogPersonEntity(context: manager.context)
+        personEntity.id = Int16(438)
+        personEntity.title = "Роман Рáтушний «Сенека»"
+        personEntity.alias = "Активіст, журналіст, доброволець"
+        personEntity.imageID = Int16(2136)
+        
+        return PersonCellView(person: personEntity, container: DIContainer())
     }
 }
+#endif
