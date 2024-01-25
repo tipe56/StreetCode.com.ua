@@ -19,14 +19,14 @@ protocol CatalogViewModelType: ObservableObject {
 
 final class CatalogVM: CatalogViewModelType {
     
-    @Published private(set) var catalog: [CatalogPersonEntity] = []
+    
     @Published private(set) var isLoading = false
     @Published var searchTerm: String = ""
+    @Published var catalog: [CatalogPersonEntity] = []
     public let container: DIContainerable
     private let networkManager: WebAPIManagerProtocol?
     private let logger: Loggering?
     private let coreDataManager: DataManagable?
-    private var networkItemsCatalog: [CatalogPerson] = []
     
     var filteredCatalog: [CatalogPersonEntity] {
         searchTerm.isEmpty ? self.catalog : self.catalog.filter {
@@ -41,73 +41,75 @@ final class CatalogVM: CatalogViewModelType {
         self.coreDataManager = container.resolve()
     }
     
+    let statusCheck = NetworkStatusService()
+
+    
     func getCatalogVM() async {
-        await fetchCatalog()
-        guard let networkManager else { return }
-        let networkCount = await getCount(networkManager: networkManager)
-        if networkCount == fetchCatalogCount() {
-            return
-        } else {
-            guard let networkCount else { return }
-            networkItemsCatalog = await getCatalog(networkManager: networkManager, count: networkCount)
-            for person in networkItemsCatalog {
-                guard let entity = catalog.first(where: { $0.id == person.id }) else {
-                    createCatalogPersonEntity(with: person)
-                    await fetchCatalog()
-                    return
-                }
-                updateStoredPersonEntity(entity, with: person)
-            }
-            await fetchCatalog()
+        statusCheck.start()
+        statusCheck.status = { status in
+            print("The status of connection is \(status)")
         }
-//        
-//        isLoading = true
-//        if let count = await getCount(networkManager: networkManager) {
-//            let catalog = await getCatalog(networkManager: networkManager, count: count)
-//            await MainActor.run {
-//                self.catalog = catalog
-//                self.isLoading = false
-//            }
-//        }
+        
+        await fetchCatalog()
+        //if catalog.isEmpty { isLoading = true }
+        guard let count = await fetchCount() else { return }
+        let networkCatalog = await fetchCatalog(count: count)
+        //isLoading = false
+        for person in networkCatalog {
+            guard let entity = catalog.first(where: { $0.id == person.id }) else {
+                createCatalogPersonEntity(with: person)
+                continue
+            }
+            entity.update(with: person)
+        }
+        await fetchCatalog()
+        //
+        //        isLoading = true
+        //        if let count = await getCount(networkManager: networkManager) {
+        //            let catalog = await getCatalog(networkManager: networkManager, count: count)
+        //            await MainActor.run {
+        //                self.catalog = catalog
+        //                self.isLoading = false
+        //            }
+        //        }
     }
     
-//    func getCatalogVM() async {
-//        guard let networkManager else { return }
-//        isLoading = true
-//        if let count = await getCount(networkManager: networkManager) {
-//            let catalog = await getCatalog(networkManager: networkManager, count: count)
-//            await MainActor.run {
-//                self.catalog = catalog
-//                self.isLoading = false
-//            }
-//        }
-//    }
-    
-    func getCount(networkManager: WebAPIManagerProtocol) async -> Int? {
+    func fetchCount() async -> Int? {
+        guard let networkManager else { return nil }
         let result: Result<Int, APIError> = await networkManager.perform(CatalogRequest.getCount)
         switch result {
         case .success(let count):
             return count
         case .failure:
-            logger?.error("Failure getting count of catalog elements")
+            emptyView()
+            logger?.log(level: .error, message: "Failure getting count of catalog elements", file: #file)
             // TODO: handle error. Show alert message to user
             return nil
         }
     }
     
-    func getCatalog(networkManager: WebAPIManagerProtocol, count: Int, page: Int = 1) async -> [CatalogPerson] {
+    
+    func emptyView() {
+        if catalog.isEmpty {
+            print("Opps. Something goes wrong. Try one more time...")
+        }
+    }
+    
+    public func fetchCatalog(count: Int, page: Int = 1) async -> [CatalogPerson] {
+        guard let networkManager else { return [] }
         let result: Result<[CatalogPerson], APIError> = await networkManager.perform(CatalogRequest.getCatalog(page: page, count: count))
         switch result {
         case .success(let catalog):
             return catalog
         case .failure:
-            logger?.error("Failure of getting catalog elements")
+            emptyView()
+            logger?.log(level: .error, message: "Failure of getting catalog elements", file: #file)
             // TODO: handle error. Show alert message to user
             return []
         }
     }
     
-    func fetchCatalog() async {
+    private func fetchCatalog() async {
         let sort = [NSSortDescriptor(key: "title", ascending: true)]
         
 //        
@@ -128,29 +130,15 @@ final class CatalogVM: CatalogViewModelType {
         }
     }
     
-    func createCatalogPersonEntity(with catalogPerson: CatalogPerson) {
+    
+    private func createCatalogPersonEntity(with catalogPerson: CatalogPerson) {
         guard let coreDataManager else { return }
-        coreDataManager.createItem(catalogPerson) {_ in
-            CatalogPersonEntity(item: catalogPerson, context: coreDataManager.context)
-        }
-        self.logger?.info("New catalogPersonEntity: \(catalogPerson.title) - \(catalogPerson.alias) was created.")
+        _ = CatalogPersonEntity(item: catalogPerson, context: coreDataManager.context)
+        coreDataManager.save()
+        logger?.log(level: .info, message: "New catalogPersonEntity: \(catalogPerson.title) - \(catalogPerson.alias) was created.", file: #file)
     }
     
-    func updateStoredPersonEntity(_ entity: CatalogPersonEntity, with person: CatalogPerson) {
-        coreDataManager?.update(entity) {
-            if entity.title != person.title {
-                entity.title = person.title
-            }
-            if entity.alias != person.alias {
-                entity.alias = person.alias
-            }
-            if entity.imageID != Int16(person.imageID){
-                entity.imageID = Int16(person.imageID)
-            }
-        }
-    }
-    
-    func fetchCatalogCount() -> Int? {
+    private func fetchCatalogCount() -> Int? {
         coreDataManager?.count(CatalogPersonEntity.self)
     }
 }

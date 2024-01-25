@@ -76,7 +76,7 @@ public class WebAPIManager: WebAPIManagerProtocol {
     private func perform(_ request: RequestProtocol) async throws -> Data {
         let (data, response) = try await urlSession.data(for: try request.makeURLRequest())
         guard let httpResponse = response as? HTTPURLResponse, (200..<300).contains(httpResponse.statusCode) else {
-            logger.error("Invalid Server Response")
+            logger.log(level: .error, message: "Invalid Server Response", file: #file)
             throw APIError.invalidServerResponse
         }
         return data

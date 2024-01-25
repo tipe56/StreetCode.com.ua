@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 class CoreDataViewModel: ObservableObject {
     
@@ -31,23 +32,17 @@ class CoreDataViewModel: ObservableObject {
                                     url: text,
                                     alias: text,
                                     imageID: Int.random(in: 0...999))
-        createEntity(newHero)
-        dataManager.saveContext()
-
-        self.dataManager?.createItem(newHero) { _ in
-            self.createEntity(newHero)
-        }
+        
+        create(item: newHero)
     }
     
-    func convertPersonsToEntities() {
-        dataManager?.createEntityFromArray(catalogOfPersons) { item in
-            self.createEntity(item) }
+    func create(item: CatalogPerson) {
+        // unwrap manager
+        guard let context = dataManager?.context else { return }
+        let newItem = CatalogPersonEntity(item: item, context: context)
+        dataManager?.save()
     }
     
-    func createEntity(_ item: CatalogPerson) -> CatalogPersonEntity? {
-        guard let context = dataManager?.context else { return nil }
-        return CatalogPersonEntity(item: item, context: context)
-    }
     
     //    func update(entity: CatalogPersonEntity) {
     //        dataManager.update(entity) { _ in

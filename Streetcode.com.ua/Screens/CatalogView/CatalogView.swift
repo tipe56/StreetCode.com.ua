@@ -61,7 +61,7 @@ struct CatalogView<ViewModelType>: View where ViewModelType: CatalogViewModelTyp
         }
         .searchable(text: $viewmodel.searchTerm, placement: .toolbar, prompt: Text("Я шукаю..."))
         .overlay {
-            if viewmodel.filteredCatalog.isEmpty && !viewmodel.isLoading {
+            if viewmodel.filteredCatalog.isEmpty && !viewmodel.catalog.isEmpty {
                 SearchUnavailableView(image: Image(systemName: "person.slash"),
                                       description: "Такого героя поки що немає в каталозі",
                                       searchText: viewmodel.searchTerm)

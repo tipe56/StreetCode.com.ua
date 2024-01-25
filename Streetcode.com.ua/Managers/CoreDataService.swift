@@ -10,13 +10,15 @@ import CoreData
 
 protocol DataManagable {
     var context: NSManagedObjectContext { get }
+    
     func createItem<T, A>(_ item: T, mapping: @escaping (T) -> A?) where T: Codable, A: NSManagedObject
-    func createEntityFromArray<T, A>(_ data: [T], mapping: @escaping (T) -> A?) where T: Codable, A: NSManagedObject
+    
     func fetch<T: NSManagedObject>(_ entity: T.Type, sortdescriptors: [NSSortDescriptor]?) -> [T]
     func update<T: NSManagedObject>(_ item: T, _ update: @escaping () -> Void)
     func delete<T : NSManagedObject>(item: T)
     func delete<T: NSManagedObject>(entities: [T], indexSet: IndexSet)
     func count<T: NSManagedObject>(_ entity: T.Type) -> Int?
+    func save()
 }
 
 final class CoreDataService: NSObject, ObservableObject, DataManagable {
@@ -30,19 +32,15 @@ final class CoreDataService: NSObject, ObservableObject, DataManagable {
         self.logger = logger
         persistentContainer.loadPersistentStores { (description, error) in
             if let error = error {
-                logger.error("Error loading CoreData: \(error)")
+                logger.log(level: .error, message: "Error loading CoreData: \(error)", file: #file)
             }
         }
     }
     
+    
     func createItem<T, A>(_ item: T, mapping: @escaping (T) -> A?) where T: Codable, A: NSManagedObject {
         _ = mapping(item)
-        saveContext()
-    }
-    
-    func createEntityFromArray<T, A>(_ data: [T], mapping: @escaping (T) -> A?) where T: Codable, A: NSManagedObject {
-        _ = data.map { mapping($0) }
-        saveContext()
+        save()
     }
     
     func fetch<T: NSManagedObject>(_ entity: T.Type, sortdescriptors: [NSSortDescriptor]? = nil) -> [T] {
@@ -54,8 +52,7 @@ final class CoreDataService: NSObject, ObservableObject, DataManagable {
         do {
             return try self.context.fetch(request)
         } catch let error {
-            logger.error("Error fetching data: \(error)")
-            print("Error")
+            logger.log(level: .error, message: "Error fetching data: \(error)", file: #file)
         }
         return []
     }
@@ -76,7 +73,7 @@ final class CoreDataService: NSObject, ObservableObject, DataManagable {
     
     func update<T: NSManagedObject>(_ item: T, _ update: @escaping () -> Void) {
         update()
-        saveContext()
+        save()
     }
 //    
 //    func update(entity: CatalogPersonEntity) {
@@ -93,22 +90,22 @@ final class CoreDataService: NSObject, ObservableObject, DataManagable {
     
     func delete<T : NSManagedObject>(item: T) {
         self.context.delete(item)
-        saveContext()
+        save()
     }
     
     func delete<T: NSManagedObject>(entities: [T], indexSet: IndexSet) {
         guard let index = indexSet.first else { return }
         let entity = entities[index]
         delete(item: entity)
-        saveContext()
+        save()
     }
     
-    private func saveContext() {
+    public func save() {
         if self.context.hasChanges {
             do {
                 try context.save()
             } catch let error {
-                logger.error("Error of saving context to CoreData: \(error.localizedDescription)")
+                logger.log(level: .error, message: "Error of saving context to CoreData: \(error.localizedDescription)", file: #file)
             }
         }
     }
@@ -117,7 +114,7 @@ final class CoreDataService: NSObject, ObservableObject, DataManagable {
         do {
             return try self.context.count(for: NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: entity)))
         } catch let error {
-            logger.error("Error of getting entity count from CoreData: \(error.localizedDescription)")
+            logger.log(level: .error, message: "Error of getting entity count from CoreData: \(error.localizedDescription)", file: #file)
         }
         return nil
     }

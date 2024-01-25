@@ -34,7 +34,7 @@ final class ImageLoaderManager: ImageLoadableType, ObservableObject {
                 self.cache.setObject(image, forKey: cacheKey)
                 return Image(uiImage: image)
             } else {
-                logger.error("There is no image or can't covert uiImage to Image")
+                logger.log(level: .error, message: "There is no image or can't covert uiImage to Image", file: #file)
                 return nil
             }
         }
@@ -47,7 +47,7 @@ final class ImageLoaderManager: ImageLoadableType, ObservableObject {
         case .success(let imageModel):
             return imageModel.base64.base64Image
         case .failure:
-            logger.error("Can't download image by URL: \"\(request.urlAbsolute?.description ?? "")\"")
+            logger.log(level: .error, message: "Can't download image by URL: \"\(request.urlAbsolute?.description ?? "")\"", file: #file)
             return nil
         }
     }

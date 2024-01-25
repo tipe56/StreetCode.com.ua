@@ -64,7 +64,7 @@ struct CheckCoreData: View {
                     Button {
                         withAnimation {
                             viewModel.listData.removeAll()
-                            viewModel.convertPersonsToEntities()
+                            //viewModel.convertPersonsToEntities()
                             viewModel.fetch()
                         }
                     } label: {

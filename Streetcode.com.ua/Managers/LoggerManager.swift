@@ -9,29 +9,20 @@ import Foundation
 import OSLog
 
 protocol Loggering {
-    func info(_ message: String)
-    func warning(_ message: String)
-    func error(_ message: String)
-    func debug(_ message: String)
+    func log(level: OSLogType, message: String, file: String)
 }
 
-class LoggerManager: Loggering {
-    let logger = Logger()
-    
-    func info(_ message: String) {
-        logger.info("File: \(String(describing: type(of: self))), \(message)")
+extension Loggering {
+    func log(level: OSLogType = .error, message: String, file: String = #file) {
+        log(level: level, message: message, file: file)
     }
+}
+
+final class LoggerManager: Loggering {
+    private let logger = Logger()
     
-    func warning(_ message: String) {
-        logger.warning("File: \(String(describing: type(of: self))), \(message)")
-    }
-    
-    func error(_ message: String) {
-        logger.error("File: \(String(describing: type(of: self))), Error: \(message)")
-    }
-    
-    func debug(_ message: String) {
-        logger.debug("File: \(String(describing: type(of: self))), \(message)")
+    func log(level: OSLogType, message: String, file: String) {
+        logger.log(level: level, "\(file): \(message)")
     }
 }
 

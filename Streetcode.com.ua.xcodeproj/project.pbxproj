@@ -44,6 +44,7 @@
 		ADEDBCC22B45E2D300B036F1 /* SearchUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBCC12B45E2D300B036F1 /* SearchUnavailableView.swift */; };
 		ADFB83382B5E7F470008B416 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB83372B5E7F470008B416 /* Array+Extension.swift */; };
 		ADFB833A2B5ECEEB0008B416 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB83392B5ECEEA0008B416 /* CoreDataViewModel.swift */; };
+		ADFB83442B604C440008B416 /* NetworkStatusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB83432B604C440008B416 /* NetworkStatusService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		ADEDBCC12B45E2D300B036F1 /* SearchUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUnavailableView.swift; sourceTree = "<group>"; };
 		ADFB83372B5E7F470008B416 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		ADFB83392B5ECEEA0008B416 /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
+		ADFB83432B604C440008B416 /* NetworkStatusService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 				ADEDBC4F2B3C54DC00B036F1 /* ImageLoaderManager.swift */,
 				AD8068E82B5174C1007AAE00 /* LoggerManager.swift */,
 				ADC0DAD02B56C603000AB530 /* CoreDataService.swift */,
+				ADFB83432B604C440008B416 /* NetworkStatusService.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				AD5EFA612B0F9B4E0085AB01 /* PersonCellView.swift in Sources */,
 				ADEDBC502B3C54DC00B036F1 /* ImageLoaderManager.swift in Sources */,
 				ADC0DACB2B56C38A000AB530 /* Streetcode.xcdatamodeld in Sources */,
+				ADFB83442B604C440008B416 /* NetworkStatusService.swift in Sources */,
 				AD8068E92B5174C1007AAE00 /* LoggerManager.swift in Sources */,
 				AD5EFA4F2B0F93E70085AB01 /* Streetcode_com_uaApp.swift in Sources */,
 				ADC0DACF2B56C4B8000AB530 /* CatalogPersonEntity+CoreDataProperties.swift in Sources */,
