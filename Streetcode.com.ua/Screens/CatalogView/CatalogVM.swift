@@ -26,9 +26,10 @@ final class CatalogVM: CatalogViewModelType {
     private let logger: Loggering?
     
     var filteredCatalog: [CatalogPerson] {
-        searchTerm.isEmpty ? self.catalog : self.catalog.filter {
+        let filtered = self.catalog.filter {
             $0.title.lowercased().contains(searchTerm.lowercased()) || $0.alias.localizedCaseInsensitiveContains(searchTerm)
         }
+        return searchTerm.isEmpty ? self.catalog : filtered
     }
     
     init(container: DIContainerable) {
@@ -38,30 +39,39 @@ final class CatalogVM: CatalogViewModelType {
     }
     
     func getCatalogVM() {
+        guard let networkManager else { return }
         isLoading = true
         Task {
-            guard let networkManager else { return }
-            
-            let result: Result<Int, APIError> = await networkManager.perform(CatalogRequest.getCount)
-            switch result {
-            case .success(let count):
-                let result: Result<[CatalogPerson], APIError> = await networkManager.perform(CatalogRequest.getCatalog(page: 1, count: count))
-                switch result {
-                case .success(let success):
-                    await MainActor.run {
-                        self.catalog = success
-                        isLoading = false
-                    }
-                case .failure:
-                    logger?.error("Failure of getting catalog elements")
-                    break
-                    // TODO: handle error. Show alert message
-                }
-            case .failure:
-                logger?.error("Failure of getting count of catalog elements")
-                break
-                // TODO: handle error. Show alert message
+            guard let count = await getCount(networkManager: networkManager)  else { return }
+            let catalog = await getCatalog(networkManager: networkManager, count: count)
+            await MainActor.run {
+                self.catalog = catalog
+                self.isLoading = false
             }
+        }
+    }
+    
+    func getCount(networkManager: WebAPIManagerProtocol) async -> Int? {
+        let result: Result<Int, APIError> = await networkManager.perform(CatalogRequest.getCount)
+        switch result {
+        case .success(let count):
+            return count
+        case .failure:
+            logger?.error("Failure getting count of catalog elements")
+            // TODO: handle error. Show alert message to user
+            return nil
+        }
+    }
+    
+    func getCatalog(networkManager: WebAPIManagerProtocol, count: Int, page: Int = 1) async -> [CatalogPerson] {
+        let result: Result<[CatalogPerson], APIError> = await networkManager.perform(CatalogRequest.getCatalog(page: page, count: count))
+        switch result {
+        case .success(let catalog):
+            return catalog
+        case .failure:
+            logger?.error("Failure of getting catalog elements")
+            // TODO: handle error. Show alert message to user
+            return []
         }
     }
 }
