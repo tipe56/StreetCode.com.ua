@@ -10,11 +10,15 @@ import SwiftUI
 @main
 struct StreetcodeComUaApp: App {
     
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    private let viewModel =  ViewModelStreetcodeComUaApp()
+    
+    init() {
+        viewModel.registerServices()
+    }
     
     var body: some Scene {
         WindowGroup {
-            CatalogView(viewModel: CatalogVM(container: appDelegate.container))
+            CatalogView(viewModel: CatalogVM(container: viewModel.container))      
         }
     }
 }

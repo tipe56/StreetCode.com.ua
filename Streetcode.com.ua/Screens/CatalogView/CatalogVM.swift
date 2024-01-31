@@ -57,12 +57,11 @@ final class CatalogVM: CatalogViewModelProtocol {
         guard let networkManager else { return }
         isLoading = true
         Task {
-            if let count = await getCount(networkManager: networkManager) {
-                let catalog = await getCatalog(networkManager: networkManager, count: count)
-                await MainActor.run {
-                    self.catalog = catalog
-                    self.isLoading = false
-                }
+            guard let count = await getCount(networkManager: networkManager)  else { return }
+            let catalog = await getCatalog(networkManager: networkManager, count: count)
+            await MainActor.run {
+                self.catalog = catalog
+                self.isLoading = false
             }
         }
     }
@@ -78,7 +77,6 @@ final class CatalogVM: CatalogViewModelProtocol {
             return nil
         }
     }
-    
     
     func getCatalog(networkManager: WebAPIManagerProtocol, count: Int, page: Int = 1) async -> [CatalogPerson] {
         let result: Result<[CatalogPerson], APIError> = await networkManager.perform(CatalogRequest.getCatalog(page: page, count: count))

@@ -10,20 +10,20 @@ import SwiftUI
 struct CatalogView<CatalogViewModelType>: View where CatalogViewModelType: CatalogViewModelProtocol {
     
     private struct Constants {
-        static var logoAnimationName: String { return "Logo-animation_40" }
         static var pageTitle: String { return "Стріткоди" }
+        static var logoAnimationName: String { return "Logo-animation_40" }
         static var searchprompt: String { return "Я шукаю..." }
         static var unavaliableViewDescription: String { return "Такого героя поки що немає в каталозі" }
     }
-
-    @ObservedObject var viewModel: CatalogViewModelType
+    
+    @ObservedObject var viewModel: ViewModelType
     
     // MARK: Body
     var body: some View {
         NavigationStack {
             ZStack {
                 if viewModel.isLoading {
-                    LoadingView(gifBundleName: Constants.logoAnimationName, width: 420, height: 420)
+                    LoadingView(gifName: Constants.logoAnimationName)
                         .offset(y: -60.0)
                 }
                 catalogGridView
@@ -37,7 +37,7 @@ struct CatalogView<CatalogViewModelType>: View where CatalogViewModelType: Catal
         }
         .tint(Color.red500)
         .onAppear {
-           viewModel.getCatalogVM()
+            viewModel.getCatalogVM()
         }
     }
     
@@ -63,11 +63,11 @@ struct CatalogView<CatalogViewModelType>: View where CatalogViewModelType: Catal
             }
             
         }
-        .searchable(text: $viewModel.searchTerm, placement: .toolbar, prompt: Text("Я шукаю..."))
+        .searchable(text: $viewModel.searchTerm, placement: .toolbar, prompt: Text(Constants.searchprompt))
         .overlay {
             if viewModel.filteredCatalog.isEmpty && !viewModel.isLoading {
                 SearchUnavailableView(image: Image(systemName: "person.slash"),
-                                      description: "Такого героя поки що немає в каталозі",
+                                      description: Constants.unavaliableViewDescription,
                                       searchText: viewModel.searchTerm)
             }
         }

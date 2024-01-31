@@ -1,21 +1,17 @@
 //
-//  AppDelegate.swift
+//  ViewModelStreetcodeComUaApp.swift
 //  Streetcode.com.ua
 //
-//  Created by Siarhei Ramaniuk on 9.01.24.
+//  Created by Siarhei Ramaniuk on 31.01.24.
 //
 
-import UIKit
+import Foundation
 
-class AppDelegate: NSObject, UIApplicationDelegate {
-    let container: DIContainerType = DIContainer()
+class ViewModelStreetcodeComUaApp {
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        registerServices()
-        return true
-    }
+    let container: DIContainerable = DIContainer()
     
-    private func registerServices() {
+    func registerServices() {
         let logger: Loggering = LoggerManager()
         let networkmanager: WebAPIManagerProtocol = WebAPIManager(logger: logger)
         
@@ -25,8 +21,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         container.register(
             type: ImageLoadableType.self,
             instance: ImageLoaderManager(networkManager: networkmanager, logger: logger))
+        container.register(
+            type: Loggering.self,
+            instance: logger)
     }
 }
-
-
-
