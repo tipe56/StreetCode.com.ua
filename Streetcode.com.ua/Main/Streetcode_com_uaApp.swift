@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct StreetcodeComUaApp: App {
+    
+    private let viewModel =  ViewModelStreetcodeComUaApp()
+    
+    init() {
+        viewModel.registerServices()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            TabBarView()
+            TabBarView(container: viewModel.container)
         }
     }
 }
+

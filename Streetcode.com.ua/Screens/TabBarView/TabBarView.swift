@@ -8,18 +8,21 @@
 import SwiftUI
 
 struct TabBarView: View {
+    
+    let container: DIContainerable
+    
     var body: some View {
         TabView {
-            PersonGridView()
+            CatalogView(viewModel: CatalogVM(container: container))
                 .tabItem { Label("Catalog", systemImage: "list.bullet") }
-            PersonGridView()
+            ScannerView()
                 .tabItem { Label("Scanner", systemImage: "qrcode.viewfinder") }
-            PersonGridView()
+            ScannerView()
                 .tabItem { Label("Map", systemImage: "map") }
         }.tint(Color.red500)
     }
 }
 
-#Preview {
-    TabBarView()
-}
+//#Preview {
+//    TabBarView()
+//}
