@@ -9,7 +9,7 @@ import SwiftUI
 
 protocol CatalogViewModelProtocol: ObservableObject {
     var catalog: [CatalogPerson] { get }
-    var container: DIContainerType { get }
+    var container: DIContainerable { get }
     var isLoading: Bool { get }
     var searchTerm: String { get set}
     var filteredCatalog: [CatalogPerson] { get }
@@ -21,7 +21,7 @@ final class CatalogVM: CatalogViewModelProtocol {
     @Published private(set) var catalog: [CatalogPerson] = []
     @Published private(set) var isLoading = false
     @Published var searchTerm: String = ""
-    public let container: DIContainerType
+    public let container: DIContainerable
     private let networkManager: WebAPIManagerProtocol?
     private let logger: Loggering?
     
@@ -32,7 +32,7 @@ final class CatalogVM: CatalogViewModelProtocol {
         return searchTerm.isEmpty ? self.catalog : filtered
     }
     
-    init(container: DIContainerType) {
+    init(container: DIContainerable) {
         self.container = container
         self.networkManager = container.resolve()
         self.logger = container.resolve()

@@ -16,7 +16,7 @@ struct CatalogView<CatalogViewModelType>: View where CatalogViewModelType: Catal
         static var unavaliableViewDescription: String { return "Такого героя поки що немає в каталозі" }
     }
     
-    @ObservedObject var viewModel: ViewModelType
+    @ObservedObject var viewModel: CatalogViewModelType
     
     // MARK: Body
     var body: some View {

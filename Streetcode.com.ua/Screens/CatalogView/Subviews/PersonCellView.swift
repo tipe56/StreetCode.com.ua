@@ -13,9 +13,9 @@ struct PersonCellView: View {
     
     let person: CatalogPerson
     private let imageLoader: ImageLoadableType?
-    private let container: DIContainerType
+    private let container: DIContainerable
     
-    init(person: CatalogPerson, container: DIContainerType) {
+    init(person: CatalogPerson, container: DIContainerable) {
         self.person = person
         self.container = container
         self.imageLoader = container.resolve()
