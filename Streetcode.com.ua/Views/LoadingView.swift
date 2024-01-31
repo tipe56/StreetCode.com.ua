@@ -9,64 +9,20 @@ import SwiftUI
 import Combine
 
 struct LoadingView: View {
-    let gifBundleName: String
-    let width: Int
-    let height: Int
+    private let images: [UIImage]
+    private let timer: Publishers.Autoconnect<Timer.TimerPublisher>
     
-    var body: some View {
-        GifImageRepresentable(gifBundleName: gifBundleName, width: width, height: height)
-    }
-}
-
-struct GifImageRepresentable: UIViewRepresentable {
-    let gifBundleName: String
-    let width: Int
-    let height: Int
+    @State private var index = 0
     
-    func makeUIView(context: Context) -> UIView {
-        let view = UIView()
-        let source = GifImageSource()
-        let image = source.gifImageWithName(gifBundleName)
-        let imageView = UIImageView(image: image)
-        
-        imageView.contentMode = UIView.ContentMode.scaleAspectFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(imageView)
-        
-        let imageViewSize = CGSize(width: width, height: height)
-        NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalToConstant: imageViewSize.width),
-            imageView.heightAnchor.constraint(equalToConstant: imageViewSize.height),
-            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
-        
-        return view
-    }
-    
-    func updateUIView(_ uiView: UIView, context: Context) { }
-}
-
-struct GifImageSource {
-    
-    public func gifImageWithName(_ name: String) -> UIImage? {
-        guard let bundleURL = Bundle.main
-            .url(forResource: name, withExtension: "gif") else {
-            print("GifImageSource: This image named \"\(name)\" does not exist")
-            return nil
-        }
-        guard let imageData = try? Data(contentsOf: bundleURL) else {
-            print("GifImageSource: Cannot turn image named \"\(name)\" into Data")
-            return nil
-        }
-        guard let image = animatedImage(withGIFData: imageData) else { return nil}
-        return image
-    }
-    
-    private func animatedImage(withGIFData data: Data) -> UIImage? {
-        guard let source = CGImageSourceCreateWithData(data as CFData, nil) else {
-            print("GifImageSource: Cannot casting Data to CFData")
-            return nil
+    init(gifName: String) {
+        guard let bundleURL = Bundle.main.url(forResource: gifName, withExtension: "gif"),
+              let data = try? Data(contentsOf: bundleURL),
+              let source = CGImageSourceCreateWithData(data as CFData, nil)else {
+            self.images = []
+            self.timer = Timer.publish(every: 0,
+                                       on: .main,
+                                       in: .common).autoconnect()
+            return
         }
         
         let frameCount = CGImageSourceGetCount(source)
@@ -86,11 +42,23 @@ struct GifImageSource {
             frames.append(frameImage)
         }
         
-        let animatedImage = UIImage.animatedImage(with: frames, duration: gifDuration)
-        return animatedImage
+        self.images = frames
+        self.timer = Timer.publish(every: gifDuration / Double(frames.count),
+                                   on: .main,
+                                   in: .common).autoconnect()
+    }
+    
+    var body: some View {
+        Image(uiImage: images[index])
+            .aspectRatio(contentMode: .fill)
+            .onReceive(timer) { _ in
+                let next = index + 1
+                index = next < images.count ? next : 0
+            }
     }
 }
 
 #Preview {
-    LoadingView(gifBundleName: "Logo-animation_40", width: 420, height: 420)
+    LoadingView(gifName: "Logo-animation_40")
+    
 }

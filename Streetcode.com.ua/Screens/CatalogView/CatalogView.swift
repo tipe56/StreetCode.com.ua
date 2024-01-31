@@ -7,24 +7,30 @@
 
 import SwiftUI
 
-struct CatalogView<ViewModelType>: View where ViewModelType: CatalogViewModelType {
+struct CatalogView: View/*<CatalogViewModel>: View where CatalogViewModel: CatalogViewModelType*/ {
     
-    private let pageTitle: String = "Стріткоди"
-    @ObservedObject var viewmodel: ViewModelType
+    private struct Constants {
+        static var pageTitle: String { return "Стріткоди" }
+        static var logoAnimationName: String { return "Logo-animation_40" }
+        static var searchprompt: String { return "Я шукаю..." }
+        static var unavaliableViewDescription: String { return "Такого героя поки що немає в каталозі" }
+    }
+    
+    @StateObject var viewModel: /*CatalogViewModelType*/CatalogVM
     
     // MARK: Body
     var body: some View {
         NavigationStack {
             ZStack {
-                if viewmodel.isLoading {
-                    LoadingView(gifBundleName: "Logo-animation_40", width: 420, height: 420)
+                if viewModel.isLoading {
+                    LoadingView(gifName: Constants.logoAnimationName)
                         .offset(y: -60.0)
                 }
                 catalogGridView
             }
             .padding(.horizontal, 4)
             .customNavigationBarModifier(hideSeparator: true)
-            .navigationTitle(pageTitle)
+            .navigationTitle(Constants.pageTitle)
             .background {
                 BackgroundView()
             }
@@ -32,7 +38,7 @@ struct CatalogView<ViewModelType>: View where ViewModelType: CatalogViewModelTyp
         .tint(Color.red500)
         .onAppear {
             Task {
-                await viewmodel.getCatalogVM()
+                await viewModel.getCatalogVM()
             }
         }
     }
@@ -44,7 +50,7 @@ struct CatalogView<ViewModelType>: View where ViewModelType: CatalogViewModelTyp
         
         ScrollView {
             LazyVGrid(columns: columns) {
-                ForEach(viewmodel.filteredCatalog) { person in
+                ForEach(viewModel.filteredCatalog) { person in
                     NavigationLink {
                         ScrollView {
                             Text(person.wrappedTitle)
@@ -53,27 +59,27 @@ struct CatalogView<ViewModelType>: View where ViewModelType: CatalogViewModelTyp
                                 .navigationTitle(person.wrappedTitle.components(separatedBy: " ").first ?? "")
                         }
                     } label: {
-                        PersonCellView(person: person, container: viewmodel.container)
+                        PersonCellView(person: person, container: viewModel.container)
                     }
                 }
             }
             
         }
-        .searchable(text: $viewmodel.searchTerm, placement: .toolbar, prompt: Text("Я шукаю..."))
+        .searchable(text: $viewModel.searchTerm, placement: .toolbar, prompt: Text(Constants.searchprompt))
         .overlay {
-            if viewmodel.filteredCatalog.isEmpty && !viewmodel.catalog.isEmpty {
+            if viewModel.filteredCatalog.isEmpty && !viewModel.catalog.isEmpty {
                 SearchUnavailableView(image: Image(systemName: "person.slash"),
-                                      description: "Такого героя поки що немає в каталозі",
-                                      searchText: viewmodel.searchTerm)
+                                      description: Constants.unavaliableViewDescription,
+                                      searchText: viewModel.searchTerm)
             }
         }
     }
 }
 
 // MARK: Previews
-struct CatalogView_Previews: PreviewProvider {
-    static var vm = CatalogVM(container: DIContainer())
-    static var previews: some View {
-        CatalogView(viewmodel: CatalogView_Previews.vm)
-    }
-}
+//struct CatalogView_Previews: PreviewProvider {
+//    static var viewModel = CatalogVM(container: DIContainer())
+//    static var previews: some View {
+//        CatalogView(viewModel: CatalogView_Previews.viewModel)
+//    }
+//}

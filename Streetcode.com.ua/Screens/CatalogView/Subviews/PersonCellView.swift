@@ -45,11 +45,10 @@ struct PersonCellView: View {
             }
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .padding(6)
-            .shadow(
-                color: Color.gray600,
-                radius: 4,
-                x: 0,
-                y: 4)
+            .shadow(color: Color.gray600,
+                    radius: 4,
+                    x: 0,
+                    y: 4)
     }
 }
 

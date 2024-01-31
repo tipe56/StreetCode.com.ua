@@ -19,7 +19,6 @@ protocol CatalogViewModelType: ObservableObject {
 
 final class CatalogVM: CatalogViewModelType {
     
-    
     @Published private(set) var isLoading = false
     @Published var searchTerm: String = ""
     @Published var catalog: [CatalogPersonEntity] = []
@@ -28,10 +27,12 @@ final class CatalogVM: CatalogViewModelType {
     private let logger: Loggering?
     private let coreDataManager: DataManagable?
     
+    
     var filteredCatalog: [CatalogPersonEntity] {
-        searchTerm.isEmpty ? self.catalog : self.catalog.filter {
+        let filtered = self.catalog.filter {
             $0.wrappedTitle.lowercased().contains(searchTerm.lowercased()) || $0.wrappedAlias.localizedCaseInsensitiveContains(searchTerm)
         }
+        return searchTerm.isEmpty ? self.catalog : filtered
     }
     
     init(container: DIContainerable) {
@@ -40,7 +41,7 @@ final class CatalogVM: CatalogViewModelType {
         self.logger = container.resolve()
         self.coreDataManager = container.resolve()
     }
-    
+
     let statusCheck = NetworkStatusService()
 
     
@@ -63,15 +64,6 @@ final class CatalogVM: CatalogViewModelType {
             entity.update(with: person)
         }
         await fetchCatalog()
-        //
-        //        isLoading = true
-        //        if let count = await getCount(networkManager: networkManager) {
-        //            let catalog = await getCatalog(networkManager: networkManager, count: count)
-        //            await MainActor.run {
-        //                self.catalog = catalog
-        //                self.isLoading = false
-        //            }
-        //        }
     }
     
     func fetchCount() async -> Int? {
@@ -143,3 +135,65 @@ final class CatalogVM: CatalogViewModelType {
     }
 }
 
+
+
+//        guard let networkManager = networkManager else { return }
+//    func getCatalogVM() {
+//        isLoading = true
+//        Task {
+//            if let count = await getCount() {
+//                let catalog = await getCatalog(count: count)
+//                await MainActor.run {
+//                    self.catalog = catalog
+//                }
+//            }
+//            isLoading = false
+//        }
+//    }
+
+
+
+//func getCount(networkManager: WebAPIManagerProtocol) async -> Int? {
+//        let result: Result<Int, APIError> = await networkManager.perform(CatalogRequest.getCount)
+//        switch result {
+//        case .success(let count):
+//            return count
+//        case .failure:
+//            logger?.log(level: .error, message: "Failure getting count of catalog elements", file: #file)
+//            // TODO: handle error. Show alert message to user
+//            return nil
+//        }
+//    }
+//
+//    func getCatalog(networkManager: WebAPIManagerProtocol, count: Int, page: Int = 1) async -> [CatalogPerson] {
+//        let result: Result<[CatalogPerson], APIError> = await networkManager.perform(CatalogRequest.getCatalog(page: page, count: count))
+//        switch result {
+//        case .success(let catalog):
+//            return catalog
+//        case .failure:
+//            logger?.log(level: .error, message: "Failure of getting catalog elements", file: #file)
+//            // TODO: handle error. Show alert message to user
+//            return []
+//        }
+//    }
+
+
+
+//
+//var filteredCatalog: [CatalogPersonEntity] {
+//    searchTerm.isEmpty ? self.catalog : self.catalog.filter {
+//        $0.wrappedTitle.lowercased().contains(searchTerm.lowercased()) || $0.wrappedAlias.localizedCaseInsensitiveContains(searchTerm)
+//    }
+//    return searchTerm.isEmpty ? self.catalog : filtered
+//}
+
+
+//
+//        isLoading = true
+//        if let count = await getCount(networkManager: networkManager) {
+//            let catalog = await getCatalog(networkManager: networkManager, count: count)
+//            await MainActor.run {
+//                self.catalog = catalog
+//                self.isLoading = false
+//            }
+//        }

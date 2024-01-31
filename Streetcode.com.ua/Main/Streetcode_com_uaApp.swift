@@ -10,12 +10,15 @@ import SwiftUI
 @main
 struct StreetcodeComUaApp: App {
     
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    private let assembly =  AssemblyServices()
+    
+    init() {
+        assembly.registerServices()
+    }
     
     var body: some Scene {
         WindowGroup {
-            CatalogView(viewmodel: CatalogVM(container: appDelegate.container))
-//            CheckCoreData(container: appDelegate.container)
+            TabBarView(container: assembly.container)
         }
     }
 }
