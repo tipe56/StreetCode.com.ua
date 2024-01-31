@@ -11,38 +11,22 @@ import SwiftUI
 
 struct PersonCellView: View {
     
-    let person: CatalogPersonModel
-
-    private let imageLoader: ImageLoaderable?
+    let person: CatalogPerson
+    private let imageLoader: ImageLoadableType?
+    private let container: DIContainerable
     
-    init(person: CatalogPersonModel, container: DIContainerable) {
+    init(person: CatalogPerson, container: DIContainerable) {
         self.person = person
+        self.container = container
         self.imageLoader = container.resolve()
     }
     
-    
     var body: some View {
         VStack {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.gray100)
-                .aspectRatio(1, contentMode: .fit)
-                .overlay(alignment: .top) {
-                    CatalogRemoteImage(imageLoader: imageLoader, imageId: person.imageID)
-                        .scaledToFill()
-                        .offset(y: 5)
-                }
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .padding(6)
-                .shadow(
-                    color: Color.gray600,
-                    radius: 4,
-                    x: 0,
-                    y: 4)
-            
+            catalogImage
             VStack {
                 Text(person.title)
                     .font(.closer(.medium, size: 18))
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 Text(person.alias)
                     .font(.closer(.medium, size: 14))
             }
@@ -52,10 +36,26 @@ struct PersonCellView: View {
             .multilineTextAlignment(.center)
         }
     }
+    
+    @ViewBuilder private var catalogImage: some View {
+        RoundedRectangle(cornerRadius: 20)
+            .fill(Color.gray100)
+            .aspectRatio(1, contentMode: .fit)
+            .overlay {
+                CatalogRemoteImage(imageLoader: imageLoader, imageId: person.imageID)
+                    .scaledToFill()
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .padding(6)
+            .shadow(color: Color.gray600,
+                    radius: 4,
+                    x: 0,
+                    y: 4)
+    }
 }
 
 struct PersonCellView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonCellView(person: CatalogPersonModel.mockData, container: DIContainer())
+        PersonCellView(person: CatalogPerson.mockData, container: DIContainer())
     }
 }

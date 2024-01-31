@@ -4,31 +4,35 @@
 //
 //  Created by Siarhei Ramaniuk on 28.12.23.
 //
-
+//
 import SwiftUI
 
-struct RemoteImage: View {
-    var image: Image?
-    
-    var body: some View {
-        image?.resizable() ?? Image("catalog-placeholder").resizable()
-    }
-}
-
 struct CatalogRemoteImage: View {
-    let imageLoader: ImageLoaderable?
+    let imageLoader: ImageLoadableType?
     let imageId: Int
-    @State var image: Image?
+    var imagePlaceholder: Image
+    @State private var progressViewModel: ProgressImageView.ViewModel?
+    
+    init(imageLoader: ImageLoadableType?,
+         imageId: Int,
+         imagePlaceholder: Image = Image("catalog-placeholder")) {
+        self.imageLoader = imageLoader
+        self.imageId = imageId
+        self.imagePlaceholder = imagePlaceholder
+    }
     
     var body: some View {
-        RemoteImage(image: image)
+        ProgressImageView(viewModel: progressViewModel)
             .onAppear {
                 Task {
-                   let image = await imageLoader?.loadImage(imageId: imageId)
-                    await MainActor.run {
-                        self.image = image
+                    let image = await imageLoader?.loadImage(imageId: imageId)
+                    withAnimation {
+                        self.progressViewModel = .init(image:image == nil ? imagePlaceholder : image,
+                                                       offsetY: image == nil ? 0 : 35)
                     }
                 }
             }
     }
 }
+
+

@@ -5,83 +5,79 @@
 //  Created by Siarhei Ramaniuk on 23.11.23.
 //
 
-// swiftlint:disable all
-
 import SwiftUI
 
-struct CatalogView<VM>: View where VM: CatalogViewModelProtocol {
-    // MARK: Properties
+struct CatalogView<CatalogViewModelType>: View where CatalogViewModelType: CatalogViewModelProtocol {
     
-    private let pageTitle: String = "Стріткоди"
-    @ObservedObject var viewmodel: VM
-
-    init(viewmodel: VM) {
-        self.viewmodel = viewmodel
+    private struct Constants {
+        static var pageTitle: String { return "Стріткоди" }
+        static var logoAnimationName: String { return "Logo-animation_40" }
+        static var searchprompt: String { return "Я шукаю..." }
+        static var unavaliableViewDescription: String { return "Такого героя поки що немає в каталозі" }
     }
+    
+    @ObservedObject var viewModel: CatalogViewModelType
     
     // MARK: Body
     var body: some View {
-        VStack {
-            Section {
-                gridView
-            } header: {
-                gridHeader
-                    .padding(.bottom, 5)
+        NavigationStack {
+            ZStack {
+                if viewModel.isLoading {
+                    LoadingView(gifName: Constants.logoAnimationName)
+                        .offset(y: -60.0)
+                }
+                catalogGridView
+            }
+            .padding(.horizontal, 4)
+            .customNavigationBarModifier(hideSeparator: true)
+            .navigationTitle(Constants.pageTitle)
+            .background {
+                BackgroundView()
             }
         }
-        .padding(.horizontal, 4)
-        .background {
-            BackgroundView()
-        }.onAppear {
-            viewmodel.getCatalogVM()
+        .tint(Color.red500)
+        .onAppear {
+            viewModel.getCatalogVM()
         }
     }
     
-    
-    
-    //MARK: ViewBuilders
-    @ViewBuilder private var gridHeader: some View {
-        HStack(alignment: .center) {
-            Text(pageTitle)
-                .padding(.leading, 10)
-                .font(.closer(.medium, size: 45))
-                .foregroundColor(.gray700)
-            Spacer()
-        }.frame(maxHeight: 30)
-    }
-    
-    
-    @ViewBuilder private var gridView: some View {
+    // MARK: ViewBuilder
+    @ViewBuilder private var catalogGridView: some View {
         
         let columns: [GridItem] = .init(repeating: GridItem(.flexible()), count: 2)
         
-//        var presentView: Binding<Bool> {
-//            .init {
-//                viewModel.selectedPerson != nil
-//            } set: { _ in
-//                viewModel.selectedPerson = nil
-//            }
-//        }
-        
         ScrollView {
             LazyVGrid(columns: columns) {
-                ForEach(viewmodel.catalog) { person in
-                    PersonCellView(person: person, container: viewmodel.container)
-//                        .onTapGesture {
-//                            viewModel.selectedPerson = person
-//                        }
+                ForEach(viewModel.filteredCatalog) { person in
+                    NavigationLink {
+                        ScrollView {
+                            Text(person.title)
+                                .font(.title3)
+                                .bold()
+                                .navigationTitle(person.title.components(separatedBy: " ").first ?? "")
+                        }
+                    } label: {
+                        PersonCellView(person: person, container: viewModel.container)
+                    }
                 }
             }
+            
         }
-//        .sheet(item: $viewModel.selectedPerson) { selectedPerson in
-//            PersonPreviewView(person: selectedPerson)
-//        }
+        .searchable(text: $viewModel.searchTerm, placement: .toolbar, prompt: Text(Constants.searchprompt))
+        .overlay {
+            if viewModel.filteredCatalog.isEmpty && !viewModel.isLoading {
+                SearchUnavailableView(image: Image(systemName: "person.slash"),
+                                      description: Constants.unavaliableViewDescription,
+                                      searchText: viewModel.searchTerm)
+            }
+        }
     }
 }
 
 // MARK: Previews
-//struct CatalogView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CatalogView(
-//    }
-//}
+struct CatalogView_Previews: PreviewProvider {
+    static var viewModel = CatalogVM(container: DIContainer())
+    static var previews: some View {
+        CatalogView(viewModel: CatalogView_Previews.viewModel)
+    }
+}

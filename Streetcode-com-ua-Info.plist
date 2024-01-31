@@ -9,5 +9,7 @@
 		<string>CloserText-Italic.otf</string>
 		<string>CloserText-SemiBold.otf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array/>
 </dict>
 </plist>

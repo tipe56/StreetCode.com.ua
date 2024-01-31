@@ -60,7 +60,6 @@ extension CatalogRequest: RequestProtocol {
              "count" : "\(count)"]
         case .getCatalogImage:
             [:]
-//            ["": "\(id)"]
         }
     }
     

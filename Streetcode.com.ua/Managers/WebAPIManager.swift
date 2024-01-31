@@ -5,16 +5,13 @@
 //  Created by Siarhei Ramaniuk on 13.12.23.
 //
 
-// swiftlint:disable all
-
 import UIKit
 
-protocol DataParserProtocol {
+protocol DataParserProtocol  {
     func parse<T: Decodable>(data: Data) throws -> T
-//    func parseJSON<T: Decodable>(data: Data) throws -> T
 }
 
-extension DataParserProtocol {
+extension DataParserProtocol  {
     func parse<T: Decodable>(data: Data) throws -> T {
         try parseJSON(data: data)
     }
@@ -24,7 +21,7 @@ extension DataParserProtocol {
     }
 }
 
-class DefaultDataParser: DataParserProtocol {
+class DefaultDataParser: DataParserProtocol  {
     func parse<T: Decodable>(data: Data) throws -> T {
         let decoder = JSONDecoder()
         do {
@@ -37,7 +34,6 @@ class DefaultDataParser: DataParserProtocol {
 
 protocol WebAPIManagerProtocol {
     func perform<T: DataDecodable>(_ request: RequestProtocol) async -> Result<T, APIError>
-    func perform<T: DataDecodable>(_ request: RequestProtocol) async -> Result<Array<T>, APIError>
 }
 
 protocol DataDecodable: Decodable {
@@ -58,9 +54,11 @@ extension DataDecodable {
 public class WebAPIManager: WebAPIManagerProtocol {
     
     private let urlSession: URLSession
+    private let logger: Loggering
     
-    public init(urlSession: URLSession = .shared) {
+    init(urlSession: URLSession = .shared, logger: Loggering) {
         self.urlSession = urlSession
+        self.logger = logger
     }
     
     func perform<T: DataDecodable>(_ request: RequestProtocol) async -> Result<T, APIError> {
@@ -76,20 +74,21 @@ public class WebAPIManager: WebAPIManagerProtocol {
     }
     
     func perform<T: DataDecodable>(_ request: RequestProtocol) async -> Result<Array<T>, APIError> {
-            do {
-                let data = try await perform(request)
-                let decoded: Array<T> = try T.parseArray(data: data)
-                return .success(decoded)
-            } catch let error as APIError {
-                return .failure(error)
-            } catch {
-                return .failure(.networkError(error))
-            }
+        do {
+            let data = try await perform(request)
+            let decoded: Array<T> = try T.parseArray(data: data)
+            return .success(decoded)
+        } catch let error as APIError {
+            return .failure(error)
+        } catch {
+            return .failure(.networkError(error))
         }
+    }
     
     private func perform(_ request: RequestProtocol) async throws -> Data {
         let (data, response) = try await urlSession.data(for: try request.makeURLRequest())
         guard let httpResponse = response as? HTTPURLResponse, (200..<300).contains(httpResponse.statusCode) else {
+            logger.error("Invalid Server Response")
             throw APIError.invalidServerResponse
         }
         return data
