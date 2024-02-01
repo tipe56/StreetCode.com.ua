@@ -21,7 +21,7 @@ extension DataParserProtocol  {
     }
 }
 
-class DefaultDataParser: DataParserProtocol  {
+final class DefaultDataParser: DataParserProtocol  {
     func parse<T: Decodable>(data: Data) throws -> T {
         let decoder = JSONDecoder()
         do {
@@ -51,8 +51,7 @@ extension DataDecodable {
     }
 }
 
-public class WebAPIManager: WebAPIManagerProtocol {
-    
+final class WebAPIManager: WebAPIManagerProtocol {
     private let urlSession: URLSession
     private let logger: Loggering
     

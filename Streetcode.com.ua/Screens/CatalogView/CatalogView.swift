@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CatalogView: View/*<CatalogViewModel>: View where CatalogViewModel: CatalogViewModelType*/ {
+struct CatalogView<ViewModel: CatalogViewModelType>: View {
     
     private struct Constants {
         static var pageTitle: String { return "Стріткоди" }
@@ -16,13 +16,13 @@ struct CatalogView: View/*<CatalogViewModel>: View where CatalogViewModel: Catal
         static var unavaliableViewDescription: String { return "Такого героя поки що немає в каталозі" }
     }
     
-    @StateObject var viewModel: /*CatalogViewModelType*/CatalogVM
+    @StateObject var viewModel: ViewModel
     
     // MARK: Body
     var body: some View {
         NavigationStack {
             ZStack {
-                if viewModel.isLoading {
+                if viewModel.catalog.isEmpty {
                     LoadingView(gifName: Constants.logoAnimationName)
                         .offset(y: -60.0)
                 }

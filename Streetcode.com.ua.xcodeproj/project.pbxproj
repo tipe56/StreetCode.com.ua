@@ -396,7 +396,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					AD5EFA4A2B0F93E70085AB01 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -481,7 +481,6 @@
 				AD2068CC2B21EE2A00A98304 /* ScannerViewModel.swift in Sources */,
 				AD2068C72B20C72600A98304 /* Permission.swift in Sources */,
 				AD2068DD2B231BA500A98304 /* ScannerView.swift in Sources */,
-				AD5EFA5F2B0F96A60085AB01 /* CatalogView.swift in Sources */,
 				AD2068C02B2094A300A98304 /* TabBarView.swift in Sources */,
 				AD2068E52B2335C800A98304 /* Alerts.swift in Sources */,
 				AD2068E72B233ABA00A98304 /* Errors.swift in Sources */,

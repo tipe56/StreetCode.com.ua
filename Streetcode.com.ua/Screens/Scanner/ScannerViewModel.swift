@@ -46,7 +46,10 @@ final class ScannerViewModel: NSObject, ObservableObject, ScannerVCDelegate  {
     func didFind(qrStringValue: String) {
         qrStringItem = qrStringValue
         deActivateScannerAnimation()
-        self.captureSession.stopRunning()
+        // Main
+        DispatchQueue.main.async {
+            self.captureSession.stopRunning()
+        }
     }
     
     func didSurfaceError(error: CameraError) {
@@ -66,7 +69,11 @@ final class ScannerViewModel: NSObject, ObservableObject, ScannerVCDelegate  {
     }
     
     func reActivateCamera() {
-        DispatchQueue.global(qos: .background).async {
+//        DispatchQueue.global(qos: .background).async {
+//            self.captureSession.startRunning()
+//        }
+        // Main
+        DispatchQueue.main.async {
             self.captureSession.startRunning()
         }
         activateScannerAnimation()
@@ -106,6 +113,7 @@ final class ScannerViewModel: NSObject, ObservableObject, ScannerVCDelegate  {
         let metaDataOutPut = AVCaptureMetadataOutput()
         
         if captureSession.canAddOutput(metaDataOutPut) {
+
             captureSession.addOutput(metaDataOutPut)
             metaDataOutPut.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             metaDataOutPut.metadataObjectTypes = [.qr]
@@ -116,7 +124,11 @@ final class ScannerViewModel: NSObject, ObservableObject, ScannerVCDelegate  {
         captureSession.commitConfiguration()
         activateScannerAnimation()
         
-        DispatchQueue.global(qos: .background).async {
+//        DispatchQueue.global(qos: .background).async {
+//            self.captureSession.startRunning()
+//        }
+        // Main
+        DispatchQueue.main.async {
             self.captureSession.startRunning()
         }
     }
@@ -129,7 +141,6 @@ final class ScannerViewModel: NSObject, ObservableObject, ScannerVCDelegate  {
     }
     
     func checkCameraPermission() {
-        // using Task - works defenetly better in performance
         Task {
             switch await AVCaptureDevice.requestAccess(for: .video) {
                 

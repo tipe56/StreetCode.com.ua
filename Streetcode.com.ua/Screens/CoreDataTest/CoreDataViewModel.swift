@@ -39,7 +39,7 @@ class CoreDataViewModel: ObservableObject {
     func create(item: CatalogPerson) {
         // unwrap manager
         guard let context = dataManager?.context else { return }
-        let newItem = CatalogPersonEntity(item: item, context: context)
+        _ = CatalogPersonEntity(item: item, context: context)
         dataManager?.save()
     }
     

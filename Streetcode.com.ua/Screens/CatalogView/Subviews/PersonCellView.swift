@@ -57,8 +57,8 @@ struct PersonCellView_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        var manager = CoreDataService(logger: LoggerManager())
-        var personEntity = CatalogPersonEntity(context: manager.context)
+        let manager = CoreDataService(logger: LoggerManager())
+        let personEntity = CatalogPersonEntity(context: manager.context)
         personEntity.id = Int16(438)
         personEntity.title = "Роман Рáтушний «Сенека»"
         personEntity.alias = "Активіст, журналіст, доброволець"

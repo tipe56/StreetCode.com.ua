@@ -1,5 +1,5 @@
 //
-//  NetworkStatusChecker.swift
+//  NetworkStatusService.swift
 //  Streetcode.com.ua
 //
 //  Created by Siarhei Ramaniuk on 23.01.24.

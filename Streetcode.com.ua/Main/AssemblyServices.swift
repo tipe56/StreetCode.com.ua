@@ -15,6 +15,7 @@ class AssemblyServices {
         let logger: Loggering = LoggerManager()
         let networkmanager: WebAPIManagerProtocol = WebAPIManager(logger: logger)
         let coreDataService = CoreDataService(logger: logger)
+        let networkStatusService = NetworkStatusService()
         
         container.register(
             type: WebAPIManagerProtocol.self,
@@ -28,5 +29,8 @@ class AssemblyServices {
         container.register(
             type: DataManagable.self,
             instance: coreDataService)
+        container.register(
+            type: NetworkStatusServicable.self,
+            instance: networkStatusService)
     }
 }
